@@ -1,6 +1,6 @@
 public class Piano extends Instrument{
-    String bodyType;
-    int keyCount;
+    private String bodyType;
+    private int keyCount;
 
     public Piano() {
         bodyType = "";

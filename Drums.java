@@ -1,6 +1,6 @@
 public class Drums extends Instrument{
-   String shellMaterial;
-   int piecesCount;
+   private String shellMaterial;
+   private int piecesCount;
 
     public Drums() {
         shellMaterial = "";

@@ -1,6 +1,6 @@
 public class Guitar extends Instrument {
-    String shape;
-    int stringCount;
+    private String shape;
+    private int stringCount;
 
     public Guitar() {
         shape = "";
