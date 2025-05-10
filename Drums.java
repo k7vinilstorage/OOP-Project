@@ -1,4 +1,4 @@
-public class Drums {
+public class Drums extends Instrument{
    String shellMaterial;
    int piecesCount;
 
