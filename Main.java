@@ -1,6 +1,6 @@
 
 
-public class TstInstrument {
+public class Main {
     public static void main(String[] args) {
         Piano p1 = new Piano();
         Guitar g1 = new Guitar();
