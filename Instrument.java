@@ -3,6 +3,7 @@ public abstract class Instrument {
     private String type;
     private String model;
     private String brand;
+    private int availability;
     private float price;
 
     public Instrument() {
@@ -10,16 +11,19 @@ public abstract class Instrument {
         type = "";
         model = "";
         brand = "";
+        availability = 0;
         price = 0;
     }
 
-    public Instrument(String category, String type, String model, String brand, float price) {
+    public Instrument(String category, String type, String model, String brand, int availability, float price) {
         this.category = category;
         this.type = type;
         this.model = model;
         this.brand = brand;
+        this.availability = availability;
         this.price = price;
     }
+
 
     public String getCategory() {
         return category;
@@ -35,6 +39,10 @@ public abstract class Instrument {
 
     public String getBrand() {
         return brand;
+    }
+
+    public int getAvailability() {
+        return availability;
     }
 
     public float getPrice() {
@@ -55,6 +63,10 @@ public abstract class Instrument {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public void setAvailability(int availability) {
+        this.availability = availability;
     }
 
     public void setPrice(float price) {
