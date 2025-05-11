@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+ import java.util.ArrayList;
 
 public class OperationLog {
     private ArrayList<Sale> sales;
@@ -25,7 +25,7 @@ public class OperationLog {
     public void setSales(ArrayList<Sale> sales) {
         this.sales = sales;
     }
-    
+
     public void setAcquisitions(ArrayList<Acquisition> acquisitions) {
         this.acquisitions = acquisitions;
     }
