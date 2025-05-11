@@ -66,5 +66,7 @@ public class Main {
         log1.getSales().get(0).setDate("02/09/1500");
         log1.getSales().get(0).setTotalCost((float)2500.00);
         log1.getSales().get(0).setBuyer(c1);
+
+        System.out.println("Class usage OK");
     }
 }
