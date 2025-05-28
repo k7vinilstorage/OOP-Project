@@ -1,4 +1,5 @@
 public class PeopleMenu {
+
     //get custumer
     //get employee
     //add employee
@@ -10,5 +11,14 @@ public class PeopleMenu {
     //del employee
     //del custumer
 
+    Storage peopleStorage;
 
+    public PeopleMenu() {
+        peopleStorage = Storage.createStorage();
+    }
+
+    public PeopleMenu(Storage peoplStorage) {
+        this.peopleStorage = peoplStorage;
+    }
+    
 }
