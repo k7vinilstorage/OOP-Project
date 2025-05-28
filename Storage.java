@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class Storage {
+
+    private static Storage SingleStorage;
+
     private ArrayList<Guitar> guitarStock;
     private ArrayList<Piano> pianoStock;
     private ArrayList<Drums> drumsStock;
@@ -9,10 +12,10 @@ public class Storage {
     private ArrayList<Sale> sales;
     private ArrayList<Acquisition> acquisitions;
 
-    public Storage() {
+    private Storage() {
     }
 
-    public Storage(ArrayList<Guitar> guitarStock, ArrayList<Piano> pianoStock, ArrayList<Drums> drumsStock, ArrayList<Employee> employees, ArrayList<Customer> customers, ArrayList<Sale> sales, ArrayList<Acquisition> acquisitions) {
+    private Storage(ArrayList<Guitar> guitarStock, ArrayList<Piano> pianoStock, ArrayList<Drums> drumsStock, ArrayList<Employee> employees, ArrayList<Customer> customers, ArrayList<Sale> sales, ArrayList<Acquisition> acquisitions) {
         this.guitarStock = guitarStock;
         this.pianoStock = pianoStock;
         this.drumsStock = drumsStock;
@@ -20,6 +23,14 @@ public class Storage {
         this.customers = customers;
         this.sales = sales;
         this.acquisitions = acquisitions;
+    }
+
+    public static Storage createStorage() {
+        if(SingleStorage == null) {
+            SingleStorage = new Storage();
+        }
+
+        return SingleStorage;
     }
 
     public ArrayList<Guitar> getGuitarStock() {
