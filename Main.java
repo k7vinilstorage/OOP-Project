@@ -2,16 +2,19 @@ public class Main {
     public static void main(String[] args) {
         Read read = Read.createRead();
 
+        PeopleMenu people = new PeopleMenu();
+
         int op = 10;
 
         while(op != 0) {
 
-            System.out.println("## --Guitar Store-- ##");
+            System.out.println("\n\n## --Guitar Store-- ##");
             System.out.println("## 1- Operation     ##");
             System.out.println("## 2- Instruments   ##");
             System.out.println("## 3- People        ##");
             System.out.println("## 0- Exit          ##\n");
-            op = Integer.parseInt(read.readData("Esolha uma opção: "));
+            
+            op = Integer.parseInt(read.readData("Choose an option: "));
             
 
             switch(op) {
@@ -22,7 +25,7 @@ public class Main {
                  //entar no menu de instrumentos
                     break;
                 case 3:
-                 //entar no menu de pessoas
+                    people.menu();
                     break;
             }
         }

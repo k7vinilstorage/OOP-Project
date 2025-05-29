@@ -13,23 +13,13 @@ public class Storage {
     private ArrayList<Acquisition> acquisitions;
 
     private Storage() {
-        guitarStock = new ArrayList<Guitar>();
-        pianoStock = new ArrayList<Piano>();
-        drumsStock = new ArrayList<Drums>();
-        employees = new ArrayList<Employee>();
-        customers = new ArrayList<Customer>();
-        sales = new ArrayList<Sale>();
-        acquisitions = new ArrayList<Acquisition>();
-    }
-
-    private Storage(ArrayList<Guitar> guitarStock, ArrayList<Piano> pianoStock, ArrayList<Drums> drumsStock, ArrayList<Employee> employees, ArrayList<Customer> customers, ArrayList<Sale> sales, ArrayList<Acquisition> acquisitions) {
-        this.guitarStock = guitarStock;
-        this.pianoStock = pianoStock;
-        this.drumsStock = drumsStock;
-        this.employees = employees;
-        this.customers = customers;
-        this.sales = sales;
-        this.acquisitions = acquisitions;
+        guitarStock = new ArrayList<>();
+        pianoStock = new ArrayList<>();
+        drumsStock = new ArrayList<>();
+        employees = new ArrayList<>();
+        customers = new ArrayList<>();
+        sales = new ArrayList<>();
+        acquisitions = new ArrayList<>();
     }
 
     public static Storage createStorage() {
