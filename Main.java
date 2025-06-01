@@ -4,6 +4,7 @@ public class Main {
 
         PeopleMenu people = new PeopleMenu();
         InstrumentMenu instrument = new InstrumentMenu();
+        OperationMenu operation = new OperationMenu();
 
         int op = 10;
 
@@ -20,7 +21,7 @@ public class Main {
 
             switch(op) {
                 case 1:
-                    //entar no menu de operações
+                    operation.menu();
                     break;
                 case 2:
                     instrument.menu();
