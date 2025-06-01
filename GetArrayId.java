@@ -1,11 +1,11 @@
 
 
-public class GetIdByCPF {
+public class GetArrayId {
 
     private Storage storage;
 
 
-    public GetIdByCPF() {
+    public GetArrayId() {
         storage = Storage.createStorage();
     }
 
@@ -49,7 +49,7 @@ public class GetIdByCPF {
         return 0;
     }
 
-    public int getDrumstId(String model) {
+    public int getDrumsId(String model) {
         int drumsSize = storage.getDrumsStock().size();
         for(int i = 0; i < drumsSize; i++) {
             if(storage.getDrumsStock().get(i).getModel().equals(model)) {

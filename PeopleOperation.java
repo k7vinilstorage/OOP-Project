@@ -2,7 +2,7 @@ public class PeopleOperation {
     
     private Storage peopleStorage;
     private Read read = Read.createRead();
-    private GetIdByCPF getId = new GetIdByCPF();
+    private GetArrayId getId = new GetArrayId();
 
     public PeopleOperation() {
         peopleStorage = Storage.createStorage();

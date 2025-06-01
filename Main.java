@@ -3,6 +3,7 @@ public class Main {
         Read read = Read.createRead();
 
         PeopleMenu people = new PeopleMenu();
+        InstrumentMenu instrument = new InstrumentMenu();
 
         int op = 10;
 
@@ -22,7 +23,7 @@ public class Main {
                     //entar no menu de operações
                     break;
                 case 2:
-                 //entar no menu de instrumentos
+                    instrument.menu();
                     break;
                 case 3:
                     people.menu();
