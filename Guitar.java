@@ -25,7 +25,7 @@ public class Guitar extends Instrument {
     }
 
     public void setStringCount(int stringCount) throws StringCountException{
-        if(stringCount > 5 && stringCount < 20) {
+        if(stringCount > 5 && stringCount < 19) {
             this.stringCount = stringCount;
         }
         else {

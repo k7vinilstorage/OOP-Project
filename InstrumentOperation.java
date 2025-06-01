@@ -23,7 +23,7 @@ public class InstrumentOperation {
             g.setStringCount(Integer.parseInt(read.readData("Insert String Count: ")));
         } 
         catch (StringCountException sce) {
-
+            g = sce.sceFix(g);
         }
         instrumentStorage.getGuitarStock().add(g);
     }
@@ -67,7 +67,7 @@ public class InstrumentOperation {
                 instrumentStorage.getGuitarStock().get(id).setStringCount(Integer.parseInt(data));
             } 
             catch (StringCountException sce) {
-                
+                instrumentStorage.getGuitarStock().set(id, sce.sceFix(instrumentStorage.getGuitarStock().get(id)));
             }
         }
     }
@@ -97,7 +97,7 @@ public class InstrumentOperation {
             p.setKeyCount(Integer.parseInt(read.readData("Insert Key Count: ")));
         } 
         catch (KeyCountException kce) {
-            
+            p = kce.kceFix(p);
         }
         
         instrumentStorage.getPianoStock().add(p);
@@ -136,13 +136,13 @@ public class InstrumentOperation {
             instrumentStorage.getPianoStock().get(id).setBodyType(data);
         }
 
-        data = read.readData("Insert new String Count: ");
+        data = read.readData("Insert new key Count: ");
         if(!data.equals("")) {
             try {
                 instrumentStorage.getPianoStock().get(id).setKeyCount(Integer.parseInt(data));
             } 
             catch (KeyCountException kce) {
-
+                instrumentStorage.getPianoStock().set(id, kce.kceFix(instrumentStorage.getPianoStock().get(id)));
             }
         }
     }
@@ -172,7 +172,7 @@ public class InstrumentOperation {
             d.setShellMaterial(read.readData("Insert Shell Material: "));
         } 
         catch (ShellMaterialException sme) {
-            
+            d = sme.smeFix(d);
         }
         instrumentStorage.getDrumsStock().add(d);
     }
@@ -205,19 +205,19 @@ public class InstrumentOperation {
             instrumentStorage.getDrumsStock().get(id).setPrice(Float.parseFloat(data));
         }
 
+        data = read.readData("Insert new Pieces Count: ");
+        if(!data.equals("")) {
+            instrumentStorage.getDrumsStock().get(id).setPiecesCount(Integer.parseInt(data));
+        }
+
         data = read.readData("Insert new Shell Material: ");
         if(!data.equals("")) {
             try {
                 instrumentStorage.getDrumsStock().get(id).setShellMaterial(data); 
             } 
             catch (ShellMaterialException sme) {
-
+                instrumentStorage.getDrumsStock().set(id, sme.smeFix(instrumentStorage.getDrumsStock().get(id)));
             }
-        }
-
-        data = read.readData("Insert new String Count: ");
-        if(!data.equals("")) {
-            instrumentStorage.getDrumsStock().get(id).setPiecesCount(Integer.parseInt(data));
         }
     }
 
