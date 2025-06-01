@@ -11,11 +11,11 @@ public class OperationMenu {
 
         while(op != 0) {
 
-            System.out.println("\n\n## --Operation Menu-- ##");
-            System.out.println("## 1- Acquisition         ##");
-            System.out.println("## 2- Sale                ##");
-            System.out.println("## 3- Acquisition         ##");
-            System.out.println("## 4- Sale                ##");
+            System.out.println("\n\n##     --Operation Menu--     ##");
+            System.out.println("## 1- Acquisition                 ##");
+            System.out.println("## 2- Sale                        ##");
+            System.out.println("## 3- Display Acquisition         ##");
+            System.out.println("## 4- Display Sale                ##");
             System.out.println("## 0- Exit                ##\n");
 
             
@@ -39,6 +39,12 @@ public class OperationMenu {
                     opType = Integer.parseInt(read.readData("Choose an option: "));
 
                     operation.sale(opType);
+                    break;
+                case 3:
+                    operation.showAcquisition();
+                    break;
+                case 4:
+                    operation.showSale();
                     break;
             }
         }

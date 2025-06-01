@@ -58,4 +58,24 @@ public class GetArrayId {
         }
         return 0;
     }
+
+    public int getAcquisitionId(int OpId) {
+        int acqSize = storage.getAcquisitions().size();
+        for(int i = 0; i <  acqSize; i++) {
+            if(storage.getAcquisitions().get(i).getOpId() == OpId) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int getSaleId(int OpId) {
+        int saleSize = storage.getSales().size();
+        for(int i = 0; i <  saleSize; i++) {
+            if(storage.getSales().get(i).getOpId() == OpId) {
+                return i;
+            }
+        }
+        return 0;
+    } 
 }

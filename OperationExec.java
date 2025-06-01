@@ -18,7 +18,7 @@ public class OperationExec {
         acq.setProductAmount(Integer.parseInt(read.readData("Insert Product Amount: ")));
         acq.setInCharge(operationStorage.getEmployees().get(getId.getEmployeeId(read.readData("Insert Employee CPF: "))));
         acq.setDate(read.readData("Insert Date: "));
-        acq.setTotalCost(Float.parseFloat(read.readData("Insert Total Cost")));
+        acq.setTotalCost(Float.parseFloat(read.readData("Insert Total Cost: ")));
         acq.setSupplyerName(read.readData("Insert Supplyer Name: "));
 
         int id;
@@ -40,6 +40,7 @@ public class OperationExec {
                 operationStorage.getDrumsStock().get(id).setAvailability(operationStorage.getDrumsStock().get(id).getAvailability() + acq.getProductAmount());
                 break;
         }
+        operationStorage.getAcquisitions().add(acq);
     }
 
     public void sale(int saleType) {
@@ -49,8 +50,9 @@ public class OperationExec {
         sale.setProductAmount(Integer.parseInt(read.readData("Insert Product Amount: ")));
         sale.setInCharge(operationStorage.getEmployees().get(getId.getEmployeeId(read.readData("Insert Employee CPF: "))));
         sale.setDate(read.readData("Insert Date: "));
-        sale.setTotalCost(Float.parseFloat(read.readData("Insert Total Cost")));
+        sale.setTotalCost(Float.parseFloat(read.readData("Insert Total Cost: ")));
         sale.setBuyer(operationStorage.getCustomers().get(getId.getCustumerId(read.readData("Insert Custumer CPF: "))));
+        sale.getBuyer().setPurchaseCount(sale.getBuyer().getPurchaseCount() + sale.getProductAmount());
 
         int id;
 
@@ -58,27 +60,44 @@ public class OperationExec {
             case 1:
                 id = getId.getGuitarId(read.readData("Insert Guitar Model: "));
                 sale.setProduct(operationStorage.getGuitarStock().get(id));
-                operationStorage.getGuitarStock().get(id).setAvailability(operationStorage.getGuitarStock().get(id).getAvailability() + sale.getProductAmount());
+                operationStorage.getGuitarStock().get(id).setAvailability(operationStorage.getGuitarStock().get(id).getAvailability() - sale.getProductAmount());
                 break;
             case 2:
                 id = getId.getPianoId(read.readData("Insert Piano Model: "));
                 sale.setProduct(operationStorage.getPianoStock().get(id));
-                operationStorage.getPianoStock().get(id).setAvailability(operationStorage.getPianoStock().get(id).getAvailability() + sale.getProductAmount());
+                operationStorage.getPianoStock().get(id).setAvailability(operationStorage.getPianoStock().get(id).getAvailability() - sale.getProductAmount());
                 break;
             case 3:
                 id = getId.getDrumsId(read.readData("Insert Drums Model: "));
                 sale.setProduct(operationStorage.getDrumsStock().get(id));
-                operationStorage.getDrumsStock().get(id).setAvailability(operationStorage.getDrumsStock().get(id).getAvailability() + acq.getProductAmount());
+                operationStorage.getDrumsStock().get(id).setAvailability(operationStorage.getDrumsStock().get(id).getAvailability() - sale.getProductAmount());
                 break;
         }
+        operationStorage.getSales().add(sale);
     }
 
     public void showAcquisition() {
-
+        int id;
+        id = getId.getAcquisitionId(Integer.parseInt(read.readData("Insert Operation OpId: ")));
+        System.out.println("OpId: " + operationStorage.getAcquisitions().get(id).getOpId());
+        System.out.println("Product Amount: " + operationStorage.getAcquisitions().get(id).getProductAmount());
+        System.out.println("Product Model: " + operationStorage.getAcquisitions().get(id).getProduct().getModel());
+        System.out.println("Employee in Charge: " + operationStorage.getAcquisitions().get(id).getInCharge().getName());
+        System.out.println("Date: " + operationStorage.getAcquisitions().get(id).getDate());
+        System.out.println("Total Cost: " + operationStorage.getAcquisitions().get(id).getTotalCost());
+        System.out.println("Supplyer Name: " + operationStorage.getAcquisitions().get(id).getSupplyerName());
     }
 
     public void showSale() {
-
+        int id;
+        id = getId.getSaleId(Integer.parseInt(read.readData("Insert Operation OpId: ")));
+        System.out.println("OpId: " + operationStorage.getSales().get(id).getOpId());
+        System.out.println("Product Amount: " + operationStorage.getSales().get(id).getProductAmount());
+        System.out.println("Product Model: " + operationStorage.getSales().get(id).getProduct().getModel());
+        System.out.println("Employee in Charge: " + operationStorage.getSales().get(id).getInCharge().getName());
+        System.out.println("Date: " + operationStorage.getSales().get(id).getDate());
+        System.out.println("Total Cost: " + operationStorage.getSales().get(id).getTotalCost());
+        System.out.println("Buyer: " + operationStorage.getSales().get(id).getBuyer().getName());
     }
 
 }
