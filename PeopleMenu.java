@@ -1,7 +1,7 @@
 public class PeopleMenu {
 
-    Read read = Read.createRead();
-    PeopleOperation operation = new PeopleOperation();
+    private Read read = Read.createRead();
+    private PeopleOperation operation = new PeopleOperation();
 
     public PeopleMenu() {}
 

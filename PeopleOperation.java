@@ -1,8 +1,8 @@
 public class PeopleOperation {
     
-    Storage peopleStorage;
-    Read read = Read.createRead();
-    GetIdByCPF getId = new GetIdByCPF();
+    private Storage peopleStorage;
+    private Read read = Read.createRead();
+    private GetIdByCPF getId = new GetIdByCPF();
 
     public PeopleOperation() {
         peopleStorage = Storage.createStorage();
