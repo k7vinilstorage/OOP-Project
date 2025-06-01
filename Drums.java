@@ -20,8 +20,13 @@ public class Drums extends Instrument{
         return piecesCount;
     }
 
-    public void setShellMaterial(String shellMaterial) {
-        this.shellMaterial = shellMaterial;
+    public void setShellMaterial(String shellMaterial) throws ShellMaterialException{
+        if(shellMaterial.equals("maple") || shellMaterial.equals("birch") || shellMaterial.equals("oak") || shellMaterial.equals("mahogany") || shellMaterial.equals("poplar") || shellMaterial.equals("steel") || shellMaterial.equals("brass") || shellMaterial.equals("aluminum") || shellMaterial.equals("coper") || shellMaterial.equals("bronze")) {
+            this.shellMaterial = shellMaterial;
+        }
+        else {
+            throw new ShellMaterialException();
+        }
     }
 
     public void setPiecesCount(int piecesCount) {

@@ -19,7 +19,12 @@ public class InstrumentOperation {
         g.setBrand(read.readData("Insert Brand: "));
         g.setPrice(Float.parseFloat(read.readData("Insert Price: ")));
         g.setShape(read.readData("Insert Shape: "));
-        g.setStringCount(Integer.parseInt(read.readData("Insert String Count: ")));
+        try {
+            g.setStringCount(Integer.parseInt(read.readData("Insert String Count: ")));
+        } 
+        catch (StringCountException sce) {
+
+        }
         instrumentStorage.getGuitarStock().add(g);
     }
 
@@ -58,7 +63,12 @@ public class InstrumentOperation {
 
         data = read.readData("Insert new String Count: ");
         if(!data.equals("")) {
-            instrumentStorage.getGuitarStock().get(id).setStringCount(Integer.parseInt(data));
+            try {
+                instrumentStorage.getGuitarStock().get(id).setStringCount(Integer.parseInt(data));
+            } 
+            catch (StringCountException sce) {
+                
+            }
         }
     }
 
@@ -83,7 +93,13 @@ public class InstrumentOperation {
         p.setBrand(read.readData("Insert Brand: "));
         p.setPrice(Float.parseFloat(read.readData("Insert Price: ")));
         p.setBodyType(read.readData("Insert Body Type: "));
-        p.setKeyCount(Integer.parseInt(read.readData("Insert Key Count: ")));
+        try {
+            p.setKeyCount(Integer.parseInt(read.readData("Insert Key Count: ")));
+        } 
+        catch (KeyCountException kce) {
+            
+        }
+        
         instrumentStorage.getPianoStock().add(p);
     }
 
@@ -122,7 +138,12 @@ public class InstrumentOperation {
 
         data = read.readData("Insert new String Count: ");
         if(!data.equals("")) {
-            instrumentStorage.getPianoStock().get(id).setKeyCount(Integer.parseInt(data));
+            try {
+                instrumentStorage.getPianoStock().get(id).setKeyCount(Integer.parseInt(data));
+            } 
+            catch (KeyCountException kce) {
+
+            }
         }
     }
 
@@ -146,8 +167,13 @@ public class InstrumentOperation {
         d.setModel(read.readData("Insert Model: "));
         d.setBrand(read.readData("Insert Brand: "));
         d.setPrice(Float.parseFloat(read.readData("Insert Price: ")));
-        d.setShellMaterial(read.readData("Insert Shell Material: "));
         d.setPiecesCount(Integer.parseInt(read.readData("Insert Pieces Count: ")));
+        try {
+            d.setShellMaterial(read.readData("Insert Shell Material: "));
+        } 
+        catch (ShellMaterialException sme) {
+            
+        }
         instrumentStorage.getDrumsStock().add(d);
     }
 
@@ -181,7 +207,12 @@ public class InstrumentOperation {
 
         data = read.readData("Insert new Shell Material: ");
         if(!data.equals("")) {
-            instrumentStorage.getDrumsStock().get(id).setShellMaterial(data);;
+            try {
+                instrumentStorage.getDrumsStock().get(id).setShellMaterial(data); 
+            } 
+            catch (ShellMaterialException sme) {
+
+            }
         }
 
         data = read.readData("Insert new String Count: ");
