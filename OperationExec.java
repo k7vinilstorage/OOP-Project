@@ -18,28 +18,29 @@ public class OperationExec {
         acq.setProductAmount(Integer.parseInt(read.readData("Insert Product Amount: ")));
         acq.setInCharge(operationStorage.getEmployees().get(getId.getEmployeeId(read.readData("Insert Employee CPF: "))));
         acq.setDate(read.readData("Insert Date: "));
-        acq.setTotalCost(Float.parseFloat(read.readData("Insert Total Cost: ")));
         acq.setSupplyerName(read.readData("Insert Supplyer Name: "));
-
+        
         int id;
-
+        
         switch(acqType) {
             case 1:
-                id = getId.getGuitarId(read.readData("Insert Guitar Model: "));
-                acq.setProduct(operationStorage.getGuitarStock().get(id));
-                operationStorage.getGuitarStock().get(id).setAvailability(operationStorage.getGuitarStock().get(id).getAvailability() + acq.getProductAmount());
-                break;
+            id = getId.getGuitarId(read.readData("Insert Guitar Model: "));
+            acq.setProduct(operationStorage.getGuitarStock().get(id));
+            operationStorage.getGuitarStock().get(id).setAvailability(operationStorage.getGuitarStock().get(id).getAvailability() + acq.getProductAmount());
+            break;
             case 2:
-                id = getId.getPianoId(read.readData("Insert Piano Model: "));
-                acq.setProduct(operationStorage.getPianoStock().get(id));
-                operationStorage.getPianoStock().get(id).setAvailability(operationStorage.getPianoStock().get(id).getAvailability() + acq.getProductAmount());
-                break;
+            id = getId.getPianoId(read.readData("Insert Piano Model: "));
+            acq.setProduct(operationStorage.getPianoStock().get(id));
+            operationStorage.getPianoStock().get(id).setAvailability(operationStorage.getPianoStock().get(id).getAvailability() + acq.getProductAmount());
+            break;
             case 3:
-                id = getId.getDrumsId(read.readData("Insert Drums Model: "));
-                acq.setProduct(operationStorage.getDrumsStock().get(id));
-                operationStorage.getDrumsStock().get(id).setAvailability(operationStorage.getDrumsStock().get(id).getAvailability() + acq.getProductAmount());
-                break;
+            id = getId.getDrumsId(read.readData("Insert Drums Model: "));
+            acq.setProduct(operationStorage.getDrumsStock().get(id));
+            operationStorage.getDrumsStock().get(id).setAvailability(operationStorage.getDrumsStock().get(id).getAvailability() + acq.getProductAmount());
+            break;
         }
+
+        acq.setTotalCost(acq.getProductAmount() * acq.getProduct().getPrice());
         operationStorage.getAcquisitions().add(acq);
     }
 
@@ -50,7 +51,6 @@ public class OperationExec {
         sale.setProductAmount(Integer.parseInt(read.readData("Insert Product Amount: ")));
         sale.setInCharge(operationStorage.getEmployees().get(getId.getEmployeeId(read.readData("Insert Employee CPF: "))));
         sale.setDate(read.readData("Insert Date: "));
-        sale.setTotalCost(Float.parseFloat(read.readData("Insert Total Cost: ")));
         sale.setBuyer(operationStorage.getCustomers().get(getId.getCustumerId(read.readData("Insert Custumer CPF: "))));
         sale.getBuyer().setPurchaseCount(sale.getBuyer().getPurchaseCount() + sale.getProductAmount());
 
@@ -73,6 +73,7 @@ public class OperationExec {
                 operationStorage.getDrumsStock().get(id).setAvailability(operationStorage.getDrumsStock().get(id).getAvailability() - sale.getProductAmount());
                 break;
         }
+        sale.setTotalCost(sale.getProductAmount() * sale.getProduct().getPrice());
         operationStorage.getSales().add(sale);
     }
 
