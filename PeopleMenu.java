@@ -41,10 +41,10 @@ public class PeopleMenu {
                     operation.addEmployee();
                     break;
                 case 6:
-                    operation.removeCustumer();
+                    operation.removeEmployee();
                     break;
                 case 7:
-                    operation.editCustumer();
+                    operation.editEmployee();
                     break;
                 case 8:
                     operation.viewEmployee();
