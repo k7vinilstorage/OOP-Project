@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public abstract class Operation {
     private int opId;
     private int productAmount;

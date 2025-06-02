@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public class Customer extends Person{
     private int purchaseCount;
 

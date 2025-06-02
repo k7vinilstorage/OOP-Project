@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public class KeyCountException extends Exception{
     
     private Read read = Read.createRead();

@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public class OperationExec implements OperationExecInterface{
     private Storage operationStorage;
     private Read read = Read.createRead();

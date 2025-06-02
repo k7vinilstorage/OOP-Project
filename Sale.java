@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public class Sale extends Operation{
    private Customer buyer;
 

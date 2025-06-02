@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public class Guitar extends Instrument {
     private String shape;
     private int stringCount;

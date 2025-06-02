@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public abstract class Person {
     private String name;
     private int id;

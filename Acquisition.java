@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public class Acquisition extends Operation{
     private String supplyerName;
 

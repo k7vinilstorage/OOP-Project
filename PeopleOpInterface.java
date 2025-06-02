@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public interface PeopleOpInterface {
     public void addCustumer();
     public void removeCustumer();
