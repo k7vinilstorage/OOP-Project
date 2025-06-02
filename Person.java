@@ -11,7 +11,7 @@ public abstract class Person {
         phone = "";
     }
 
-    public Person(String name, int id, String cpf, String phone) {
+    public Person(String name, int id, String cpf, String phone) { //Sobrecarga
         this.name = name;
         this.id = id;
         this.cpf = cpf;

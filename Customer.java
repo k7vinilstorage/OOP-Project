@@ -5,7 +5,7 @@ public class Customer extends Person{
         purchaseCount = 0;
     }
 
-    public Customer(int purchaseCount) {
+    public Customer(int purchaseCount) { //Sobrecarga
         this.purchaseCount = purchaseCount;
     }
 

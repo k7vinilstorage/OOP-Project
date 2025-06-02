@@ -7,7 +7,7 @@ public class Piano extends Instrument{
         keyCount = 0;
     }
 
-    public Piano(String bodyType, int keyCount) {
+    public Piano(String bodyType, int keyCount) { //Sobrecarga
         this.bodyType = bodyType;
         this.keyCount = keyCount;
     }

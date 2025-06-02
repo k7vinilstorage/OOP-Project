@@ -5,7 +5,7 @@ public class Acquisition extends Operation{
         supplyerName = "";
     }
 
-    public Acquisition(String supplyerName) {
+    public Acquisition(String supplyerName) { //Sobrecarga
         this.supplyerName = supplyerName;
     }
 

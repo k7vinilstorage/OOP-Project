@@ -7,7 +7,7 @@ public class Drums extends Instrument{
         piecesCount = 0;
     }
 
-    public Drums(String shellMaterial, int piecesCount) {
+    public Drums(String shellMaterial, int piecesCount) { //Sobrecarga
         this.shellMaterial = shellMaterial;
         this.piecesCount = piecesCount;
     }

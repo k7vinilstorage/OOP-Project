@@ -7,7 +7,7 @@ public class Guitar extends Instrument {
         stringCount = 0;
     }
 
-    public Guitar(String shape, int stringCount) {
+    public Guitar(String shape, int stringCount) { //Sobrecarga
         this.shape = shape;
         this.stringCount = stringCount;
     }

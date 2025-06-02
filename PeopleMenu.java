@@ -6,7 +6,7 @@ public class PeopleMenu implements Tui{
     public PeopleMenu() {}
 
     @Override
-    public void menu() {
+    public void menu() { //Sobrescrita
         int op = 10;
 
         while(op != 0) {

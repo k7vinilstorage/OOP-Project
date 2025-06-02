@@ -5,7 +5,7 @@ public class Employee extends Person{
         role = "";
     }
 
-    public Employee(int id, String role) {
+    public Employee(int id, String role) { //Sobrecarga
         this.role = role;
     }
 

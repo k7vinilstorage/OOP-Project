@@ -15,7 +15,7 @@ public abstract class Instrument {
         price = 0;
     }
 
-    public Instrument(String category, String type, String model, String brand, int availability, float price) {
+    public Instrument(String category, String type, String model, String brand, int availability, float price) { //Sobrecarga
         this.category = category;
         this.type = type;
         this.model = model;

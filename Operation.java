@@ -13,7 +13,7 @@ public abstract class Operation {
         totalCost = 0;
     }
 
-    public Operation(int opId, int productAmount, Instrument product, Employee inCharge, String date, float totalCost) {
+    public Operation(int opId, int productAmount, Instrument product, Employee inCharge, String date, float totalCost) { //Sobrecarga
         this.opId = opId;
         this.productAmount = productAmount;
         this.product = product;
