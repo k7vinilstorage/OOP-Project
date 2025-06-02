@@ -1,10 +1,11 @@
-public class PeopleMenu {
+public class PeopleMenu implements Tui{
 
     private Read read = Read.createRead();
     private PeopleOperation operation = new PeopleOperation();
 
     public PeopleMenu() {}
 
+    @Override
     public void menu() {
         int op = 10;
 

@@ -1,4 +1,4 @@
-public class OperationMenu {
+public class OperationMenu implements Tui{
     private Read read = Read.createRead();
     private OperationExec operation = new OperationExec();
 
@@ -6,6 +6,7 @@ public class OperationMenu {
 
     public OperationMenu() {}
 
+    @Override
     public void menu() {
         int op = 10;
 

@@ -1,9 +1,10 @@
-public class InstrumentMenu {
+public class InstrumentMenu implements Tui{
     private Read read = Read.createRead();
     private InstrumentOperation operation = new InstrumentOperation();
 
     public InstrumentMenu() {}
 
+    @Override
     public void menu() {
         int op = 15;
 
