@@ -16,7 +16,7 @@ public class Read {
         return ReadUnic;
     }
 
-    public String readData(String label) {
+    public String readString(String label) {
 
         System.out.print(label);
 
@@ -29,9 +29,65 @@ public class Read {
             ret = bufKeyboard.readLine();
         }
         catch(IOException ioe) {
-            System.out.println("ERRO JVM ou RAM");
+            System.out.println("ERROR JVM or RAM");
         }
 
         return ret;
+    }
+    
+    public int readInt(String label) {
+
+        System.out.print(label);
+
+        InputStreamReader keyboard = new InputStreamReader(System.in);
+        BufferedReader bufKeyboard = new BufferedReader(keyboard);
+
+        String ret = "";
+        int iRet;
+
+        try{
+            ret = bufKeyboard.readLine();
+        }
+        catch(IOException ioe) {
+            System.out.println("ERROR JVM or RAM");
+        }
+
+        try {
+            iRet = Integer.parseInt(ret);
+        } 
+        catch (NumberFormatException nfe) {
+            System.out.println("The value must be an integer!");
+            iRet = readInt(label);
+        }
+
+        return iRet;
+    }
+
+    public float readFloat(String label) {
+
+        System.out.print(label);
+
+        InputStreamReader keyboard = new InputStreamReader(System.in);
+        BufferedReader bufKeyboard = new BufferedReader(keyboard);
+
+        String ret = "";
+        float fRet;
+
+        try{
+            ret = bufKeyboard.readLine();
+        }
+        catch(IOException ioe) {
+            System.out.println("ERROR JVM or RAM");
+        }
+
+        try {
+            fRet = Float.parseFloat(ret);
+        } 
+        catch (NumberFormatException nfe) {
+            System.out.println("The value must be a float!");
+            fRet = readFloat(label);
+        }
+
+        return fRet;
     }
 }
