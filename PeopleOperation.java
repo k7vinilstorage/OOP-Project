@@ -1,4 +1,4 @@
-public class PeopleOperation {
+public class PeopleOperation implements PeopleOpInterface{
     
     private Storage peopleStorage;
     private Read read = Read.createRead();
@@ -12,6 +12,7 @@ public class PeopleOperation {
         this.peopleStorage = peoplStorage;
     }
 
+    @Override
     public void addCustumer() {
         Customer c = new Customer();
         c.setName(read.readData("\nInsert Custumer Name: "));
@@ -22,12 +23,14 @@ public class PeopleOperation {
         System.out.println("\nOK!");
     }
 
+    @Override
     public void removeCustumer() {
         String cpf = read.readData("\nInsert Custumer CPF: ");
         peopleStorage.getCustomers().remove(getId.getCustumerId(cpf));
         System.out.println("\nOK!");
     }
 
+    @Override
     public void editCustumer() {
         String cpf = read.readData("\nInsert Custumer CPF: ");
         int id = getId.getCustumerId(cpf);
@@ -53,6 +56,7 @@ public class PeopleOperation {
         }
     }
 
+    @Override
     public void viewCustumer() {
         int id;
         String cpf = read.readData("\nInsert Custumer CPF: ");
@@ -65,6 +69,7 @@ public class PeopleOperation {
         System.out.println("Purchase count: " + peopleStorage.getCustomers().get(id).getPurchaseCount());
     }
 
+    @Override
     public void addEmployee() {
         Employee e = new Employee();
         e.setName(read.readData("\nInsert Employee Name: "));
@@ -75,12 +80,14 @@ public class PeopleOperation {
         peopleStorage.getEmployees().add(e);
     }
 
+    @Override
     public void removeEmployee() {
         String cpf = read.readData("\nInsert Employee CPF: ");
         peopleStorage.getEmployees().remove(getId.getEmployeeId(cpf));
         System.out.println("\nOK!");
     }
 
+    @Override
     public void editEmployee() {
         String cpf = read.readData("\nInsert Employee CPF: ");
         int id = getId.getEmployeeId(cpf);
@@ -110,6 +117,7 @@ public class PeopleOperation {
         }
     }
 
+    @Override
     public void viewEmployee() {
         int id;
         String cpf = read.readData("\nInsert Employee CPF: ");

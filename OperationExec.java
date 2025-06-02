@@ -1,4 +1,4 @@
-public class OperationExec {
+public class OperationExec implements OperationExecInterface{
     private Storage operationStorage;
     private Read read = Read.createRead();
     private GetArrayId getId = new GetArrayId();
@@ -11,6 +11,7 @@ public class OperationExec {
         this.operationStorage = operationStorage;
     }
 
+    @Override
     public void acquisition(int acqType) {
         Acquisition acq = new Acquisition();
         
@@ -44,6 +45,7 @@ public class OperationExec {
         operationStorage.getAcquisitions().add(acq);
     }
 
+    @Override
     public void sale(int saleType) {
         Sale sale = new Sale();
         
@@ -77,6 +79,7 @@ public class OperationExec {
         operationStorage.getSales().add(sale);
     }
 
+    @Override
     public void showAcquisition() {
         int id;
         id = getId.getAcquisitionId(Integer.parseInt(read.readData("Insert Operation OpId: ")));
@@ -89,6 +92,7 @@ public class OperationExec {
         System.out.println("Supplyer Name: " + operationStorage.getAcquisitions().get(id).getSupplyerName());
     }
 
+    @Override
     public void showSale() {
         int id;
         id = getId.getSaleId(Integer.parseInt(read.readData("Insert Operation OpId: ")));

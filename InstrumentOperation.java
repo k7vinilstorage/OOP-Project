@@ -1,4 +1,4 @@
-public class InstrumentOperation {
+public class InstrumentOperation implements InstrumentOpInterface{
     private Storage instrumentStorage;
     private Read read = Read.createRead();
     private GetArrayId getId = new GetArrayId();
@@ -11,6 +11,7 @@ public class InstrumentOperation {
         this.instrumentStorage = instrmStorage;
     }
 
+    @Override
     public void addGuitar() {
         Guitar g  = new Guitar();
         g.setCategory(read.readData("Insert Category: "));
@@ -28,10 +29,12 @@ public class InstrumentOperation {
         instrumentStorage.getGuitarStock().add(g);
     }
 
+    @Override
     public void removeGuitar() {
         instrumentStorage.getGuitarStock().remove(getId.getGuitarId(read.readData("Insert Model: ")));
     }
 
+    @Override
     public void editGuitar() {
         String model = read.readData("\nInsert Model: ");
         int id = getId.getGuitarId(model);
@@ -72,6 +75,7 @@ public class InstrumentOperation {
         }
     }
 
+    @Override
     public void viewGuitar() {
         int id = getId.getGuitarId(read.readData("Insert Model: "));
         System.out.println("\nGuitar: ");
@@ -85,6 +89,7 @@ public class InstrumentOperation {
         System.out.println("String Count: " + instrumentStorage.getGuitarStock().get(id).getStringCount());
     }
 
+    @Override
     public void addPiano() {
         Piano p = new Piano();
         p.setCategory(read.readData("Insert Category: "));
@@ -103,10 +108,12 @@ public class InstrumentOperation {
         instrumentStorage.getPianoStock().add(p);
     }
 
+    @Override
     public void removePiano() {
         instrumentStorage.getGuitarStock().remove(getId.getPianoId(read.readData("Insert Model: ")));
     }
 
+    @Override
     public void editPiano() {
         String model = read.readData("\nInsert Model: ");
         int id = getId.getPianoId(model);
@@ -147,6 +154,7 @@ public class InstrumentOperation {
         }
     }
 
+    @Override
     public void viewPiano() {
         int id = getId.getPianoId(read.readData("Insert Model: "));
         System.out.println("\nPiano: ");
@@ -160,6 +168,7 @@ public class InstrumentOperation {
         System.out.println("Key Count: " + instrumentStorage.getPianoStock().get(id).getKeyCount());
     }
 
+    @Override
     public void addDrums() {
         Drums d = new Drums();
         d.setCategory(read.readData("Insert Category: "));
@@ -177,10 +186,12 @@ public class InstrumentOperation {
         instrumentStorage.getDrumsStock().add(d);
     }
 
+    @Override
     public void removeDrums() {
          instrumentStorage.getGuitarStock().remove(getId.getDrumsId(read.readData("Insert Model: ")));
     }
 
+    @Override
     public void editDrums() {
         String model = read.readData("\nInsert Model: ");
         int id = getId.getDrumsId(model);
@@ -221,6 +232,7 @@ public class InstrumentOperation {
         }
     }
 
+    @Override
     public void viewDrums() {
         int id = getId.getDrumsId(read.readData("Insert Model: "));
         System.out.println("\nDrums: ");
