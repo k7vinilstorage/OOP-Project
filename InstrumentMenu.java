@@ -26,7 +26,7 @@ public class InstrumentMenu implements Tui{
             System.out.println("## 0- Exit                 ##\n");
 
             
-            op = Integer.parseInt(read.readData("Choose an option: "));
+            op = read.readInt("Choose an option: ");
             
             switch(op) {
                 case 1:

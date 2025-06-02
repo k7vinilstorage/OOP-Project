@@ -7,7 +7,7 @@ public class KeyCountException extends Exception{
     public Piano kceFix(Piano exp) {
         System.out.println("Key count must be within 19 - 108"); 
         try {
-            exp.setKeyCount(Integer.parseInt(read.readData("Insert Key Count: ")));
+            exp.setKeyCount(read.readInt("Insert Key Count: "));
         } 
         catch (KeyCountException kce) {
             exp = kceFix(exp);

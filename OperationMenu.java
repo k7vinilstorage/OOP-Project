@@ -20,7 +20,7 @@ public class OperationMenu implements Tui{
             System.out.println("## 0- Exit                ##\n");
 
             
-            op = Integer.parseInt(read.readData("Choose an option: "));
+            op = read.readInt("Choose an option: ");
             
             switch(op) {
                 case 1:
@@ -28,7 +28,7 @@ public class OperationMenu implements Tui{
                     System.out.println("## 2- Piano  ##");
                     System.out.println("## 3- Drums  ##");
 
-                    opType = Integer.parseInt(read.readData("Choose an option: "));
+                    opType = read.readInt("Choose an option: ");
 
                     operation.acquisition(opType);
                     break;
@@ -37,7 +37,7 @@ public class OperationMenu implements Tui{
                     System.out.println("## 2- Piano  ##");
                     System.out.println("## 3- Drums  ##");
 
-                    opType = Integer.parseInt(read.readData("Choose an option: "));
+                    opType = read.readInt("Choose an option: ");
 
                     operation.sale(opType);
                     break;

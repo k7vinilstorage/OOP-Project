@@ -7,7 +7,7 @@ public class StringCountException extends Exception{
     public Guitar sceFix(Guitar exp) {
         System.out.println("String count must be within 6 - 18");
         try {
-            exp.setStringCount(Integer.parseInt(read.readData("Insert String Count: ")));    
+            exp.setStringCount(read.readInt("Insert String Count: "));    
         } 
         catch (StringCountException sce) {
             exp = sceFix(exp);

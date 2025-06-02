@@ -14,14 +14,14 @@ public class InstrumentOperation implements InstrumentOpInterface{
     @Override
     public void addGuitar() {
         Guitar g  = new Guitar();
-        g.setCategory(read.readData("Insert Category: "));
-        g.setType(read.readData("Insert Type: "));
-        g.setModel(read.readData("Insert Model: "));
-        g.setBrand(read.readData("Insert Brand: "));
-        g.setPrice(Float.parseFloat(read.readData("Insert Price: ")));
-        g.setShape(read.readData("Insert Shape: "));
+        g.setCategory(read.readString("Insert Category: "));
+        g.setType(read.readString("Insert Type: "));
+        g.setModel(read.readString("Insert Model: "));
+        g.setBrand(read.readString("Insert Brand: "));
+        g.setPrice(read.readFloat("Insert Price: "));
+        g.setShape(read.readString("Insert Shape: "));
         try {
-            g.setStringCount(Integer.parseInt(read.readData("Insert String Count: ")));
+            g.setStringCount(read.readInt("Insert String Count: "));
         } 
         catch (StringCountException sce) {
             g = sce.sceFix(g);
@@ -31,43 +31,43 @@ public class InstrumentOperation implements InstrumentOpInterface{
 
     @Override
     public void removeGuitar() {
-        instrumentStorage.getGuitarStock().remove(getId.getGuitarId(read.readData("Insert Model: ")));
+        instrumentStorage.getGuitarStock().remove(getId.getGuitarId(read.readString("Insert Model: ")));
     }
 
     @Override
     public void editGuitar() {
-        String model = read.readData("\nInsert Model: ");
+        String model = read.readString("\nInsert Model: ");
         int id = getId.getGuitarId(model);
 
-        String data = read.readData("Insert new Type: ");
+        String data = read.readString("Insert new Type: ");
         if(!data.equals("")) {
             instrumentStorage.getGuitarStock().get(id).setType(data);
         }
 
-        data = read.readData("Insert new Model: ");
+        data = read.readString("Insert new Model: ");
         if(!data.equals("")) {
             instrumentStorage.getGuitarStock().get(id).setModel(data);
         }
 
-        data = read.readData("Insert new Brand: ");
+        data = read.readString("Insert new Brand: ");
         if(!data.equals("")) {
             instrumentStorage.getGuitarStock().get(id).setBrand(data);
         }
 
-        data = read.readData("Insert new Price: ");
-        if(!data.equals("")) {
-            instrumentStorage.getGuitarStock().get(id).setPrice(Float.parseFloat(data));
+        float dataF = read.readFloat("Insert new Price: ");
+        if(!(dataF == 0)) {
+            instrumentStorage.getGuitarStock().get(id).setPrice(dataF);
         }
 
-        data = read.readData("Insert new Shape: ");
+        data = read.readString("Insert new Shape: ");
         if(!data.equals("")) {
             instrumentStorage.getGuitarStock().get(id).setShape(data);
         }
 
-        data = read.readData("Insert new String Count: ");
-        if(!data.equals("")) {
+        int dataI = read.readInt("Insert new String Count: ");
+        if(!(dataI == 0)) {
             try {
-                instrumentStorage.getGuitarStock().get(id).setStringCount(Integer.parseInt(data));
+                instrumentStorage.getGuitarStock().get(id).setStringCount(dataI);
             } 
             catch (StringCountException sce) {
                 instrumentStorage.getGuitarStock().set(id, sce.sceFix(instrumentStorage.getGuitarStock().get(id)));
@@ -77,7 +77,7 @@ public class InstrumentOperation implements InstrumentOpInterface{
 
     @Override
     public void viewGuitar() {
-        int id = getId.getGuitarId(read.readData("Insert Model: "));
+        int id = getId.getGuitarId(read.readString("Insert Model: "));
         System.out.println("\nGuitar: ");
         System.out.println("Category: " + instrumentStorage.getGuitarStock().get(id).getCategory());
         System.out.println("Type: " + instrumentStorage.getGuitarStock().get(id).getType());
@@ -92,14 +92,14 @@ public class InstrumentOperation implements InstrumentOpInterface{
     @Override
     public void addPiano() {
         Piano p = new Piano();
-        p.setCategory(read.readData("Insert Category: "));
-        p.setType(read.readData("Insert Type: "));
-        p.setModel(read.readData("Insert Model: "));
-        p.setBrand(read.readData("Insert Brand: "));
-        p.setPrice(Float.parseFloat(read.readData("Insert Price: ")));
-        p.setBodyType(read.readData("Insert Body Type: "));
+        p.setCategory(read.readString("Insert Category: "));
+        p.setType(read.readString("Insert Type: "));
+        p.setModel(read.readString("Insert Model: "));
+        p.setBrand(read.readString("Insert Brand: "));
+        p.setPrice(read.readFloat("Insert Price: "));
+        p.setBodyType(read.readString("Insert Body Type: "));
         try {
-            p.setKeyCount(Integer.parseInt(read.readData("Insert Key Count: ")));
+            p.setKeyCount(read.readInt("Insert Key Count: "));
         } 
         catch (KeyCountException kce) {
             p = kce.kceFix(p);
@@ -110,43 +110,43 @@ public class InstrumentOperation implements InstrumentOpInterface{
 
     @Override
     public void removePiano() {
-        instrumentStorage.getGuitarStock().remove(getId.getPianoId(read.readData("Insert Model: ")));
+        instrumentStorage.getGuitarStock().remove(getId.getPianoId(read.readString("Insert Model: ")));
     }
 
     @Override
     public void editPiano() {
-        String model = read.readData("\nInsert Model: ");
+        String model = read.readString("\nInsert Model: ");
         int id = getId.getPianoId(model);
 
-        String data = read.readData("Insert new Type: ");
+        String data = read.readString("Insert new Type: ");
         if(!data.equals("")) {
             instrumentStorage.getPianoStock().get(id).setType(data);
         }
 
-        data = read.readData("Insert new Model: ");
+        data = read.readString("Insert new Model: ");
         if(!data.equals("")) {
             instrumentStorage.getPianoStock().get(id).setModel(data);
         }
 
-        data = read.readData("Insert new Brand: ");
+        data = read.readString("Insert new Brand: ");
         if(!data.equals("")) {
             instrumentStorage.getPianoStock().get(id).setBrand(data);
         }
 
-        data = read.readData("Insert new Price: ");
-        if(!data.equals("")) {
-            instrumentStorage.getPianoStock().get(id).setPrice(Float.parseFloat(data));
+        float dataF = read.readFloat("Insert new Price: ");
+        if(!(dataF == 0)) {
+            instrumentStorage.getPianoStock().get(id).setPrice(dataF);
         }
 
-        data = read.readData("Insert new Body Type: ");
+        data = read.readString("Insert new Body Type: ");
         if(!data.equals("")) {
             instrumentStorage.getPianoStock().get(id).setBodyType(data);
         }
 
-        data = read.readData("Insert new key Count: ");
-        if(!data.equals("")) {
+        int dataI = read.readInt("Insert new key Count: ");
+        if(!(dataI == 0)) {
             try {
-                instrumentStorage.getPianoStock().get(id).setKeyCount(Integer.parseInt(data));
+                instrumentStorage.getPianoStock().get(id).setKeyCount(dataI);
             } 
             catch (KeyCountException kce) {
                 instrumentStorage.getPianoStock().set(id, kce.kceFix(instrumentStorage.getPianoStock().get(id)));
@@ -156,7 +156,7 @@ public class InstrumentOperation implements InstrumentOpInterface{
 
     @Override
     public void viewPiano() {
-        int id = getId.getPianoId(read.readData("Insert Model: "));
+        int id = getId.getPianoId(read.readString("Insert Model: "));
         System.out.println("\nPiano: ");
         System.out.println("Category: " + instrumentStorage.getPianoStock().get(id).getCategory());
         System.out.println("Type: " + instrumentStorage.getPianoStock().get(id).getType());
@@ -171,14 +171,14 @@ public class InstrumentOperation implements InstrumentOpInterface{
     @Override
     public void addDrums() {
         Drums d = new Drums();
-        d.setCategory(read.readData("Insert Category: "));
-        d.setType(read.readData("Insert Type: "));
-        d.setModel(read.readData("Insert Model: "));
-        d.setBrand(read.readData("Insert Brand: "));
-        d.setPrice(Float.parseFloat(read.readData("Insert Price: ")));
-        d.setPiecesCount(Integer.parseInt(read.readData("Insert Pieces Count: ")));
+        d.setCategory(read.readString("Insert Category: "));
+        d.setType(read.readString("Insert Type: "));
+        d.setModel(read.readString("Insert Model: "));
+        d.setBrand(read.readString("Insert Brand: "));
+        d.setPrice(read.readFloat("Insert Price: "));
+        d.setPiecesCount(read.readInt("Insert Pieces Count: "));
         try {
-            d.setShellMaterial(read.readData("Insert Shell Material: "));
+            d.setShellMaterial(read.readString("Insert Shell Material: "));
         } 
         catch (ShellMaterialException sme) {
             d = sme.smeFix(d);
@@ -188,40 +188,40 @@ public class InstrumentOperation implements InstrumentOpInterface{
 
     @Override
     public void removeDrums() {
-         instrumentStorage.getGuitarStock().remove(getId.getDrumsId(read.readData("Insert Model: ")));
+         instrumentStorage.getGuitarStock().remove(getId.getDrumsId(read.readString("Insert Model: ")));
     }
 
     @Override
     public void editDrums() {
-        String model = read.readData("\nInsert Model: ");
+        String model = read.readString("\nInsert Model: ");
         int id = getId.getDrumsId(model);
 
-        String data = read.readData("Insert new Type: ");
+        String data = read.readString("Insert new Type: ");
         if(!data.equals("")) {
             instrumentStorage.getDrumsStock().get(id).setType(data);
         }
 
-        data = read.readData("Insert new Model: ");
+        data = read.readString("Insert new Model: ");
         if(!data.equals("")) {
             instrumentStorage.getDrumsStock().get(id).setModel(data);
         }
 
-        data = read.readData("Insert new Brand: ");
+        data = read.readString("Insert new Brand: ");
         if(!data.equals("")) {
             instrumentStorage.getDrumsStock().get(id).setBrand(data);
         }
 
-        data = read.readData("Insert new Price: ");
-        if(!data.equals("")) {
-            instrumentStorage.getDrumsStock().get(id).setPrice(Float.parseFloat(data));
+        float dataF = read.readFloat("Insert new Price: ");
+        if(!(dataF == 0)) {
+            instrumentStorage.getDrumsStock().get(id).setPrice(dataF);
         }
 
-        data = read.readData("Insert new Pieces Count: ");
-        if(!data.equals("")) {
-            instrumentStorage.getDrumsStock().get(id).setPiecesCount(Integer.parseInt(data));
+        int dataI = read.readInt("Insert new Pieces Count: ");
+        if(!(dataI == 0)) {
+            instrumentStorage.getDrumsStock().get(id).setPiecesCount(dataI);
         }
 
-        data = read.readData("Insert new Shell Material: ");
+        data = read.readString("Insert new Shell Material: ");
         if(!data.equals("")) {
             try {
                 instrumentStorage.getDrumsStock().get(id).setShellMaterial(data); 
@@ -234,7 +234,7 @@ public class InstrumentOperation implements InstrumentOpInterface{
 
     @Override
     public void viewDrums() {
-        int id = getId.getDrumsId(read.readData("Insert Model: "));
+        int id = getId.getDrumsId(read.readString("Insert Model: "));
         System.out.println("\nDrums: ");
         System.out.println("Category: " + instrumentStorage.getDrumsStock().get(id).getCategory());
         System.out.println("Type: " + instrumentStorage.getDrumsStock().get(id).getType());
