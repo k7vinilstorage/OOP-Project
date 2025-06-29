@@ -36,7 +36,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="modelLb" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="employeeCpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="custumerCpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="supplyerLb" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="prodAmountLb" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -47,7 +47,7 @@
                       <Component id="instrumentCb" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="employeeCpfTf" alignment="0" pref="248" max="32767" attributes="0"/>
+                      <Component id="supplyerTf" alignment="0" pref="248" max="32767" attributes="0"/>
                       <Component id="custumerCpfTf" alignment="0" max="32767" attributes="0"/>
                       <Component id="productAmountTf" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -70,11 +70,11 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="employeeCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="employeeCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="supplyerTf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="custumerCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="supplyerLb" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="custumerCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
           <Font name="Fira Sans" size="24" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="REGISTER SALE"/>
+        <Property name="text" type="java.lang.String" value="REGISTER ACQUISITION"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="modelLb">
@@ -112,9 +112,9 @@
         <Property name="text" type="java.lang.String" value="Employee CPF:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="custumerCpfLb">
+    <Component class="javax.swing.JLabel" name="supplyerLb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Custumer CPF:"/>
+        <Property name="text" type="java.lang.String" value="Supplyer Name:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="prodAmountLb">
@@ -127,7 +127,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelTfActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="employeeCpfTf">
+    <Component class="javax.swing.JTextField" name="supplyerTf">
     </Component>
     <Component class="javax.swing.JTextField" name="custumerCpfTf">
       <Events>

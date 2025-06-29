@@ -7,7 +7,7 @@
  *
  * @author joao
  */
-public class DelPeople extends javax.swing.JFrame {
+public class DelOperation extends javax.swing.JFrame {
 
     /**
      * Creates new form DelPeople
@@ -15,15 +15,15 @@ public class DelPeople extends javax.swing.JFrame {
     
     private Storage storage = Storage.createStorage();
     
-    private static DelPeople d;
+    private static DelOperation d;
     
-    private DelPeople() {
+    private DelOperation() {
         initComponents();
     }
 
-    public static DelPeople createDelPeople() {
+    public static DelOperation createDelOperation() {
         if(d == null) {
-            d = new DelPeople();
+            d = new DelOperation();
         }
         return d;
     }
@@ -38,21 +38,25 @@ public class DelPeople extends javax.swing.JFrame {
     private void initComponents() {
 
         titleTf = new javax.swing.JLabel();
-        cpfLb = new javax.swing.JLabel();
-        cpfTf = new javax.swing.JTextField();
+        opLb = new javax.swing.JLabel();
+        opTf = new javax.swing.JTextField();
         closeBt = new javax.swing.JButton();
         removeBt = new javax.swing.JButton();
-        peopleCb = new javax.swing.JComboBox<>();
+        opCb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTf.setText("REMOVE PEOPLE");
+        titleTf.setText("REMOVE OPERATION");
 
-        cpfLb.setText("CPF:");
+        opLb.setText("Operation ID:");
 
-        cpfTf.setText("Insert CPF");
+        opTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opTfActionPerformed(evt);
+            }
+        });
 
         closeBt.setText("Close");
 
@@ -63,7 +67,7 @@ public class DelPeople extends javax.swing.JFrame {
             }
         });
 
-        peopleCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Custumer", "Employee" }));
+        opCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sale", "Acquisition" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,11 +82,11 @@ public class DelPeople extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(removeBt))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cpfLb)
+                        .addComponent(opLb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(opTf, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(peopleCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(opCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -92,9 +96,9 @@ public class DelPeople extends javax.swing.JFrame {
                 .addComponent(titleTf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpfLb)
-                    .addComponent(cpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(peopleCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opLb)
+                    .addComponent(opTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeBt)
@@ -105,24 +109,28 @@ public class DelPeople extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void removePeople() {
+    private void removeOperation() {
         int id = 0;
         
-        if(peopleCb.getSelectedItem().toString().equals("Custumer")) {
-            id = GetArrayId.createGetArrayId().getCustumerId(cpfTf.getText());
-            storage.getCustomers().remove(id);
+        if(opCb.getSelectedItem().toString().equals("Sale")) {
+            id = GetArrayId.createGetArrayId().getSaleId(Integer.parseInt(opTf.getText()));
+            storage.getSales().remove(id);
         }
         else {
-            id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
-            storage.getEmployees().remove(id);
+            id = GetArrayId.createGetArrayId().getAcquisitionId(Integer.parseInt(opTf.getText()));
+            storage.getAcquisitions().remove(id);
         }
         
     }
     
     private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
-        removePeople();
-        cpfTf.setText("");
+        removeOperation();
+        opTf.setText("");
     }//GEN-LAST:event_removeBtActionPerformed
+
+    private void opTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opTfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,16 +163,16 @@ public class DelPeople extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DelPeople().setVisible(true);
+                new DelOperation().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeBt;
-    private javax.swing.JLabel cpfLb;
-    private javax.swing.JTextField cpfTf;
-    private javax.swing.JComboBox<String> peopleCb;
+    private javax.swing.JComboBox<String> opCb;
+    private javax.swing.JLabel opLb;
+    private javax.swing.JTextField opTf;
     private javax.swing.JButton removeBt;
     private javax.swing.JLabel titleTf;
     // End of variables declaration//GEN-END:variables

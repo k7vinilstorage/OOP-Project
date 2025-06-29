@@ -7,7 +7,7 @@
  *
  * @author joao
  */
-public class AddSale extends javax.swing.JFrame {
+public class AddAcquisition extends javax.swing.JFrame {
 
     /**
      * Creates new form AddCustumer
@@ -15,15 +15,15 @@ public class AddSale extends javax.swing.JFrame {
     
     private Storage storage = Storage.createStorage();
     
-    private static AddSale a;
+    private static AddAcquisition a;
     
-    private AddSale() {
+    private AddAcquisition() {
         initComponents();
     }
     
-    public static AddSale createAddSale() {
+    public static AddAcquisition createAddAcquisition() {
         if(a == null) {
-            a = new AddSale();
+            a = new AddAcquisition();
         }
         return a;
     }
@@ -40,10 +40,10 @@ public class AddSale extends javax.swing.JFrame {
         titleTf = new javax.swing.JLabel();
         modelLb = new javax.swing.JLabel();
         employeeCpfLb = new javax.swing.JLabel();
-        custumerCpfLb = new javax.swing.JLabel();
+        supplyerLb = new javax.swing.JLabel();
         prodAmountLb = new javax.swing.JLabel();
         modelTf = new javax.swing.JTextField();
-        employeeCpfTf = new javax.swing.JTextField();
+        supplyerTf = new javax.swing.JTextField();
         custumerCpfTf = new javax.swing.JTextField();
         productAmountTf = new javax.swing.JTextField();
         closeBt = new javax.swing.JButton();
@@ -54,13 +54,13 @@ public class AddSale extends javax.swing.JFrame {
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTf.setText("REGISTER SALE");
+        titleTf.setText("REGISTER ACQUISITION");
 
         modelLb.setText("Instrument Model:");
 
         employeeCpfLb.setText("Employee CPF:");
 
-        custumerCpfLb.setText("Custumer CPF:");
+        supplyerLb.setText("Supplyer Name:");
 
         prodAmountLb.setText("Product Amount:");
 
@@ -109,7 +109,7 @@ public class AddSale extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modelLb)
                     .addComponent(employeeCpfLb)
-                    .addComponent(custumerCpfLb)
+                    .addComponent(supplyerLb)
                     .addComponent(prodAmountLb))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +118,7 @@ public class AddSale extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(instrumentCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(employeeCpfTf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addComponent(supplyerTf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                         .addComponent(custumerCpfTf, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(productAmountTf, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -136,10 +136,10 @@ public class AddSale extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeeCpfLb)
-                    .addComponent(employeeCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(supplyerTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(custumerCpfLb)
+                    .addComponent(supplyerLb)
                     .addComponent(custumerCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -162,7 +162,7 @@ public class AddSale extends javax.swing.JFrame {
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
         registerSale();
         modelTf.setText("");
-        employeeCpfTf.setText("");
+        supplyerTf.setText("");
         custumerCpfTf.setText("");
         productAmountTf.setText("");
     }//GEN-LAST:event_registerBtActionPerformed
@@ -176,45 +176,41 @@ public class AddSale extends javax.swing.JFrame {
     }//GEN-LAST:event_custumerCpfTfActionPerformed
 
     private void registerSale() {
-        Sale s = new Sale();
+        Acquisition a = new Acquisition();
         int id = 0;
         
-        s.setProductType(instrumentCb.getSelectedItem().toString());
+        a.setProductType(instrumentCb.getSelectedItem().toString());
         
         switch(instrumentCb.getSelectedItem().toString()) {
             case "Guitar":
                 id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                s.setProduct(storage.getGuitarStock().get(id));
+                a.setProduct(storage.getGuitarStock().get(id));
                 break;
             case "Piano":
                 id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                s.setProduct(storage.getPianoStock().get(id));
+                a.setProduct(storage.getPianoStock().get(id));
                 break;
             case "Drums":
                 id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                s.setProduct(storage.getDrumsStock().get(id));
+                a.setProduct(storage.getDrumsStock().get(id));
                 break;
         }
         
-        id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
-        s.setInCharge(storage.getEmployees().get(id));
+        id = GetArrayId.createGetArrayId().getEmployeeId(supplyerTf.getText());
+        a.setInCharge(storage.getEmployees().get(id));
         
-        id = GetArrayId.createGetArrayId().getCustumerId(custumerCpfTf.getText());
-        s.setBuyer(storage.getCustomers().get(id));
+        a.setProductAmount(Integer.parseInt(productAmountTf.getText()));
         
-        s.setProductAmount(Integer.parseInt(productAmountTf.getText()));
+        a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount());
         
-        s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
+        a.setDate("fix");
         
-        s.setDate("fix");
+        storage.setAcquisitionIds(storage.getAcquisitionIds() + 1);
+        a.setOpId(storage.getAcquisitionIds());
         
-        storage.setSaleIds(storage.getSaleIds() + 1);
-        s.setOpId(storage.getSaleIds());
+        a.getProduct().setAvailability(a.getProduct().getAvailability() + a.getProductAmount()); 
         
-        s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
-        s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 
-        
-        storage.getSales().add(s);
+        storage.getAcquisitions().add(a);
     }
     
     /**
@@ -248,23 +244,23 @@ public class AddSale extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddSale().setVisible(true);
+                new AddAcquisition().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeBt;
-    private javax.swing.JLabel custumerCpfLb;
     private javax.swing.JTextField custumerCpfTf;
     private javax.swing.JLabel employeeCpfLb;
-    private javax.swing.JTextField employeeCpfTf;
     private javax.swing.JComboBox<String> instrumentCb;
     private javax.swing.JLabel modelLb;
     private javax.swing.JTextField modelTf;
     private javax.swing.JLabel prodAmountLb;
     private javax.swing.JTextField productAmountTf;
     private javax.swing.JButton registerBt;
+    private javax.swing.JLabel supplyerLb;
+    private javax.swing.JTextField supplyerTf;
     private javax.swing.JLabel titleTf;
     // End of variables declaration//GEN-END:variables
 }

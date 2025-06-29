@@ -33,11 +33,11 @@
                       <Component id="removeBt" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="cpfLb" min="-2" max="-2" attributes="0"/>
+                      <Component id="opLb" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cpfTf" min="-2" pref="223" max="-2" attributes="0"/>
+                      <Component id="opTf" min="-2" pref="223" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="peopleCb" min="-2" max="-2" attributes="0"/>
+                      <Component id="opCb" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -51,9 +51,9 @@
               <Component id="titleTf" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="peopleCb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="opLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="opTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="opCb" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="15" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -72,18 +72,18 @@
           <Font name="Fira Sans" size="24" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="REMOVE PEOPLE"/>
+        <Property name="text" type="java.lang.String" value="REMOVE OPERATION"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="cpfLb">
+    <Component class="javax.swing.JLabel" name="opLb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CPF:"/>
+        <Property name="text" type="java.lang.String" value="Operation ID:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="cpfTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert CPF"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="opTf">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opTfActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="closeBt">
       <Properties>
@@ -98,12 +98,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeBtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="peopleCb">
+    <Component class="javax.swing.JComboBox" name="opCb">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
-            <StringItem index="0" value="Custumer"/>
-            <StringItem index="1" value="Employee"/>
+            <StringItem index="0" value="Sale"/>
+            <StringItem index="1" value="Acquisition"/>
           </StringArray>
         </Property>
       </Properties>
