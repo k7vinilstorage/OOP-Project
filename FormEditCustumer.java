@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class EditCustumer extends javax.swing.JFrame {
+public class FormEditCustumer extends javax.swing.JFrame {
 
     /**
-     * Creates new form EditCustumer
+     * Creates new form FormEditCustumer
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static EditCustumer e;
+    private static FormEditCustumer e;
     
-    private EditCustumer() {
+    private FormEditCustumer() {
         initComponents();
     }
 
-    public static EditCustumer createEditCustumer() {
+    public static FormEditCustumer createEditCustumer() {
         if(e == null) {
-            e = new EditCustumer();
+            e = new FormEditCustumer();
         }
         return e;
     }
@@ -189,10 +189,15 @@ public class EditCustumer extends javax.swing.JFrame {
     }//GEN-LAST:event_saveBtActionPerformed
 
     private void editCustumer() {
-        int id = GetArrayId.createGetArrayId().getCustumerId(registeredCpfTf.getText());
-        storage.getCustomers().get(id).setName(nameTf.getText());
-        storage.getCustomers().get(id).setCpf(newCpfTf.getText());
-        storage.getCustomers().get(id).setPhone(phoneTf.getText());
+        try{
+            int id = GetArrayId.createGetArrayId().getCustumerId(registeredCpfTf.getText());
+            storage.getCustomers().get(id).setName(nameTf.getText());
+            storage.getCustomers().get(id).setCpf(newCpfTf.getText());
+            storage.getCustomers().get(id).setPhone(phoneTf.getText());
+        }
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
+        }
     }
     
     /**
@@ -212,20 +217,21 @@ public class EditCustumer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditCustumer().setVisible(true);
+                new FormEditCustumer().setVisible(true);
             }
         });
     }

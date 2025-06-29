@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class DelOperation extends javax.swing.JFrame {
+public class FormDelOperation extends javax.swing.JFrame {
 
     /**
-     * Creates new form DelPeople
+     * Creates new form FormDelPeople
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static DelOperation d;
+    private static FormDelOperation d;
     
-    private DelOperation() {
+    private FormDelOperation() {
         initComponents();
     }
 
-    public static DelOperation createDelOperation() {
+    public static FormDelOperation createDelOperation() {
         if(d == null) {
-            d = new DelOperation();
+            d = new FormDelOperation();
         }
         return d;
     }
@@ -112,13 +112,21 @@ public class DelOperation extends javax.swing.JFrame {
     private void removeOperation() {
         int id = 0;
         
-        if(opCb.getSelectedItem().toString().equals("Sale")) {
-            id = GetArrayId.createGetArrayId().getSaleId(Integer.parseInt(opTf.getText()));
-            storage.getSales().remove(id);
+        try{
+            if(opCb.getSelectedItem().toString().equals("Sale")) {
+                id = GetArrayId.createGetArrayId().getSaleId(InputExeptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
+                storage.getSales().remove(id);
+            }
+            else {
+                id = GetArrayId.createGetArrayId().getAcquisitionId(InputExeptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
+                storage.getAcquisitions().remove(id);
+            }
         }
-        else {
-            id = GetArrayId.createGetArrayId().getAcquisitionId(Integer.parseInt(opTf.getText()));
-            storage.getAcquisitions().remove(id);
+        catch(InputErrorException iee) {
+            iee.intErr();
+        }
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
         }
         
     }
@@ -149,21 +157,23 @@ public class DelOperation extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DelOperation().setVisible(true);
+                new FormDelOperation().setVisible(true);
             }
         });
     }

@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class AddCustumer extends javax.swing.JFrame {
+public class FormAddCustumer extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddCustumer
+     * Creates new form FormAddCustumer
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static AddCustumer a;
+    private static FormAddCustumer a;
     
-    private AddCustumer() {
+    private FormAddCustumer() {
         initComponents();
     }
     
-    public static AddCustumer createAddCustumer() {
+    public static FormAddCustumer createAddCustumer() {
         if(a == null) {
-            a = new AddCustumer();
+            a = new FormAddCustumer();
         }
         return a;
     }
@@ -166,21 +166,23 @@ public class AddCustumer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddCustumer().setVisible(true);
+                new FormAddCustumer().setVisible(true);
             }
         });
     }

@@ -30,4 +30,12 @@ public class Dialogs {
         );
     }
     
+    public void errorDialog(String info, String title) {
+        JOptionPane.showMessageDialog(
+                        null,
+                        info,
+                        title,
+                        JOptionPane.ERROR_MESSAGE
+        );
+    }    
 }

@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class AddDrums extends javax.swing.JFrame {
+public class FormAddDrums extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddCustumer
+     * Creates new form FormAddCustumer
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static AddDrums a;
+    private static FormAddDrums a;
     
-    private AddDrums() {
+    private FormAddDrums() {
         initComponents();
     }
     
-    public static AddDrums createAddDrums() {
+    public static FormAddDrums createAddDrums() {
         if(a == null) {
-            a = new AddDrums();
+            a = new FormAddDrums();
         }
         return a;
     }
@@ -217,14 +217,19 @@ public class AddDrums extends javax.swing.JFrame {
 
     private void registerDrums() {
         Drums d = new Drums();
-        d.setModel(modelTf.getText());
-        d.setBrand(brandTf.getText());
-        d.setShellMaterial(shellTf.getText());
-        d.setType(typeTf.getText());
-        d.setPiecesCount(Integer.parseInt(piecesTf.getText()));
-        d.setPrice(Float.parseFloat(priceTf.getText()));
-        d.setCategory("Percussion");
-        storage.getDrumsStock().add(d);
+        try {
+            d.setModel(modelTf.getText());
+            d.setBrand(brandTf.getText());
+            d.setShellMaterial(shellTf.getText());
+            d.setType(typeTf.getText());
+            d.setPiecesCount(InputExeptionHandler.createInputExeptionHandler().InputInt(piecesTf.getText()));
+            d.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            d.setCategory("Percussion");
+            storage.getDrumsStock().add(d);
+        }
+        catch(InputErrorException iee) {
+            iee.intErr();
+        }
     }
     
     /**
@@ -244,21 +249,23 @@ public class AddDrums extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddDrums().setVisible(true);
+                new FormAddDrums().setVisible(true);
             }
         });
     }

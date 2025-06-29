@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class AddAcquisition extends javax.swing.JFrame {
+public class FormAddAcquisition extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddCustumer
+     * Creates new form FormAddCustumer
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static AddAcquisition a;
+    private static FormAddAcquisition a;
     
-    private AddAcquisition() {
+    private FormAddAcquisition() {
         initComponents();
     }
     
-    public static AddAcquisition createAddAcquisition() {
+    public static FormAddAcquisition createAddAcquisition() {
         if(a == null) {
-            a = new AddAcquisition();
+            a = new FormAddAcquisition();
         }
         return a;
     }
@@ -179,38 +179,47 @@ public class AddAcquisition extends javax.swing.JFrame {
         Acquisition a = new Acquisition();
         int id = 0;
         
-        a.setProductType(instrumentCb.getSelectedItem().toString());
-        
-        switch(instrumentCb.getSelectedItem().toString()) {
-            case "Guitar":
-                id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                a.setProduct(storage.getGuitarStock().get(id));
-                break;
-            case "Piano":
-                id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                a.setProduct(storage.getPianoStock().get(id));
-                break;
-            case "Drums":
-                id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                a.setProduct(storage.getDrumsStock().get(id));
-                break;
+        try {
+            a.setProductType(instrumentCb.getSelectedItem().toString());
+
+            switch(instrumentCb.getSelectedItem().toString()) {
+                case "Guitar":
+                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+                    a.setProduct(storage.getGuitarStock().get(id));
+                    break;
+                case "Piano":
+                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
+                    a.setProduct(storage.getPianoStock().get(id));
+                    break;
+                case "Drums":
+                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
+                    a.setProduct(storage.getDrumsStock().get(id));
+                    break;
+            }
+
+            id = GetArrayId.createGetArrayId().getEmployeeId(supplyerTf.getText());
+            a.setInCharge(storage.getEmployees().get(id));
+            a.setProductAmount(InputExeptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+            
+            a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount());
+
+            a.setDate("fix");
+
+            storage.setAcquisitionIds(storage.getAcquisitionIds() + 1);
+            a.setOpId(storage.getAcquisitionIds());
+
+            a.getProduct().setAvailability(a.getProduct().getAvailability() + a.getProductAmount()); 
+
+            storage.getAcquisitions().add(a);
+        }
+        catch(InputErrorException iee) {
+            iee.intErr();
+        }
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
         }
         
-        id = GetArrayId.createGetArrayId().getEmployeeId(supplyerTf.getText());
-        a.setInCharge(storage.getEmployees().get(id));
         
-        a.setProductAmount(Integer.parseInt(productAmountTf.getText()));
-        
-        a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount());
-        
-        a.setDate("fix");
-        
-        storage.setAcquisitionIds(storage.getAcquisitionIds() + 1);
-        a.setOpId(storage.getAcquisitionIds());
-        
-        a.getProduct().setAvailability(a.getProduct().getAvailability() + a.getProductAmount()); 
-        
-        storage.getAcquisitions().add(a);
     }
     
     /**
@@ -230,21 +239,23 @@ public class AddAcquisition extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddAcquisition().setVisible(true);
+                new FormAddAcquisition().setVisible(true);
             }
         });
     }

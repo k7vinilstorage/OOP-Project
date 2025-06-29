@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class DelInstrument extends javax.swing.JFrame {
+public class FormDelInstrument extends javax.swing.JFrame {
 
     /**
-     * Creates new form DelPeople
+     * Creates new form FormDelPeople
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static DelInstrument d;
+    private static FormDelInstrument d;
     
-    private DelInstrument() {
+    private FormDelInstrument() {
         initComponents();
     }
 
-    public static DelInstrument createDelInstrument() {
+    public static FormDelInstrument createDelInstrument() {
         if(d == null) {
-            d = new DelInstrument();
+            d = new FormDelInstrument();
         }
         return d;
     }
@@ -107,20 +107,25 @@ public class DelInstrument extends javax.swing.JFrame {
     private void removeInstrument() {
         int id = 0; 
         
-        switch (instrumentCb.getSelectedItem().toString()) {
-            
-            case "Guitar":
-                id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                storage.getGuitarStock().remove(id);
-                break;
-            case "Piano":
-                id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                storage.getPianoStock().remove(id);
-                break;
-            case "Drums":
-                id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                storage.getDrumsStock().remove(id);
-                break;
+        try{
+            switch (instrumentCb.getSelectedItem().toString()) {
+
+                case "Guitar":
+                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+                    storage.getGuitarStock().remove(id);
+                    break;
+                case "Piano":
+                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
+                    storage.getPianoStock().remove(id);
+                    break;
+                case "Drums":
+                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
+                    storage.getDrumsStock().remove(id);
+                    break;
+            } 
+        }
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
         }
     }
     
@@ -146,21 +151,23 @@ public class DelInstrument extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DelInstrument().setVisible(true);
+                new FormDelInstrument().setVisible(true);
             }
         });
     }

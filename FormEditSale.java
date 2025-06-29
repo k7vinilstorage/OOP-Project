@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class EditSale extends javax.swing.JFrame {
+public class FormEditSale extends javax.swing.JFrame {
 
     /**
-     * Creates new form EditCustumer
+     * Creates new form FormEditCustumer
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static EditSale e;
+    private static FormEditSale e;
     
-    private EditSale() {
+    private FormEditSale() {
         initComponents();
     }
 
-    public static EditSale createEditSale() {
+    public static FormEditSale createEditSale() {
         if(e == null) {
-            e = new EditSale();
+            e = new FormEditSale();
         }
         return e;
     }
@@ -212,40 +212,52 @@ public class EditSale extends javax.swing.JFrame {
     }//GEN-LAST:event_productAmountTfActionPerformed
 
     private void editSale() {
-        int id = GetArrayId.createGetArrayId().getSaleId(Integer.parseInt(idTf.getText()));
-        Sale s = storage.getSales().get(id);
+        int id = 0;
         
-        s.setProductType(instrumentCb.getSelectedItem().toString());
+        try {
+            id = GetArrayId.createGetArrayId().getSaleId(InputExeptionHandler.createInputExeptionHandler().InputInt(idTf.getText())); 
         
-        switch(instrumentCb.getSelectedItem().toString()) {
-            case "Guitar":
-                id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                s.setProduct(storage.getGuitarStock().get(id));
-                break;
-            case "Piano":
-                id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                s.setProduct(storage.getPianoStock().get(id));
-                break;
-            case "Drums":
-                id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                s.setProduct(storage.getDrumsStock().get(id));
-                break;
+            Sale s = storage.getSales().get(id);
+        
+            s.setProductAmount(InputExeptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+            
+            s.setProductType(instrumentCb.getSelectedItem().toString());
+
+            switch(instrumentCb.getSelectedItem().toString()) {
+                case "Guitar":
+                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+                    s.setProduct(storage.getGuitarStock().get(id));
+                    break;
+                case "Piano":
+                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
+                    s.setProduct(storage.getPianoStock().get(id));
+                    break;
+                case "Drums":
+                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
+                    s.setProduct(storage.getDrumsStock().get(id));
+                    break;
+            }
+
+            id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
+            s.setInCharge(storage.getEmployees().get(id));
+
+            id = GetArrayId.createGetArrayId().getCustumerId(custumerCpfTf.getText());
+            s.setBuyer(storage.getCustomers().get(id));
+            
+
+            s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
+
+            s.setDate("fix");
+
+            s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
+            s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 
         }
-        
-        id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
-        s.setInCharge(storage.getEmployees().get(id));
-        
-        id = GetArrayId.createGetArrayId().getCustumerId(custumerCpfTf.getText());
-        s.setBuyer(storage.getCustomers().get(id));
-        
-        s.setProductAmount(Integer.parseInt(productAmountTf.getText()));
-        
-        s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
-        
-        s.setDate("fix");
-        
-        s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
-        s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 
+        catch(InputErrorException iee) {
+            iee.intErr();
+        }
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
+        }
     }
     
     /**
@@ -265,20 +277,21 @@ public class EditSale extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditSale().setVisible(true);
+                new FormEditSale().setVisible(true);
             }
         });
     }

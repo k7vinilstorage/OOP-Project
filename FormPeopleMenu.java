@@ -10,23 +10,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joao
  */
-public class PeopleMenu extends javax.swing.JFrame {
+public class FormPeopleMenu extends javax.swing.JFrame {
     
     /**
-     * Creates new form PeopleMenu
+     * Creates new form FormPeopleMenu
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static PeopleMenu p;
+    private static FormPeopleMenu p;
     
-    private PeopleMenu() {
+    private FormPeopleMenu() {
         initComponents();
     }
 
-    public static PeopleMenu createPeopleMenu() {
+    public static FormPeopleMenu createPeopleMenu() {
         if(p == null) {
-            p = new PeopleMenu();
+            p = new FormPeopleMenu();
         }
         return p;
     }
@@ -233,19 +233,19 @@ public class PeopleMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cpfTfActionPerformed
 
     private void addCustumerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustumerActionPerformed
-        AddCustumer.createAddCustumer().setVisible(true);
+        FormAddCustumer.createAddCustumer().setVisible(true);
     }//GEN-LAST:event_addCustumerActionPerformed
 
     private void editCustumerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCustumerActionPerformed
-        EditCustumer.createEditCustumer().setVisible(true);
+        FormEditCustumer.createEditCustumer().setVisible(true);
     }//GEN-LAST:event_editCustumerActionPerformed
 
     private void addEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeActionPerformed
-        AddEmployee.createAddEmployee().setVisible(true);
+        FormAddEmployee.createAddEmployee().setVisible(true);
     }//GEN-LAST:event_addEmployeeActionPerformed
 
     private void editEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEmployeeActionPerformed
-        EditEmployee.createEditEmployee().setVisible(true);
+        FormEditEmployee.createEditEmployee().setVisible(true);
     }//GEN-LAST:event_editEmployeeActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -253,7 +253,7 @@ public class PeopleMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_formFocusGained
 
     private void refreshBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtActionPerformed
-        DelPeople.createDelPeople().setVisible(true);
+        FormDelPeople.createDelPeople().setVisible(true);
     }//GEN-LAST:event_refreshBtActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -284,21 +284,26 @@ public class PeopleMenu extends javax.swing.JFrame {
     }
     
     private void searchPeoplebyCpf() {
-        if(employeeCB.isSelected()) {
-            int id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
-            String info = "Name: " + storage.getEmployees().get(id).getName() +
-                        "\nCPF: " + storage.getEmployees().get(id).getCpf() + 
-                        "\nPhone: " + storage.getEmployees().get(id).getPhone() +
-                        "\nRole: " + storage.getEmployees().get(id).getRole();
-            Dialogs.createDialogs().infoDialog(info, "Employee search results");
+        try{
+            if(employeeCB.isSelected()) {
+                int id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
+                String info = "Name: " + storage.getEmployees().get(id).getName() +
+                            "\nCPF: " + storage.getEmployees().get(id).getCpf() + 
+                            "\nPhone: " + storage.getEmployees().get(id).getPhone() +
+                            "\nRole: " + storage.getEmployees().get(id).getRole();
+                Dialogs.createDialogs().infoDialog(info, "Employee search results");
+            }
+            else {
+                int id = GetArrayId.createGetArrayId().getCustumerId(cpfTf.getText());
+                String info = "Name: " + storage.getCustomers().get(id).getName() +
+                            "\nCPF: " + storage.getCustomers().get(id).getCpf() + 
+                            "\nPhone: " + storage.getCustomers().get(id).getPhone() +
+                            "\nPurchase Count: " + storage.getCustomers().get(id).getPurchaseCount();
+                Dialogs.createDialogs().infoDialog(info, "Custumer search results");
+            }
         }
-        else {
-            int id = GetArrayId.createGetArrayId().getCustumerId(cpfTf.getText());
-            String info = "Name: " + storage.getCustomers().get(id).getName() +
-                        "\nCPF: " + storage.getCustomers().get(id).getCpf() + 
-                        "\nPhone: " + storage.getCustomers().get(id).getPhone() +
-                        "\nPurchase Count: " + storage.getCustomers().get(id).getPurchaseCount();
-            Dialogs.createDialogs().infoDialog(info, "Custumer search results");
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
         }
     }
     
@@ -319,20 +324,21 @@ public class PeopleMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeopleMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PeopleMenu().setVisible(true);
+                new FormPeopleMenu().setVisible(true);
             }
         });
     }

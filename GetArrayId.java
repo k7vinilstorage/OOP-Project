@@ -2,12 +2,12 @@
 
 public class GetArrayId {
     
-    private Storage storage;
+    private BDStorage storage;
 
     private static GetArrayId garid;
     
     private GetArrayId() {
-        storage = Storage.createStorage();
+        storage = BDStorage.createStorage();
     }
 
     public static GetArrayId createGetArrayId() {
@@ -17,108 +17,73 @@ public class GetArrayId {
         return garid;
     }
 
-    public int getCustumerId(String cpf) {
+    public int getCustumerId(String cpf) throws ItemNotFoundExeption{
         int custumerSize = storage.getCustomers().size();
         for(int i = 0; i < custumerSize; i++) {
-            try { 
-                if(storage.getCustomers().get(i).getCpf().equals(cpf)) { //Reflexividade
-                    return i;
-                }
+            if(storage.getCustomers().get(i).getCpf().equals(cpf)) { //Reflexividade
+                return i;
             }
-            catch (IndexOutOfBoundsException ioobe) {
-                System.out.println("Indice não encontrado !");
-            }
-        }
-        return 0;
+        }  
+        throw new ItemNotFoundExeption();
     }
 
-    public int getEmployeeId(String cpf) {
+    public int getEmployeeId(String cpf) throws ItemNotFoundExeption{
         int employeeSize = storage.getEmployees().size();
         for(int i = 0; i < employeeSize; i++) {
-            try { 
-                if(storage.getEmployees().get(i).getCpf().equals(cpf)) { //Reflexividade
-                    return i;
-                }
-            }
-            catch (IndexOutOfBoundsException ioobe) {
-                System.out.println("Indice não encontrado !");
+            if(storage.getEmployees().get(i).getCpf().equals(cpf)) { //Reflexividade
+                return i;
             }
         }
-        return 0;
+        throw new ItemNotFoundExeption();
     }
 
-    public int getGuitarId(String model) {
+    public int getGuitarId(String model) throws ItemNotFoundExeption{
         int guitarSize = storage.getGuitarStock().size();
         for(int i = 0; i < guitarSize; i++) {
-            try { 
-                if(storage.getGuitarStock().get(i).getModel().equals(model)) { //Reflexividade
-                    return i;
-                }
-            }
-            catch (IndexOutOfBoundsException ioobe) {
-                System.out.println("Indice não encontrado !");
+            if(storage.getGuitarStock().get(i).getModel().equals(model)) { //Reflexividade
+                return i;
             }
         }
-        return 0;
+        throw new ItemNotFoundExeption();
     }
 
-    public int getPianoId(String model) {
+    public int getPianoId(String model) throws ItemNotFoundExeption{
         int pianoSize = storage.getPianoStock().size();
         for(int i = 0; i < pianoSize; i++) {
-            try { 
-                if(storage.getPianoStock().get(i).getModel().equals(model)) { //Reflexividade
-                    return i;
-                }
-            }
-            catch (IndexOutOfBoundsException ioobe) {
-                System.out.println("Indice não encontrado !");
+            if(storage.getPianoStock().get(i).getModel().equals(model)) { //Reflexividade
+                return i;
             }
         }
-        return 0;
+        throw new ItemNotFoundExeption();
     }
 
-    public int getDrumsId(String model) {
+    public int getDrumsId(String model) throws ItemNotFoundExeption{
         int drumsSize = storage.getDrumsStock().size();
         for(int i = 0; i < drumsSize; i++) {
-            try { 
-                if(storage.getDrumsStock().get(i).getModel().equals(model)) { //Reflexividade
-                    return i;
-                }
-            }
-            catch (IndexOutOfBoundsException ioobe) {
-                System.out.println("Indice não encontrado !");
+            if(storage.getDrumsStock().get(i).getModel().equals(model)) { //Reflexividade
+                return i;
             }
         }
-        return 0;
+        throw new ItemNotFoundExeption();
     }
 
-    public int getAcquisitionId(int OpId) {
+    public int getAcquisitionId(int OpId) throws ItemNotFoundExeption{
         int acqSize = storage.getAcquisitions().size();
         for(int i = 0; i <  acqSize; i++) {
-            try { 
-                if(storage.getAcquisitions().get(i).getOpId() == OpId) { //Reflexividade
-                    return i;
-                }
-            }
-            catch (IndexOutOfBoundsException ioobe) {
-                System.out.println("Indice não encontrado !");
+            if(storage.getAcquisitions().get(i).getOpId() == OpId) { //Reflexividade
+                return i;
             }
         }
-        return 0;
+        throw new ItemNotFoundExeption();
     }
 
-    public int getSaleId(int OpId) {
+    public int getSaleId(int OpId) throws ItemNotFoundExeption{
         int saleSize = storage.getSales().size();
         for(int i = 0; i <  saleSize; i++) {
-            try { 
-                if(storage.getSales().get(i).getOpId() == OpId) { //Reflexividade
-                    return i;
-                }
-            }
-            catch (IndexOutOfBoundsException ioobe) {
-                System.out.println("Indice não encontrado !");
+            if(storage.getSales().get(i).getOpId() == OpId) { //Reflexividade
+                return i;
             }
         }
-        return 0;
+        throw new ItemNotFoundExeption();
     } 
 }

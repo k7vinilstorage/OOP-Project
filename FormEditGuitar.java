@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class EditGuitar extends javax.swing.JFrame {
+public class FormEditGuitar extends javax.swing.JFrame {
 
     /**
-     * Creates new form EditCustumer
+     * Creates new form FormEditCustumer
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static EditGuitar e;
+    private static FormEditGuitar e;
     
-    private EditGuitar() {
+    private FormEditGuitar() {
         initComponents();
     }
 
-    public static EditGuitar createEditGuitar() {
+    public static FormEditGuitar createEditGuitar() {
         if(e == null) {
-            e = new EditGuitar();
+            e = new FormEditGuitar();
         }
         return e;
     }
@@ -221,13 +221,21 @@ public class EditGuitar extends javax.swing.JFrame {
     }//GEN-LAST:event_saveBtActionPerformed
 
     private void editGuitar() {
-        int id = GetArrayId.createGetArrayId().getGuitarId(registeredModelTf.getText());
-        storage.getGuitarStock().get(id).setModel(NewModelTf.getText());
-        storage.getGuitarStock().get(id).setBrand(brandTf.getText());
-        storage.getGuitarStock().get(id).setShape(shapeTf.getText());
-        storage.getGuitarStock().get(id).setType(typeTf.getText());
-        storage.getGuitarStock().get(id).setStringCount(Integer.parseInt(stringTf.getText()));
-        storage.getGuitarStock().get(id).setPrice(Float.parseFloat(priceTf.getText()));
+        try { 
+            int id = GetArrayId.createGetArrayId().getGuitarId(registeredModelTf.getText());
+            storage.getGuitarStock().get(id).setStringCount(InputExeptionHandler.createInputExeptionHandler().InputInt(stringTf.getText()));
+            storage.getGuitarStock().get(id).setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            storage.getGuitarStock().get(id).setModel(NewModelTf.getText());
+            storage.getGuitarStock().get(id).setBrand(brandTf.getText());
+            storage.getGuitarStock().get(id).setShape(shapeTf.getText());
+            storage.getGuitarStock().get(id).setType(typeTf.getText());
+        }
+        catch(InputErrorException iee) {
+            iee.intErr();
+        }
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
+        }
     }
     
     /**
@@ -247,20 +255,21 @@ public class EditGuitar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditGuitar().setVisible(true);
+                new FormEditGuitar().setVisible(true);
             }
         });
     }

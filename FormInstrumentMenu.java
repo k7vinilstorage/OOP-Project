@@ -10,23 +10,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joao
  */
-public class InstrumentMenu extends javax.swing.JFrame {
+public class FormInstrumentMenu extends javax.swing.JFrame {
 
     /**
-     * Creates new form InstrumentMenu
+     * Creates new form FormInstrumentMenu
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static InstrumentMenu i;
+    private static FormInstrumentMenu i;
     
-    private InstrumentMenu() {
+    private FormInstrumentMenu() {
         initComponents();
     }
     
-    public static InstrumentMenu createInstrumentMenu() {
+    public static FormInstrumentMenu createInstrumentMenu() {
         if(i == null) {
-            i = new InstrumentMenu();
+            i = new FormInstrumentMenu();
         }
         return i;
     }
@@ -291,7 +291,7 @@ public class InstrumentMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_modelTfActionPerformed
 
     private void addGuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGuitarActionPerformed
-        AddGuitar.createAddGuitar().setVisible(true);
+        FormAddGuitar.createAddGuitar().setVisible(true);
     }//GEN-LAST:event_addGuitarActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -305,27 +305,27 @@ public class InstrumentMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtActionPerformed
 
     private void addPianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPianoActionPerformed
-        AddPiano.createAddPiano().setVisible(true);
+        FormAddPiano.createAddPiano().setVisible(true);
     }//GEN-LAST:event_addPianoActionPerformed
 
     private void addDrumsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDrumsActionPerformed
-        AddDrums.createAddDrums().setVisible(true);
+        FormAddDrums.createAddDrums().setVisible(true);
     }//GEN-LAST:event_addDrumsActionPerformed
 
     private void editGuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editGuitarActionPerformed
-        EditGuitar.createEditGuitar().setVisible(true);
+        FormEditGuitar.createEditGuitar().setVisible(true);
     }//GEN-LAST:event_editGuitarActionPerformed
 
     private void editDrumsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDrumsActionPerformed
-        EditDrums.createEditDrums().setVisible(true);
+        FormEditDrums.createEditDrums().setVisible(true);
     }//GEN-LAST:event_editDrumsActionPerformed
 
     private void editPianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPianoActionPerformed
-        EditPiano.createEditPiano().setVisible(true);
+        FormEditPiano.createEditPiano().setVisible(true);
     }//GEN-LAST:event_editPianoActionPerformed
 
     private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
-        DelInstrument.createDelInstrument().setVisible(true);
+        FormDelInstrument.createDelInstrument().setVisible(true);
     }//GEN-LAST:event_removeBtActionPerformed
 
     private void listGuitar() {
@@ -365,46 +365,52 @@ public class InstrumentMenu extends javax.swing.JFrame {
         int id = 0;
         String info = "";
         
-        switch(instrumentCb.getSelectedItem().toString()) {
-            case "Guitar":
-                id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                
-                info = "Model: " + storage.getGuitarStock().get(id).getModel() +
-                        "\nBrand: " + storage.getGuitarStock().get(id).getBrand() +
-                        "\nShape: " + storage.getGuitarStock().get(id).getShape() + 
-                        "\nType: " + storage.getGuitarStock().get(id).getType() + 
-                        "\nCategory: " + storage.getGuitarStock().get(id).getCategory() +
-                        "\nString Count: " + storage.getGuitarStock().get(id).getStringCount() + 
-                        "\nAvailability: " + storage.getGuitarStock().get(id).getAvailability() +
-                        "\nPrice: " + storage.getGuitarStock().get(id).getPrice();
-                break;
-            case "Piano":
-                id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                
-                info = "Model: " + storage.getPianoStock().get(id).getModel() +
-                        "\nBrand: " + storage.getPianoStock().get(id).getBrand() +
-                        "\nBody Type: " + storage.getPianoStock().get(id).getBodyType()+ 
-                        "\nType: " + storage.getPianoStock().get(id).getType() + 
-                        "\nCategory: " + storage.getPianoStock().get(id).getCategory() +
-                        "\nKey Count: " + storage.getPianoStock().get(id).getKeyCount()+ 
-                        "\nAvailability: " + storage.getPianoStock().get(id).getAvailability() +
-                        "\nPrice: " + storage.getPianoStock().get(id).getPrice();
-                break;
-            case "Drums":
-                id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                
-                info = "Model: " + storage.getDrumsStock().get(id).getModel() +
-                        "\nBrand: " + storage.getDrumsStock().get(id).getBrand() +
-                        "\nShell Material: " + storage.getDrumsStock().get(id).getShellMaterial()+ 
-                        "\nType: " + storage.getDrumsStock().get(id).getType() + 
-                        "\nCategory: " + storage.getDrumsStock().get(id).getCategory() +
-                        "\nPieces Count: " + storage.getDrumsStock().get(id).getPiecesCount() + 
-                        "\nAvailability: " + storage.getDrumsStock().get(id).getAvailability() +
-                        "\nPrice: " + storage.getDrumsStock().get(id).getPrice();
-                break;
+        try {
+            switch(instrumentCb.getSelectedItem().toString()) {
+                case "Guitar":
+                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+
+                    info = "Model: " + storage.getGuitarStock().get(id).getModel() +
+                            "\nBrand: " + storage.getGuitarStock().get(id).getBrand() +
+                            "\nShape: " + storage.getGuitarStock().get(id).getShape() + 
+                            "\nType: " + storage.getGuitarStock().get(id).getType() + 
+                            "\nCategory: " + storage.getGuitarStock().get(id).getCategory() +
+                            "\nString Count: " + storage.getGuitarStock().get(id).getStringCount() + 
+                            "\nAvailability: " + storage.getGuitarStock().get(id).getAvailability() +
+                            "\nPrice: " + storage.getGuitarStock().get(id).getPrice();
+                    break;
+                case "Piano":
+                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
+
+                    info = "Model: " + storage.getPianoStock().get(id).getModel() +
+                            "\nBrand: " + storage.getPianoStock().get(id).getBrand() +
+                            "\nBody Type: " + storage.getPianoStock().get(id).getBodyType()+ 
+                            "\nType: " + storage.getPianoStock().get(id).getType() + 
+                            "\nCategory: " + storage.getPianoStock().get(id).getCategory() +
+                            "\nKey Count: " + storage.getPianoStock().get(id).getKeyCount()+ 
+                            "\nAvailability: " + storage.getPianoStock().get(id).getAvailability() +
+                            "\nPrice: " + storage.getPianoStock().get(id).getPrice();
+                    break;
+                case "Drums":
+                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
+
+                    info = "Model: " + storage.getDrumsStock().get(id).getModel() +
+                            "\nBrand: " + storage.getDrumsStock().get(id).getBrand() +
+                            "\nShell Material: " + storage.getDrumsStock().get(id).getShellMaterial()+ 
+                            "\nType: " + storage.getDrumsStock().get(id).getType() + 
+                            "\nCategory: " + storage.getDrumsStock().get(id).getCategory() +
+                            "\nPieces Count: " + storage.getDrumsStock().get(id).getPiecesCount() + 
+                            "\nAvailability: " + storage.getDrumsStock().get(id).getAvailability() +
+                            "\nPrice: " + storage.getDrumsStock().get(id).getPrice();
+                    break;
+            }
+
+            Dialogs.createDialogs().infoDialog(info, instrumentCb.getSelectedItem().toString() + " Search Results");
+        }
+        catch (ItemNotFoundExeption infe){
+            infe.itemNotFoundErr();
         }
         
-        Dialogs.createDialogs().infoDialog(info, instrumentCb.getSelectedItem().toString() + " Search Results");
         
     }
     
@@ -425,20 +431,21 @@ public class InstrumentMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormInstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormInstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormInstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormInstrumentMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InstrumentMenu().setVisible(true);
+                new FormInstrumentMenu().setVisible(true);
             }
         });
     }

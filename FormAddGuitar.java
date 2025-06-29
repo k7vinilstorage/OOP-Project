@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class AddGuitar extends javax.swing.JFrame {
+public class FormAddGuitar extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddCustumer
+     * Creates new form FormAddCustumer
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static AddGuitar a;
+    private static FormAddGuitar a;
     
-    private AddGuitar() {
+    private FormAddGuitar() {
         initComponents();
     }
     
-    public static AddGuitar createAddGuitar() {
+    public static FormAddGuitar createAddGuitar() {
         if(a == null) {
-            a = new AddGuitar();
+            a = new FormAddGuitar();
         }
         return a;
     }
@@ -217,14 +217,20 @@ public class AddGuitar extends javax.swing.JFrame {
 
     private void registerGuitar() {
         Guitar g = new Guitar();
-        g.setModel(modelTf.getText());
-        g.setBrand(brandTf.getText());
-        g.setShape(shapeTf.getText());
-        g.setType(typeTf.getText());
-        g.setStringCount(Integer.parseInt(StringTf.getText()));
-        g.setPrice(Float.parseFloat(priceTf.getText()));
-        g.setCategory("String");
-        storage.getGuitarStock().add(g);
+        try {
+            g.setModel(modelTf.getText());
+            g.setBrand(brandTf.getText());
+            g.setShape(shapeTf.getText());
+            g.setType(typeTf.getText());
+            g.setStringCount(InputExeptionHandler.createInputExeptionHandler().InputInt(StringTf.getText()));
+            g.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            g.setCategory("String");
+            storage.getGuitarStock().add(g);
+        }
+        catch(InputErrorException iee) {
+            iee.intErr();
+        }
+        
     }
     
     /**
@@ -244,21 +250,23 @@ public class AddGuitar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddGuitar().setVisible(true);
+                new FormAddGuitar().setVisible(true);
             }
         });
     }

@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class DelPeople extends javax.swing.JFrame {
+public class FormDelPeople extends javax.swing.JFrame {
 
     /**
-     * Creates new form DelPeople
+     * Creates new form FormDelPeople
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static DelPeople d;
+    private static FormDelPeople d;
     
-    private DelPeople() {
+    private FormDelPeople() {
         initComponents();
     }
 
-    public static DelPeople createDelPeople() {
+    public static FormDelPeople createDelPeople() {
         if(d == null) {
-            d = new DelPeople();
+            d = new FormDelPeople();
         }
         return d;
     }
@@ -108,15 +108,19 @@ public class DelPeople extends javax.swing.JFrame {
     private void removePeople() {
         int id = 0;
         
-        if(peopleCb.getSelectedItem().toString().equals("Custumer")) {
-            id = GetArrayId.createGetArrayId().getCustumerId(cpfTf.getText());
-            storage.getCustomers().remove(id);
+        try{
+            if(peopleCb.getSelectedItem().toString().equals("Custumer")) {
+                id = GetArrayId.createGetArrayId().getCustumerId(cpfTf.getText());
+                storage.getCustomers().remove(id);
+            }
+            else {
+                id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
+                storage.getEmployees().remove(id);
+            }
         }
-        else {
-            id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
-            storage.getEmployees().remove(id);
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
         }
-        
     }
     
     private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
@@ -141,21 +145,23 @@ public class DelPeople extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDelPeople.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DelPeople().setVisible(true);
+                new FormDelPeople().setVisible(true);
             }
         });
     }

@@ -2,9 +2,9 @@
 
 import java.util.ArrayList;
 
-public class Storage {
+public class BDStorage {
 
-    private static Storage SingleStorage;
+    private static BDStorage SingleStorage;
 
     private ArrayList<Guitar> guitarStock;
     private ArrayList<Piano> pianoStock;
@@ -19,7 +19,7 @@ public class Storage {
     private int customerIds;
     private int employeeIds;
     
-    private Storage() {
+    private BDStorage() {
         guitarStock = new ArrayList<>();
         pianoStock = new ArrayList<>();
         drumsStock = new ArrayList<>();
@@ -34,9 +34,9 @@ public class Storage {
         employeeIds = 0;
     }
 
-    public static Storage createStorage() {
+    public static BDStorage createStorage() {
         if(SingleStorage == null) {
-            SingleStorage = new Storage();
+            SingleStorage = new BDStorage();
         }
         return SingleStorage;
     }

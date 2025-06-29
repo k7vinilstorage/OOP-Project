@@ -10,23 +10,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joao
  */
-public class OperationMenu extends javax.swing.JFrame {
+public class FormOperationMenu extends javax.swing.JFrame {
 
     /**
-     * Creates new form OperationMenu
+     * Creates new form FormOperationMenu
      */
     
-    private Storage storage = Storage.createStorage();
+    private BDStorage storage = BDStorage.createStorage();
     
-    private static OperationMenu o;
+    private static FormOperationMenu o;
     
-    public OperationMenu() {
+    public FormOperationMenu() {
         initComponents();
     }
     
-    public static OperationMenu createOperationMenu() {
+    public static FormOperationMenu createOperationMenu() {
         if(o == null) {
-            o = new OperationMenu();
+            o = new FormOperationMenu();
         }
         return o;
     }
@@ -218,7 +218,7 @@ public class OperationMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_saleCbActionPerformed
 
     private void addSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSaleActionPerformed
-        AddSale.createAddSale().setVisible(true);
+        FormAddSale.createAddSale().setVisible(true);
     }//GEN-LAST:event_addSaleActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -231,19 +231,19 @@ public class OperationMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtActionPerformed
 
     private void addAcquisitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAcquisitionActionPerformed
-        AddAcquisition.createAddAcquisition().setVisible(true);
+        FormAddAcquisition.createAddAcquisition().setVisible(true);
     }//GEN-LAST:event_addAcquisitionActionPerformed
 
     private void removeOpBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeOpBtActionPerformed
-        DelOperation.createDelOperation().setVisible(true);
+        FormDelOperation.createDelOperation().setVisible(true);
     }//GEN-LAST:event_removeOpBtActionPerformed
 
     private void editSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSaleActionPerformed
-        EditSale.createEditSale().setVisible(true);
+        FormEditSale.createEditSale().setVisible(true);
     }//GEN-LAST:event_editSaleActionPerformed
 
     private void editAcquisitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAcquisitionActionPerformed
-        EditAcquisition.createEditAcquisition().setVisible(true);
+        FormEditAcquisition.createEditAcquisition().setVisible(true);
     }//GEN-LAST:event_editAcquisitionActionPerformed
 
     private void listAcquisitions() {
@@ -271,32 +271,40 @@ public class OperationMenu extends javax.swing.JFrame {
     private void searchOpById() {
         int id = 0;
         
-        if(saleCb.isSelected()) {
-            id = GetArrayId.createGetArrayId().getSaleId(Integer.parseInt(operationTf.getText()));
-            String info = "ID: " + storage.getSales().get(id).getOpId() +
-                    "\nBuyer: " + storage.getSales().get(id).getBuyer().getName() +
-                    "\nBuyer CPF: " + storage.getSales().get(id).getBuyer().getCpf() + 
-                    "\nEmployee: " + storage.getSales().get(id).getInCharge().getName() +
-                    "\nEmployee: " + storage.getSales().get(id).getInCharge().getCpf() + 
-                    "\nProduct Model: " + storage.getSales().get(id).getProduct().getModel() +
-                    "\nProduct Type: " + storage.getSales().get(id).getProductType() +
-                    "\nAmount: " + storage.getSales().get(id).getProductAmount() + 
-                    "\nTotal Cost: " + storage.getSales().get(id).getTotalCost() +
-                    "\nDate: " + storage.getSales().get(id).getDate();
-            Dialogs.createDialogs().infoDialog(info, "Sale Search Results");
+        try{
+            if(saleCb.isSelected()) {
+                id = GetArrayId.createGetArrayId().getSaleId(InputExeptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
+                String info = "ID: " + storage.getSales().get(id).getOpId() +
+                        "\nBuyer: " + storage.getSales().get(id).getBuyer().getName() +
+                        "\nBuyer CPF: " + storage.getSales().get(id).getBuyer().getCpf() + 
+                        "\nEmployee: " + storage.getSales().get(id).getInCharge().getName() +
+                        "\nEmployee: " + storage.getSales().get(id).getInCharge().getCpf() + 
+                        "\nProduct Model: " + storage.getSales().get(id).getProduct().getModel() +
+                        "\nProduct Type: " + storage.getSales().get(id).getProductType() +
+                        "\nAmount: " + storage.getSales().get(id).getProductAmount() + 
+                        "\nTotal Cost: " + storage.getSales().get(id).getTotalCost() +
+                        "\nDate: " + storage.getSales().get(id).getDate();
+                Dialogs.createDialogs().infoDialog(info, "Sale Search Results");
+            }
+            else {
+                id = GetArrayId.createGetArrayId().getAcquisitionId(InputExeptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
+                String info = "ID: " + storage.getAcquisitions().get(id).getOpId() +
+                        "\nSupplyer: " + storage.getAcquisitions().get(id).getSupplyerName() +
+                        "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getName() +
+                        "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getCpf() + 
+                        "\nProduct Model: " + storage.getAcquisitions().get(id).getProduct().getModel() +
+                        "\nProduct Type: " + storage.getAcquisitions().get(id).getProductType() +
+                        "\nAmount: " + storage.getAcquisitions().get(id).getProductAmount() + 
+                        "\nTotal Cost: " + storage.getAcquisitions().get(id).getTotalCost() +
+                        "\nDate: " + storage.getAcquisitions().get(id).getDate();
+                Dialogs.createDialogs().infoDialog(info, "Acquisition Search Results");
+            }
         }
-        else {
-            id = GetArrayId.createGetArrayId().getAcquisitionId(Integer.parseInt(operationTf.getText()));
-            String info = "ID: " + storage.getAcquisitions().get(id).getOpId() +
-                    "\nSupplyer: " + storage.getAcquisitions().get(id).getSupplyerName() +
-                    "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getName() +
-                    "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getCpf() + 
-                    "\nProduct Model: " + storage.getAcquisitions().get(id).getProduct().getModel() +
-                    "\nProduct Type: " + storage.getAcquisitions().get(id).getProductType() +
-                    "\nAmount: " + storage.getAcquisitions().get(id).getProductAmount() + 
-                    "\nTotal Cost: " + storage.getAcquisitions().get(id).getTotalCost() +
-                    "\nDate: " + storage.getAcquisitions().get(id).getDate();
-            Dialogs.createDialogs().infoDialog(info, "Acquisition Search Results");
+        catch(InputErrorException iee) {
+            iee.intErr();
+        }
+        catch(ItemNotFoundExeption infe) {
+            infe.itemNotFoundErr();
         }
     }
     
@@ -317,20 +325,21 @@ public class OperationMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormOperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormOperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormOperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormOperationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OperationMenu().setVisible(true);
+                new FormOperationMenu().setVisible(true);
             }
         });
     }
