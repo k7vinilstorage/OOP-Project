@@ -1,4 +1,5 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -51,6 +52,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
         removeOpBt = new javax.swing.JButton();
         acqLb = new javax.swing.JLabel();
         saleLb = new javax.swing.JLabel();
+        exitBt = new javax.swing.JButton();
         operationMb = new javax.swing.JMenuBar();
         saleMenu = new javax.swing.JMenu();
         addSale = new javax.swing.JMenuItem();
@@ -130,6 +132,13 @@ public class FormOperationMenu extends javax.swing.JFrame {
 
         saleLb.setText("Sales");
 
+        exitBt.setText("Close");
+        exitBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtActionPerformed(evt);
+            }
+        });
+
         saleMenu.setText("Sale");
 
         addSale.setText("Add Sale...");
@@ -182,25 +191,28 @@ public class FormOperationMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(saleLb)
                         .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(operationLb)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(operationTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(saleCb)
-                                .addGap(18, 18, 18)
-                                .addComponent(searchBt))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(removeOpBt)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(acqLb)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(operationLb)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(exitBt)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(operationTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(saleCb)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(searchBt))
+                                    .addComponent(removeOpBt))))
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,10 +230,12 @@ public class FormOperationMenu extends javax.swing.JFrame {
                     .addComponent(acqLb, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(saleLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(exitBt)
                 .addContainerGap())
         );
 
@@ -260,6 +274,10 @@ public class FormOperationMenu extends javax.swing.JFrame {
     private void editAcquisitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAcquisitionActionPerformed
         FormEditAcquisition.createEditAcquisition().setVisible(true);
     }//GEN-LAST:event_editAcquisitionActionPerformed
+
+    private void exitBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtActionPerformed
+        exit();
+    }//GEN-LAST:event_exitBtActionPerformed
 
     private void listAcquisitions() {
         DefaultTableModel modTable = (DefaultTableModel)AquisitionTb.getModel();
@@ -325,6 +343,19 @@ public class FormOperationMenu extends javax.swing.JFrame {
         }
     }
     
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -369,6 +400,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem addSale;
     private javax.swing.JMenuItem editAcquisition;
     private javax.swing.JMenuItem editSale;
+    private javax.swing.JButton exitBt;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel operationLb;

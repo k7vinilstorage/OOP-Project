@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -103,6 +106,11 @@ public class FormAddPiano extends javax.swing.JFrame {
         });
 
         closeBt.setText("Close");
+        closeBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtActionPerformed(evt);
+            }
+        });
 
         registerBt.setText("Register");
         registerBt.addActionListener(new java.awt.event.ActionListener() {
@@ -212,6 +220,10 @@ public class FormAddPiano extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bodyTfActionPerformed
 
+    private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed
+        exit();
+    }//GEN-LAST:event_closeBtActionPerformed
+
     private void cleanTf() {
         modelTf.setText("");
         brandTf.setText("");
@@ -244,6 +256,19 @@ public class FormAddPiano extends javax.swing.JFrame {
         catch(KeyCountException kce) {
             kce.keyCountErr();
         }
+    }
+    
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
     }
     
     /**

@@ -1,5 +1,5 @@
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class GetDate {
     
@@ -15,7 +15,6 @@ public class GetDate {
     }
     
     String getDate() {
-        Date data = new Date();
-        return (data.getDate() + "/" + data.getMonth() + "/" + data.getYear());
+        return (LocalDate.now().getDayOfMonth()+ "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear());
     }
 }

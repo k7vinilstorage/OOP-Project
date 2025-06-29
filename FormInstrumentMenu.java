@@ -1,4 +1,5 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -56,6 +57,7 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
         removeBt = new javax.swing.JButton();
         pianoLb = new javax.swing.JLabel();
         drumsLb = new javax.swing.JLabel();
+        exitBt = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         guitarMenu = new javax.swing.JMenu();
         addGuitar = new javax.swing.JMenuItem();
@@ -176,6 +178,13 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
 
         drumsLb.setText("Drums:");
 
+        exitBt.setText("Close");
+        exitBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtActionPerformed(evt);
+            }
+        });
+
         guitarMenu.setText("Guitar");
 
         addGuitar.setText("Add Guitar...");
@@ -259,13 +268,15 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
                                 .addComponent(searchBt)))
                         .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(drumsLb)
-                            .addComponent(pianoLb)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(guitarLb))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(exitBt)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(drumsLb)
+                                .addComponent(pianoLb)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(guitarLb)))
                         .addGap(0, 19, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -288,11 +299,13 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
                 .addComponent(pianoLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(drumsLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(exitBt)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -339,6 +352,10 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
     private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
         FormDelInstrument.createDelInstrument().setVisible(true);
     }//GEN-LAST:event_removeBtActionPerformed
+
+    private void exitBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtActionPerformed
+        exit();
+    }//GEN-LAST:event_exitBtActionPerformed
 
     private void listGuitar() {
         DefaultTableModel modTable = (DefaultTableModel)guitarTb.getModel();
@@ -428,6 +445,19 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
         
     }
     
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -474,6 +504,7 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem editDrums;
     private javax.swing.JMenuItem editGuitar;
     private javax.swing.JMenuItem editPiano;
+    private javax.swing.JButton exitBt;
     private javax.swing.JLabel guitarLb;
     private javax.swing.JMenu guitarMenu;
     private javax.swing.JTable guitarTb;

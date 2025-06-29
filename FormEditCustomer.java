@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -77,6 +80,11 @@ public class FormEditCustomer extends javax.swing.JFrame {
         phoneLb.setText("Phone:");
 
         closeBt.setText("Close");
+        closeBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtActionPerformed(evt);
+            }
+        });
 
         saveBt.setText("Save");
         saveBt.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +188,10 @@ public class FormEditCustomer extends javax.swing.JFrame {
         editCustumer();
     }//GEN-LAST:event_saveBtActionPerformed
 
+    private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed
+        exit();
+    }//GEN-LAST:event_closeBtActionPerformed
+
     private void cleanTf() {
         nameTf.setText("");
         registeredCpfTf.setText("");
@@ -199,6 +211,19 @@ public class FormEditCustomer extends javax.swing.JFrame {
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
         }
+    }
+    
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
     }
     
     /**

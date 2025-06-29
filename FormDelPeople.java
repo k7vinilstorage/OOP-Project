@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -54,6 +57,11 @@ public class FormDelPeople extends javax.swing.JFrame {
         cpfLb.setText("CPF:");
 
         closeBt.setText("Close");
+        closeBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtActionPerformed(evt);
+            }
+        });
 
         removeBt.setText("Remove");
         removeBt.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +136,23 @@ public class FormDelPeople extends javax.swing.JFrame {
         removePeople();
     }//GEN-LAST:event_removeBtActionPerformed
 
+    private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed
+        exit();
+    }//GEN-LAST:event_closeBtActionPerformed
+
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
+    }
+    
     /**
      * @param args the command line arguments
      */

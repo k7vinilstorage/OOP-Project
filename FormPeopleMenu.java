@@ -1,4 +1,5 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -51,6 +52,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
         employeeTb = new javax.swing.JTable();
         refreshBt = new javax.swing.JButton();
         employeesLb = new javax.swing.JLabel();
+        exitBt = new javax.swing.JButton();
         peopleMb = new javax.swing.JMenuBar();
         customerMenu = new javax.swing.JMenu();
         addCustomer = new javax.swing.JMenuItem();
@@ -138,6 +140,13 @@ public class FormPeopleMenu extends javax.swing.JFrame {
 
         employeesLb.setText("Employees:");
 
+        exitBt.setText("Close");
+        exitBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtActionPerformed(evt);
+            }
+        });
+
         customerMenu.setText("Customer");
 
         addCustomer.setText("Add Customer...");
@@ -188,21 +197,23 @@ public class FormPeopleMenu extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(employeesLb)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1)
-                        .addComponent(jScrollPane2)
-                        .addComponent(customersLb)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cpfLb))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(employeeCB)
-                                    .addGap(15, 15, 15)
-                                    .addComponent(searchBt))
-                                .addComponent(refreshBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(exitBt)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2)
+                            .addComponent(customersLb)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cpfLb))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(employeeCB)
+                                        .addGap(15, 15, 15)
+                                        .addComponent(searchBt))
+                                    .addComponent(refreshBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -221,11 +232,13 @@ public class FormPeopleMenu extends javax.swing.JFrame {
                     .addComponent(refreshBt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(employeesLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(exitBt)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,6 +280,10 @@ public class FormPeopleMenu extends javax.swing.JFrame {
         listCustumerTable();
         listEmployeeTable();
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void exitBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtActionPerformed
+        exit();
+    }//GEN-LAST:event_exitBtActionPerformed
 
     private void listCustumerTable() {
         DefaultTableModel modTable = (DefaultTableModel)custumerTb.getModel();
@@ -315,6 +332,19 @@ public class FormPeopleMenu extends javax.swing.JFrame {
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
         }
+    }
+    
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
     }
     
     /**
@@ -367,6 +397,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
     private javax.swing.JMenu employeeMenu;
     private javax.swing.JTable employeeTb;
     private javax.swing.JLabel employeesLb;
+    private javax.swing.JButton exitBt;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuBar peopleMb;

@@ -127,4 +127,18 @@ public class BDStorage {
     public void setAcquisitions(ArrayList<Acquisition> acquisitions) {
         this.acquisitions = acquisitions;
     }
+    
+//    public Guitar getGuitar() {
+//        
+//    }
+//    
+//    public void addGuitar() {
+//        
+//    }
+//    
+//    public void delGuitar() {
+//        
+//    }
+//    
+//    public void edit guitar
 }

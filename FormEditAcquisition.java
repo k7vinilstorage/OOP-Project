@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -61,6 +64,11 @@ public class FormEditAcquisition extends javax.swing.JFrame {
         titleTf.setText("EDIT ACQUISITION");
 
         closeBt.setText("Close");
+        closeBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtActionPerformed(evt);
+            }
+        });
 
         saveBt.setText("Save");
         saveBt.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +215,10 @@ public class FormEditAcquisition extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_productAmountTfActionPerformed
 
+    private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed
+        exit();
+    }//GEN-LAST:event_closeBtActionPerformed
+
     private void cleanTf() {
         idTf.setText("");
         modelTf.setText("");
@@ -261,6 +273,19 @@ public class FormEditAcquisition extends javax.swing.JFrame {
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
         }
+    }
+    
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
     }
     
     /**

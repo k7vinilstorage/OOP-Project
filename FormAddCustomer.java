@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -74,6 +77,11 @@ public class FormAddCustomer extends javax.swing.JFrame {
         });
 
         closeBt.setText("Close");
+        closeBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,12 +145,29 @@ public class FormAddCustomer extends javax.swing.JFrame {
         phoneTf.setText("");
     }//GEN-LAST:event_registerBtActionPerformed
 
+    private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed
+        exit();
+    }//GEN-LAST:event_closeBtActionPerformed
+
     private void registerCustumer() {
         Customer c = new Customer();
         c.setName(nameTf.getText());
         c.setCpf(cpfTf.getText());
         c.setPhone(phoneTf.getText());
         storage.getCustomers().add(c);
+    }
+    
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
     }
     
     /**

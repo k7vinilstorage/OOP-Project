@@ -1,4 +1,7 @@
 
+import javax.swing.JOptionPane;
+
+
 public class FormAddSale extends javax.swing.JFrame {
 
     /**
@@ -76,6 +79,11 @@ public class FormAddSale extends javax.swing.JFrame {
         });
 
         closeBt.setText("Close");
+        closeBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtActionPerformed(evt);
+            }
+        });
 
         registerBt.setText("Register");
         registerBt.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +172,10 @@ public class FormAddSale extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_custumerCpfTfActionPerformed
 
+    private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed
+        exit();
+    }//GEN-LAST:event_closeBtActionPerformed
+
     private void cleanTf() {
         modelTf.setText("");
         employeeCpfTf.setText("");
@@ -225,6 +237,19 @@ public class FormAddSale extends javax.swing.JFrame {
             infe.itemNotFoundErr();
         }
         
+    }
+    
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
     }
     
     /**

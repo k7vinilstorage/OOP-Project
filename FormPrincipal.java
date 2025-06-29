@@ -1,12 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author joao
- */
+import javax.swing.JOptionPane;
+
 public class FormPrincipal extends javax.swing.JFrame {
 
     /**
@@ -30,6 +24,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         operationBt = new javax.swing.JButton();
         intrumentsBt = new javax.swing.JButton();
         peopleBt = new javax.swing.JButton();
+        exitBt = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         opMenu = new javax.swing.JMenu();
         opMenuIt = new javax.swing.JMenuItem();
@@ -64,6 +59,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         peopleBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 peopleBtActionPerformed(evt);
+            }
+        });
+
+        exitBt.setText("Close");
+        exitBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtActionPerformed(evt);
             }
         });
 
@@ -102,19 +104,23 @@ public class FormPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mainLabel2)
-                            .addComponent(mainLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(operationBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(intrumentsBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(peopleBt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(mainLabel2)
+                                .addComponent(mainLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(operationBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(intrumentsBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(peopleBt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(exitBt)
+                        .addGap(14, 14, 14))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {mainLabel1, mainLabel2});
@@ -122,7 +128,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(mainLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainLabel2)
@@ -132,7 +138,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(intrumentsBt)
                 .addGap(18, 18, 18)
                 .addComponent(peopleBt)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(exitBt)
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -162,6 +170,23 @@ public class FormPrincipal extends javax.swing.JFrame {
         FormPeopleMenu.createPeopleMenu().setVisible(true);
     }//GEN-LAST:event_PeopleMenuItActionPerformed
 
+    private void exitBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtActionPerformed
+        exit();
+    }//GEN-LAST:event_exitBtActionPerformed
+
+    public void exit(){
+        int resp = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+       if(resp == 0){
+           dispose();
+       }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -200,6 +225,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem PeopleMenuIt;
+    private javax.swing.JButton exitBt;
     private javax.swing.JButton intrumentsBt;
     private javax.swing.JMenuItem intrumentsMenuIt;
     private javax.swing.JMenuBar jMenuBar1;
