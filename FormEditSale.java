@@ -219,11 +219,11 @@ public class FormEditSale extends javax.swing.JFrame {
         int id = 0;
         
         try {
-            id = GetArrayId.createGetArrayId().getSaleId(InputExeptionHandler.createInputExeptionHandler().InputInt(idTf.getText())); 
+            id = GetArrayId.createGetArrayId().getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(idTf.getText())); 
         
             Sale s = storage.getSales().get(id);
         
-            s.setProductAmount(InputExeptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+            s.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
             
             s.setProductType(instrumentCb.getSelectedItem().toString());
 

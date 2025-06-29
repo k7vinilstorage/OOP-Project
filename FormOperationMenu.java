@@ -288,7 +288,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
         
         try{
             if(saleCb.isSelected()) {
-                id = GetArrayId.createGetArrayId().getSaleId(InputExeptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
+                id = GetArrayId.createGetArrayId().getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
                 String info = "ID: " + storage.getSales().get(id).getOpId() +
                         "\nBuyer: " + storage.getSales().get(id).getBuyer().getName() +
                         "\nBuyer CPF: " + storage.getSales().get(id).getBuyer().getCpf() + 
@@ -302,7 +302,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
                 Dialogs.createDialogs().infoDialog(info, "Sale Search Results");
             }
             else {
-                id = GetArrayId.createGetArrayId().getAcquisitionId(InputExeptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
+                id = GetArrayId.createGetArrayId().getAcquisitionId(InputExceptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
                 String info = "ID: " + storage.getAcquisitions().get(id).getOpId() +
                         "\nSupplyer: " + storage.getAcquisitions().get(id).getSupplyerName() +
                         "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getName() +

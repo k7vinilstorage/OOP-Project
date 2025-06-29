@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -203,11 +206,13 @@ public class FormAddAcquisition extends javax.swing.JFrame {
 
             id = GetArrayId.createGetArrayId().getEmployeeId(supplyerTf.getText());
             a.setInCharge(storage.getEmployees().get(id));
-            a.setProductAmount(InputExeptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+            a.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
             
             a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount());
 
-            a.setDate("fix");
+            Date data = new Date();
+            
+            a.setDate(data.getDate() + "/" + data.getMonth() + "/" + data.getYear());
 
             storage.setAcquisitionIds(storage.getAcquisitionIds() + 1);
             a.setOpId(storage.getAcquisitionIds());

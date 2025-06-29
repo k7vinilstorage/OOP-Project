@@ -228,8 +228,8 @@ public class FormAddPiano extends javax.swing.JFrame {
             p.setBrand(brandTf.getText());
             p.setBodyType(bodyTf.getText());
             p.setType(typeTf.getText());
-            p.setKeyCount(InputExeptionHandler.createInputExeptionHandler().InputInt(keyTf.getText()));
-            p.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));    
+            p.setKeyCount(InputExceptionHandler.createInputExeptionHandler().InputInt(keyTf.getText()));
+            p.setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));    
             p.setCategory("Keys");
             storage.getPianoStock().add(p);
             

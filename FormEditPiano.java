@@ -227,8 +227,8 @@ public class FormEditPiano extends javax.swing.JFrame {
     private void editPiano() {
         try {
             int id = GetArrayId.createGetArrayId().getPianoId(registeredModelTf.getText());
-            storage.getPianoStock().get(id).setKeyCount(InputExeptionHandler.createInputExeptionHandler().InputInt(keyTf.getText()));
-            storage.getPianoStock().get(id).setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            storage.getPianoStock().get(id).setKeyCount(InputExceptionHandler.createInputExeptionHandler().InputInt(keyTf.getText()));
+            storage.getPianoStock().get(id).setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
             storage.getPianoStock().get(id).setModel(NewModelTf.getText());
             storage.getPianoStock().get(id).setBrand(brandTf.getText());
             storage.getPianoStock().get(id).setBodyType(bodyTf.getText());

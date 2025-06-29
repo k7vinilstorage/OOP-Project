@@ -226,8 +226,8 @@ public class FormAddDrums extends javax.swing.JFrame {
             d.setBrand(brandTf.getText());
             d.setShellMaterial(shellTf.getText());
             d.setType(typeTf.getText());
-            d.setPiecesCount(InputExeptionHandler.createInputExeptionHandler().InputInt(piecesTf.getText()));
-            d.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            d.setPiecesCount(InputExceptionHandler.createInputExeptionHandler().InputInt(piecesTf.getText()));
+            d.setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
             d.setCategory("Percussion");
             storage.getDrumsStock().add(d);
             

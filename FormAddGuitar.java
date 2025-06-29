@@ -226,8 +226,8 @@ public class FormAddGuitar extends javax.swing.JFrame {
             g.setBrand(brandTf.getText());
             g.setShape(shapeTf.getText());
             g.setType(typeTf.getText());
-            g.setStringCount(InputExeptionHandler.createInputExeptionHandler().InputInt(StringTf.getText()));
-            g.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            g.setStringCount(InputExceptionHandler.createInputExeptionHandler().InputInt(StringTf.getText()));
+            g.setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
             g.setCategory("String");
             storage.getGuitarStock().add(g);
             

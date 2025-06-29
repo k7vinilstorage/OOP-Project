@@ -227,8 +227,8 @@ public class FormEditDrums extends javax.swing.JFrame {
     private void editDrums() {
         try {   
             int id = GetArrayId.createGetArrayId().getDrumsId(registeredModelTf.getText());
-            storage.getDrumsStock().get(id).setPiecesCount(InputExeptionHandler.createInputExeptionHandler().InputInt(piecesTf.getText()));
-            storage.getDrumsStock().get(id).setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            storage.getDrumsStock().get(id).setPiecesCount(InputExceptionHandler.createInputExeptionHandler().InputInt(piecesTf.getText()));
+            storage.getDrumsStock().get(id).setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
             storage.getDrumsStock().get(id).setModel(NewModelTf.getText());
             storage.getDrumsStock().get(id).setBrand(brandTf.getText());
             storage.getDrumsStock().get(id).setShellMaterial(shellTf.getText());

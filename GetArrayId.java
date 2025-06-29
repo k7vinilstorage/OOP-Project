@@ -1,6 +1,6 @@
 //João Alberto Benaci Torezan
 
-public class GetArrayId {
+public class GetArrayId implements GetArrayIdInterface{
     
     private BDStorage storage;
 
@@ -17,6 +17,7 @@ public class GetArrayId {
         return garid;
     }
 
+    @Override
     public int getCustomerId(String cpf) throws ItemNotFoundExeption{
         int custumerSize = storage.getCustomers().size();
         for(int i = 0; i < custumerSize; i++) {
@@ -27,6 +28,7 @@ public class GetArrayId {
         throw new ItemNotFoundExeption("Customer");
     }
 
+    @Override
     public int getEmployeeId(String cpf) throws ItemNotFoundExeption{
         int employeeSize = storage.getEmployees().size();
         for(int i = 0; i < employeeSize; i++) {
@@ -37,6 +39,7 @@ public class GetArrayId {
         throw new ItemNotFoundExeption("Employee");
     }
 
+    @Override
     public int getGuitarId(String model) throws ItemNotFoundExeption{
         int guitarSize = storage.getGuitarStock().size();
         for(int i = 0; i < guitarSize; i++) {
@@ -47,6 +50,7 @@ public class GetArrayId {
         throw new ItemNotFoundExeption("Guitar");
     }
 
+    @Override
     public int getPianoId(String model) throws ItemNotFoundExeption{
         int pianoSize = storage.getPianoStock().size();
         for(int i = 0; i < pianoSize; i++) {
@@ -57,6 +61,7 @@ public class GetArrayId {
         throw new ItemNotFoundExeption("Piano");
     }
 
+    @Override
     public int getDrumsId(String model) throws ItemNotFoundExeption{
         int drumsSize = storage.getDrumsStock().size();
         for(int i = 0; i < drumsSize; i++) {
@@ -67,6 +72,7 @@ public class GetArrayId {
         throw new ItemNotFoundExeption("Drums");
     }
 
+    @Override
     public int getAcquisitionId(int OpId) throws ItemNotFoundExeption{
         int acqSize = storage.getAcquisitions().size();
         for(int i = 0; i <  acqSize; i++) {
@@ -77,6 +83,7 @@ public class GetArrayId {
         throw new ItemNotFoundExeption("Acquisition");
     }
 
+    @Override
     public int getSaleId(int OpId) throws ItemNotFoundExeption{
         int saleSize = storage.getSales().size();
         for(int i = 0; i <  saleSize; i++) {

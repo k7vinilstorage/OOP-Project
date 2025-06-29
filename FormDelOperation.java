@@ -115,11 +115,11 @@ public class FormDelOperation extends javax.swing.JFrame {
         
         try{
             if(opCb.getSelectedItem().toString().equals("Sale")) {
-                id = GetArrayId.createGetArrayId().getSaleId(InputExeptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
+                id = GetArrayId.createGetArrayId().getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
                 storage.getSales().remove(id);
             }
             else {
-                id = GetArrayId.createGetArrayId().getAcquisitionId(InputExeptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
+                id = GetArrayId.createGetArrayId().getAcquisitionId(InputExceptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
                 storage.getAcquisitions().remove(id);
             }
             

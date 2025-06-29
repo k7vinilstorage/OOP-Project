@@ -227,8 +227,8 @@ public class FormEditGuitar extends javax.swing.JFrame {
     private void editGuitar() {
         try { 
             int id = GetArrayId.createGetArrayId().getGuitarId(registeredModelTf.getText());
-            storage.getGuitarStock().get(id).setStringCount(InputExeptionHandler.createInputExeptionHandler().InputInt(stringTf.getText()));
-            storage.getGuitarStock().get(id).setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            storage.getGuitarStock().get(id).setStringCount(InputExceptionHandler.createInputExeptionHandler().InputInt(stringTf.getText()));
+            storage.getGuitarStock().get(id).setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
             storage.getGuitarStock().get(id).setModel(NewModelTf.getText());
             storage.getGuitarStock().get(id).setBrand(brandTf.getText());
             storage.getGuitarStock().get(id).setShape(shapeTf.getText());

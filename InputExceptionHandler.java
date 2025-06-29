@@ -7,19 +7,20 @@
  *
  * @author joao
  */
-public class InputExeptionHandler {
+public class InputExceptionHandler implements InputExceptionHandlerInterface{
     
-    private static InputExeptionHandler i;
+    private static InputExceptionHandler i;
     
-    private InputExeptionHandler() {}
+    private InputExceptionHandler() {}
     
-    public static InputExeptionHandler createInputExeptionHandler() {
+    public static InputExceptionHandler createInputExeptionHandler() {
         if(i == null) {
-            i = new InputExeptionHandler();
+            i = new InputExceptionHandler();
         }
         return i;
     }
     
+    @Override
     public int InputInt(String input) throws IntInputErrorException{
 
         int iRet = 0;
@@ -33,6 +34,7 @@ public class InputExeptionHandler {
         }
     }
     
+    @Override
     public float InputFloat(String input) throws FloatInputErrorException{
 
         float fRet = 0;

@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -208,11 +211,13 @@ public class FormAddSale extends javax.swing.JFrame {
             id = GetArrayId.createGetArrayId().getCustomerId(custumerCpfTf.getText());
             s.setBuyer(storage.getCustomers().get(id));
             
-            s.setProductAmount(InputExeptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+            s.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
             
             s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
 
-            s.setDate("fix");
+            Date data = new Date();
+            
+            s.setDate(data.getDate() + "/" + data.getMonth() + "/" + data.getYear());
 
             storage.setSaleIds(storage.getSaleIds() + 1);
             s.setOpId(storage.getSaleIds());

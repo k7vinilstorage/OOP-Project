@@ -219,11 +219,11 @@ public class FormEditAcquisition extends javax.swing.JFrame {
         int id = 0;
         
         try {   
-            id = GetArrayId.createGetArrayId().getSaleId(InputExeptionHandler.createInputExeptionHandler().InputInt(idTf.getText()));
+            id = GetArrayId.createGetArrayId().getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(idTf.getText()));
             
             Acquisition a = storage.getAcquisitions().get(id);
             
-            a.setProductAmount(InputExeptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+            a.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
 
             a.setProductType(instrumentCb.getSelectedItem().toString());
 
