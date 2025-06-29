@@ -134,6 +134,11 @@ public class OperationMenu extends javax.swing.JFrame {
         saleMenu.add(addSale);
 
         editSale.setText("Edit Sale");
+        editSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSaleActionPerformed(evt);
+            }
+        });
         saleMenu.add(editSale);
 
         operationMb.add(saleMenu);
@@ -149,6 +154,11 @@ public class OperationMenu extends javax.swing.JFrame {
         acquisitionMenu.add(addAcquisition);
 
         editAcquisition.setText("Edit Acquisition");
+        editAcquisition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAcquisitionActionPerformed(evt);
+            }
+        });
         acquisitionMenu.add(editAcquisition);
 
         operationMb.add(acquisitionMenu);
@@ -227,6 +237,14 @@ public class OperationMenu extends javax.swing.JFrame {
     private void removeOpBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeOpBtActionPerformed
         DelOperation.createDelOperation().setVisible(true);
     }//GEN-LAST:event_removeOpBtActionPerformed
+
+    private void editSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSaleActionPerformed
+        EditSale.createEditSale().setVisible(true);
+    }//GEN-LAST:event_editSaleActionPerformed
+
+    private void editAcquisitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAcquisitionActionPerformed
+        EditAcquisition.createEditAcquisition().setVisible(true);
+    }//GEN-LAST:event_editAcquisitionActionPerformed
 
     private void listAcquisitions() {
         DefaultTableModel modTable = (DefaultTableModel)AquisitionTb.getModel();

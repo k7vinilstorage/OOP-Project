@@ -53,7 +53,7 @@ public class InstrumentMenu extends javax.swing.JFrame {
         guitarTb = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         drumsTb = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        removeBt = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         guitarMenu = new javax.swing.JMenu();
         addGuitar = new javax.swing.JMenuItem();
@@ -163,10 +163,10 @@ public class InstrumentMenu extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(drumsTb);
 
-        jButton1.setText("Remove Instrument...");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        removeBt.setText("Remove Instrument...");
+        removeBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                removeBtActionPerformed(evt);
             }
         });
 
@@ -253,7 +253,7 @@ public class InstrumentMenu extends javax.swing.JFrame {
                         .addComponent(modelTf)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(removeBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(instrumentCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -273,7 +273,7 @@ public class InstrumentMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(instrumentLb)
-                    .addComponent(jButton1))
+                    .addComponent(removeBt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -301,9 +301,7 @@ public class InstrumentMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void searchBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtActionPerformed
-        listGuitar();
-        listPiano();
-        listDrums();
+        searchInstrumentByModel();
     }//GEN-LAST:event_searchBtActionPerformed
 
     private void addPianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPianoActionPerformed
@@ -326,9 +324,9 @@ public class InstrumentMenu extends javax.swing.JFrame {
         EditPiano.createEditPiano().setVisible(true);
     }//GEN-LAST:event_editPianoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
         DelInstrument.createDelInstrument().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_removeBtActionPerformed
 
     private void listGuitar() {
         DefaultTableModel modTable = (DefaultTableModel)guitarTb.getModel();
@@ -361,6 +359,53 @@ public class InstrumentMenu extends javax.swing.JFrame {
            modTable.insertRow(linePos, new Object[]{d.getModel(), d.getShellMaterial(), d.getBrand()});
            linePos++;
         }
+    }
+    
+    private void searchInstrumentByModel() {
+        int id = 0;
+        String info = "";
+        
+        switch(instrumentCb.getSelectedItem().toString()) {
+            case "Guitar":
+                id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+                
+                info = "Model: " + storage.getGuitarStock().get(id).getModel() +
+                        "\nBrand: " + storage.getGuitarStock().get(id).getBrand() +
+                        "\nShape: " + storage.getGuitarStock().get(id).getShape() + 
+                        "\nType: " + storage.getGuitarStock().get(id).getType() + 
+                        "\nCategory: " + storage.getGuitarStock().get(id).getCategory() +
+                        "\nString Count: " + storage.getGuitarStock().get(id).getStringCount() + 
+                        "\nAvailability: " + storage.getGuitarStock().get(id).getAvailability() +
+                        "\nPrice: " + storage.getGuitarStock().get(id).getPrice();
+                break;
+            case "Piano":
+                id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
+                
+                info = "Model: " + storage.getPianoStock().get(id).getModel() +
+                        "\nBrand: " + storage.getPianoStock().get(id).getBrand() +
+                        "\nBody Type: " + storage.getPianoStock().get(id).getBodyType()+ 
+                        "\nType: " + storage.getPianoStock().get(id).getType() + 
+                        "\nCategory: " + storage.getPianoStock().get(id).getCategory() +
+                        "\nKey Count: " + storage.getPianoStock().get(id).getKeyCount()+ 
+                        "\nAvailability: " + storage.getPianoStock().get(id).getAvailability() +
+                        "\nPrice: " + storage.getPianoStock().get(id).getPrice();
+                break;
+            case "Drums":
+                id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
+                
+                info = "Model: " + storage.getDrumsStock().get(id).getModel() +
+                        "\nBrand: " + storage.getDrumsStock().get(id).getBrand() +
+                        "\nShell Material: " + storage.getDrumsStock().get(id).getShellMaterial()+ 
+                        "\nType: " + storage.getDrumsStock().get(id).getType() + 
+                        "\nCategory: " + storage.getDrumsStock().get(id).getCategory() +
+                        "\nPieces Count: " + storage.getDrumsStock().get(id).getPiecesCount() + 
+                        "\nAvailability: " + storage.getDrumsStock().get(id).getAvailability() +
+                        "\nPrice: " + storage.getDrumsStock().get(id).getPrice();
+                break;
+        }
+        
+        Dialogs.createDialogs().infoDialog(info, instrumentCb.getSelectedItem().toString() + " Search Results");
+        
     }
     
     /**
@@ -411,7 +456,6 @@ public class InstrumentMenu extends javax.swing.JFrame {
     private javax.swing.JTable guitarTb;
     private javax.swing.JComboBox<String> instrumentCb;
     private javax.swing.JLabel instrumentLb;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -422,6 +466,7 @@ public class InstrumentMenu extends javax.swing.JFrame {
     private javax.swing.JTextField modelTf;
     private javax.swing.JMenu pianoMenu;
     private javax.swing.JTable pianoTb;
+    private javax.swing.JButton removeBt;
     private javax.swing.JButton searchBt;
     // End of variables declaration//GEN-END:variables
 }

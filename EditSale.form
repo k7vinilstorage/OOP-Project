@@ -24,36 +24,53 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="titleTf" alignment="1" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="registeredCpfLb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="registeredCpfTf" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="newLb" min="-2" max="-2" attributes="0"/>
-                  <Component id="registeredLb" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nameLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="phoneLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="newCpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="newCpfTf" max="32767" attributes="0"/>
-                          <Component id="nameTf" alignment="0" max="32767" attributes="0"/>
-                          <Component id="phoneTf" alignment="0" pref="280" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="closeBt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="saveBt" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="idLb" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="idTf" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="newLb" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="modelLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="employeeCpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="custumerCpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="prodAmountLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="employeeCpfTf" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="custumerCpfTf" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="productAmountTf" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="modelTf" min="-2" pref="248" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="instrumentCb" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,35 +80,39 @@
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="titleTf" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="registeredLb" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="registeredCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="registeredCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idTf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="newLb" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="modelLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="modelTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="instrumentCb" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="employeeCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="employeeCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="custumerCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="custumerCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="newCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="prodAmountLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="productAmountTf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nameLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nameTf" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="phoneLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="phoneTf" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="saveBt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="closeBt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,43 +124,7 @@
           <Font name="Fira Sans" size="24" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="EDIT CUSTUMER"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nameTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert new Name"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTfActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="nameLb">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Name:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="newCpfLb">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CPF:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="newCpfTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert new CPF"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCpfTfActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="phoneLb">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Phone:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="phoneTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert new Phone"/>
+        <Property name="text" type="java.lang.String" value="EDIT SALE"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="closeBt">
@@ -155,25 +140,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="registeredLb">
+    <Component class="javax.swing.JLabel" name="idLb">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Fira Sans" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Registered CPF:"/>
+        <Property name="text" type="java.lang.String" value="Sale ID: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="registeredCpfLb">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CPF:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="registeredCpfTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert CPF"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="idTf">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registeredCpfTfActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idTfActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="newLb">
@@ -183,6 +157,57 @@
         </Property>
         <Property name="text" type="java.lang.String" value="New Information (Leave blank for no changes):"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="employeeCpfLb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Employee CPF:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="custumerCpfLb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Custumer CPF:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="prodAmountLb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Product Amount:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="modelTf">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelTfActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="employeeCpfTf">
+    </Component>
+    <Component class="javax.swing.JTextField" name="custumerCpfTf">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="custumerCpfTfActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="productAmountTf">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="productAmountTfActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="modelLb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Instrument Model:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="instrumentCb">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Guitar"/>
+            <StringItem index="1" value="Piano"/>
+            <StringItem index="2" value="Drums"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -7,7 +7,7 @@
  *
  * @author joao
  */
-public class EditCustumer extends javax.swing.JFrame {
+public class EditAcquisition extends javax.swing.JFrame {
 
     /**
      * Creates new form EditCustumer
@@ -15,15 +15,15 @@ public class EditCustumer extends javax.swing.JFrame {
     
     private Storage storage = Storage.createStorage();
     
-    private static EditCustumer e;
+    private static EditAcquisition e;
     
-    private EditCustumer() {
+    private EditAcquisition() {
         initComponents();
     }
 
-    public static EditCustumer createEditCustumer() {
+    public static EditAcquisition createEditAcquisition() {
         if(e == null) {
-            e = new EditCustumer();
+            e = new EditAcquisition();
         }
         return e;
     }
@@ -38,46 +38,26 @@ public class EditCustumer extends javax.swing.JFrame {
     private void initComponents() {
 
         titleTf = new javax.swing.JLabel();
-        nameTf = new javax.swing.JTextField();
-        nameLb = new javax.swing.JLabel();
-        newCpfLb = new javax.swing.JLabel();
-        newCpfTf = new javax.swing.JTextField();
-        phoneLb = new javax.swing.JLabel();
-        phoneTf = new javax.swing.JTextField();
         closeBt = new javax.swing.JButton();
         saveBt = new javax.swing.JButton();
-        registeredLb = new javax.swing.JLabel();
-        registeredCpfLb = new javax.swing.JLabel();
-        registeredCpfTf = new javax.swing.JTextField();
+        idLb = new javax.swing.JLabel();
+        idTf = new javax.swing.JTextField();
         newLb = new javax.swing.JLabel();
+        employeeCpfLb = new javax.swing.JLabel();
+        custumerCpfLb = new javax.swing.JLabel();
+        prodAmountLb = new javax.swing.JLabel();
+        modelTf = new javax.swing.JTextField();
+        employeeCpfTf = new javax.swing.JTextField();
+        custumerCpfTf = new javax.swing.JTextField();
+        productAmountTf = new javax.swing.JTextField();
+        modelLb = new javax.swing.JLabel();
+        instrumentCb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTf.setText("EDIT CUSTUMER");
-
-        nameTf.setText("Insert new Name");
-        nameTf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTfActionPerformed(evt);
-            }
-        });
-
-        nameLb.setText("Name:");
-
-        newCpfLb.setText("CPF:");
-
-        newCpfTf.setText("Insert new CPF");
-        newCpfTf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newCpfTfActionPerformed(evt);
-            }
-        });
-
-        phoneLb.setText("Phone:");
-
-        phoneTf.setText("Insert new Phone");
+        titleTf.setText("EDIT ACQUISITION");
 
         closeBt.setText("Close");
 
@@ -88,20 +68,44 @@ public class EditCustumer extends javax.swing.JFrame {
             }
         });
 
-        registeredLb.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
-        registeredLb.setText("Registered CPF:");
+        idLb.setText("Acquisition ID: ");
 
-        registeredCpfLb.setText("CPF:");
-
-        registeredCpfTf.setText("Insert CPF");
-        registeredCpfTf.addActionListener(new java.awt.event.ActionListener() {
+        idTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registeredCpfTfActionPerformed(evt);
+                idTfActionPerformed(evt);
             }
         });
 
         newLb.setFont(new java.awt.Font("Fira Sans", 0, 15)); // NOI18N
         newLb.setText("New Information (Leave blank for no changes):");
+
+        employeeCpfLb.setText("Employee CPF:");
+
+        custumerCpfLb.setText("Custumer CPF:");
+
+        prodAmountLb.setText("Product Amount:");
+
+        modelTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modelTfActionPerformed(evt);
+            }
+        });
+
+        custumerCpfTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custumerCpfTfActionPerformed(evt);
+            }
+        });
+
+        productAmountTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productAmountTfActionPerformed(evt);
+            }
+        });
+
+        modelLb.setText("Instrument Model:");
+
+        instrumentCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guitar", "Piano", "Drums" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,29 +113,40 @@ public class EditCustumer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titleTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(registeredCpfLb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(registeredCpfTf))
-                    .addComponent(newLb)
-                    .addComponent(registeredLb)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameLb)
-                            .addComponent(phoneLb)
-                            .addComponent(newCpfLb))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newCpfTf)
-                            .addComponent(nameTf)
-                            .addComponent(phoneTf, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(closeBt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(saveBt)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(saveBt))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(idLb)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(idTf))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newLb)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(modelLb)
+                                            .addComponent(employeeCpfLb)
+                                            .addComponent(custumerCpfLb)
+                                            .addComponent(prodAmountLb))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(employeeCpfTf, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(custumerCpfTf, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(productAmountTf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(modelTf, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(instrumentCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,60 +154,94 @@ public class EditCustumer extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(titleTf)
                 .addGap(18, 18, 18)
-                .addComponent(registeredLb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registeredCpfLb)
-                    .addComponent(registeredCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idLb)
+                    .addComponent(idTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(newLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modelLb)
+                    .addComponent(modelTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instrumentCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(employeeCpfLb)
+                    .addComponent(employeeCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(custumerCpfLb)
+                    .addComponent(custumerCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newCpfLb)
-                    .addComponent(newCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameLb)
-                    .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneLb)
-                    .addComponent(phoneTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(prodAmountLb)
+                    .addComponent(productAmountTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveBt)
                     .addComponent(closeBt))
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTfActionPerformed
+    private void idTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTfActionPerformed
-
-    private void newCpfTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCpfTfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newCpfTfActionPerformed
-
-    private void registeredCpfTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registeredCpfTfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registeredCpfTfActionPerformed
+    }//GEN-LAST:event_idTfActionPerformed
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
-        editCustumer();
-        nameTf.setText("");
-        registeredCpfTf.setText("");
-        phoneTf.setText("");
-        newCpfTf.setText("");
+        editAcquisition();
+        idTf.setText("");
+        modelTf.setText("");
+        employeeCpfTf.setText("");
+        custumerCpfTf.setText("");
+        productAmountTf.setText("");
     }//GEN-LAST:event_saveBtActionPerformed
 
-    private void editCustumer() {
-        int id = GetArrayId.createGetArrayId().getCustumerId(registeredCpfTf.getText());
-        storage.getCustomers().get(id).setName(nameTf.getText());
-        storage.getCustomers().get(id).setCpf(newCpfTf.getText());
-        storage.getCustomers().get(id).setPhone(phoneTf.getText());
+    private void modelTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modelTfActionPerformed
+
+    private void custumerCpfTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custumerCpfTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_custumerCpfTfActionPerformed
+
+    private void productAmountTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productAmountTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productAmountTfActionPerformed
+
+    private void editAcquisition() {
+        int id = GetArrayId.createGetArrayId().getSaleId(Integer.parseInt(idTf.getText()));
+        Acquisition a = storage.getAcquisitions().get(id);
+        
+        a.setProductType(instrumentCb.getSelectedItem().toString());
+        
+        switch(instrumentCb.getSelectedItem().toString()) {
+            case "Guitar":
+                id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+                a.setProduct(storage.getGuitarStock().get(id));
+                break;
+            case "Piano":
+                id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
+                a.setProduct(storage.getPianoStock().get(id));
+                break;
+            case "Drums":
+                id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
+                a.setProduct(storage.getDrumsStock().get(id));
+                break;
+        }
+        
+        id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
+        a.setInCharge(storage.getEmployees().get(id));
+               
+        a.setProductAmount(Integer.parseInt(productAmountTf.getText()));
+        
+        a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount());
+        
+        a.setDate("fix");
+
+        a.getProduct().setAvailability(a.getProduct().getAvailability() - a.getProductAmount()); 
     }
     
     /**
@@ -225,23 +274,25 @@ public class EditCustumer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditCustumer().setVisible(true);
+                new EditAcquisition().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeBt;
-    private javax.swing.JLabel nameLb;
-    private javax.swing.JTextField nameTf;
-    private javax.swing.JLabel newCpfLb;
-    private javax.swing.JTextField newCpfTf;
+    private javax.swing.JLabel custumerCpfLb;
+    private javax.swing.JTextField custumerCpfTf;
+    private javax.swing.JLabel employeeCpfLb;
+    private javax.swing.JTextField employeeCpfTf;
+    private javax.swing.JLabel idLb;
+    private javax.swing.JTextField idTf;
+    private javax.swing.JComboBox<String> instrumentCb;
+    private javax.swing.JLabel modelLb;
+    private javax.swing.JTextField modelTf;
     private javax.swing.JLabel newLb;
-    private javax.swing.JLabel phoneLb;
-    private javax.swing.JTextField phoneTf;
-    private javax.swing.JLabel registeredCpfLb;
-    private javax.swing.JTextField registeredCpfTf;
-    private javax.swing.JLabel registeredLb;
+    private javax.swing.JLabel prodAmountLb;
+    private javax.swing.JTextField productAmountTf;
     private javax.swing.JButton saveBt;
     private javax.swing.JLabel titleTf;
     // End of variables declaration//GEN-END:variables
