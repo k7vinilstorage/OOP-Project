@@ -114,9 +114,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nameTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert new Name"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTfActionPerformed"/>
       </Events>
@@ -132,9 +129,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="newCpfTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert new CPF"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCpfTfActionPerformed"/>
       </Events>
@@ -145,9 +139,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="phoneTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert new Phone"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="closeBt">
       <Properties>
@@ -176,9 +167,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="registeredCpfTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert CPF"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registeredCpfTfActionPerformed"/>
       </Events>
@@ -192,9 +180,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="roleTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert new Role"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roleTfActionPerformed"/>
       </Events>

@@ -211,6 +211,9 @@ public class FormEditPiano extends javax.swing.JFrame {
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
         editPiano();
+    }//GEN-LAST:event_saveBtActionPerformed
+
+    private void cleanTf() {
         brandTf.setText("");
         registeredModelTf.setText("");
         bodyTf.setText("");
@@ -218,8 +221,8 @@ public class FormEditPiano extends javax.swing.JFrame {
         keyTf.setText("");
         priceTf.setText("");
         typeTf.setText("");
-    }//GEN-LAST:event_saveBtActionPerformed
-
+    }
+    
     private void editPiano() {
         try {
             int id = GetArrayId.createGetArrayId().getPianoId(registeredModelTf.getText());
@@ -229,9 +232,14 @@ public class FormEditPiano extends javax.swing.JFrame {
             storage.getPianoStock().get(id).setBrand(brandTf.getText());
             storage.getPianoStock().get(id).setBodyType(bodyTf.getText());
             storage.getPianoStock().get(id).setType(typeTf.getText());
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("key count");
+        }
+        catch(FloatInputErrorException fiee) {
+            fiee.floatErr("price");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

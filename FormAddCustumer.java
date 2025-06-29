@@ -55,16 +55,11 @@ public class FormAddCustumer extends javax.swing.JFrame {
 
         phoneLb.setText("Phone:");
 
-        nameTf.setText("Insert Name");
         nameTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTfActionPerformed(evt);
             }
         });
-
-        cpfTf.setText("Insert CPF");
-
-        phoneTf.setText("Insert Phone");
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

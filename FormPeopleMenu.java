@@ -97,7 +97,6 @@ public class FormPeopleMenu extends javax.swing.JFrame {
             }
         });
 
-        cpfTf.setText("Insert CPF");
         cpfTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cpfTfActionPerformed(evt);
@@ -301,6 +300,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
                             "\nPurchase Count: " + storage.getCustomers().get(id).getPurchaseCount();
                 Dialogs.createDialogs().infoDialog(info, "Custumer search results");
             }
+            cpfTf.setText("");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

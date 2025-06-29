@@ -161,10 +161,6 @@ public class FormAddAcquisition extends javax.swing.JFrame {
 
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
         registerSale();
-        modelTf.setText("");
-        supplyerTf.setText("");
-        custumerCpfTf.setText("");
-        productAmountTf.setText("");
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void productAmountTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productAmountTfActionPerformed
@@ -175,6 +171,13 @@ public class FormAddAcquisition extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_custumerCpfTfActionPerformed
 
+    private void cleanTf() {
+        modelTf.setText("");
+        supplyerTf.setText("");
+        custumerCpfTf.setText("");
+        productAmountTf.setText("");
+    }
+    
     private void registerSale() {
         Acquisition a = new Acquisition();
         int id = 0;
@@ -211,9 +214,11 @@ public class FormAddAcquisition extends javax.swing.JFrame {
             a.getProduct().setAvailability(a.getProduct().getAvailability() + a.getProductAmount()); 
 
             storage.getAcquisitions().add(a);
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("product amount");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

@@ -57,7 +57,6 @@ public class FormEditCustumer extends javax.swing.JFrame {
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleTf.setText("EDIT CUSTUMER");
 
-        nameTf.setText("Insert new Name");
         nameTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTfActionPerformed(evt);
@@ -68,7 +67,6 @@ public class FormEditCustumer extends javax.swing.JFrame {
 
         newCpfLb.setText("CPF:");
 
-        newCpfTf.setText("Insert new CPF");
         newCpfTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newCpfTfActionPerformed(evt);
@@ -76,8 +74,6 @@ public class FormEditCustumer extends javax.swing.JFrame {
         });
 
         phoneLb.setText("Phone:");
-
-        phoneTf.setText("Insert new Phone");
 
         closeBt.setText("Close");
 
@@ -93,7 +89,6 @@ public class FormEditCustumer extends javax.swing.JFrame {
 
         registeredCpfLb.setText("CPF:");
 
-        registeredCpfTf.setText("Insert CPF");
         registeredCpfTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registeredCpfTfActionPerformed(evt);
@@ -182,18 +177,23 @@ public class FormEditCustumer extends javax.swing.JFrame {
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
         editCustumer();
+    }//GEN-LAST:event_saveBtActionPerformed
+
+    private void cleanTf() {
         nameTf.setText("");
         registeredCpfTf.setText("");
         phoneTf.setText("");
         newCpfTf.setText("");
-    }//GEN-LAST:event_saveBtActionPerformed
-
+    }
+    
     private void editCustumer() {
         try{
             int id = GetArrayId.createGetArrayId().getCustumerId(registeredCpfTf.getText());
             storage.getCustomers().get(id).setName(nameTf.getText());
             storage.getCustomers().get(id).setCpf(newCpfTf.getText());
             storage.getCustomers().get(id).setPhone(phoneTf.getText());
+            
+            cleanTf();
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

@@ -211,6 +211,9 @@ public class FormEditDrums extends javax.swing.JFrame {
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
         editDrums();
+    }//GEN-LAST:event_saveBtActionPerformed
+
+    private void cleanTf() {
         brandTf.setText("");
         registeredModelTf.setText("");
         shellTf.setText("");
@@ -218,8 +221,8 @@ public class FormEditDrums extends javax.swing.JFrame {
         piecesTf.setText("");
         priceTf.setText("");
         typeTf.setText("");
-    }//GEN-LAST:event_saveBtActionPerformed
-
+    }
+    
     private void editDrums() {
         try {   
             int id = GetArrayId.createGetArrayId().getDrumsId(registeredModelTf.getText());
@@ -229,9 +232,14 @@ public class FormEditDrums extends javax.swing.JFrame {
             storage.getDrumsStock().get(id).setBrand(brandTf.getText());
             storage.getDrumsStock().get(id).setShellMaterial(shellTf.getText());
             storage.getDrumsStock().get(id).setType(typeTf.getText());
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("pieces count");
+        }
+        catch(FloatInputErrorException fiee) {
+            fiee.floatErr("price");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

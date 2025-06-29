@@ -211,6 +211,9 @@ public class FormEditGuitar extends javax.swing.JFrame {
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
         editGuitar();
+    }//GEN-LAST:event_saveBtActionPerformed
+
+    private void cleanTf() {
         brandTf.setText("");
         registeredModelTf.setText("");
         shapeTf.setText("");
@@ -218,8 +221,8 @@ public class FormEditGuitar extends javax.swing.JFrame {
         stringTf.setText("");
         priceTf.setText("");
         typeTf.setText("");
-    }//GEN-LAST:event_saveBtActionPerformed
-
+    }
+    
     private void editGuitar() {
         try { 
             int id = GetArrayId.createGetArrayId().getGuitarId(registeredModelTf.getText());
@@ -229,9 +232,14 @@ public class FormEditGuitar extends javax.swing.JFrame {
             storage.getGuitarStock().get(id).setBrand(brandTf.getText());
             storage.getGuitarStock().get(id).setShape(shapeTf.getText());
             storage.getGuitarStock().get(id).setType(typeTf.getText());
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("string count");
+        }
+        catch(FloatInputErrorException fiee) {
+            fiee.floatErr("price");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

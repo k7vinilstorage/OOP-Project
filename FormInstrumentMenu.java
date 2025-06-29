@@ -78,7 +78,6 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
 
         modelLb.setText("Search Instrument by Model:");
 
-        modelTf.setText("Insert Instrument Model");
         modelTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modelTfActionPerformed(evt);
@@ -406,6 +405,8 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
             }
 
             Dialogs.createDialogs().infoDialog(info, instrumentCb.getSelectedItem().toString() + " Search Results");
+            
+            modelTf.setText("");
         }
         catch (ItemNotFoundExeption infe){
             infe.itemNotFoundErr();

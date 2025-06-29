@@ -95,22 +95,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nameTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert Name"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTfActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="cpfTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert CPF"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="phoneTf">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert Phone"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="titleTf">
       <Properties>

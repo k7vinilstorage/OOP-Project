@@ -1,16 +1,12 @@
 //João Alberto Benaci Torezan
 
-public class InputErrorException extends Exception{
+public class IntInputErrorException extends Exception{
     
     private Dialogs dialogs = Dialogs.createDialogs();
     
-    public InputErrorException() {}
+    public IntInputErrorException() {}
 
-    public void intErr() {
-        dialogs.errorDialog("The value must be an Int!", "Number Format Error");
-    }
-    
-    public void floatErr() {
-        dialogs.errorDialog("The value must be a Float!", "Number Format Error");
+    public void intErr(String value) {
+        dialogs.errorDialog("The value " + value +" must be an Int!", "Number Format Error");
     }
 }

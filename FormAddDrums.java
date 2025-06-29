@@ -191,12 +191,6 @@ public class FormAddDrums extends javax.swing.JFrame {
 
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
         registerDrums();
-        modelTf.setText("");
-        brandTf.setText("");
-        shellTf.setText("");
-        typeTf.setText("");
-        piecesTf.setText("");
-        priceTf.setText("");
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void priceTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTfActionPerformed
@@ -215,6 +209,15 @@ public class FormAddDrums extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_shellTfActionPerformed
 
+    private void cleanTf() {
+        modelTf.setText("");
+        brandTf.setText("");
+        shellTf.setText("");
+        typeTf.setText("");
+        piecesTf.setText("");
+        priceTf.setText("");
+    }
+    
     private void registerDrums() {
         Drums d = new Drums();
         try {
@@ -226,9 +229,14 @@ public class FormAddDrums extends javax.swing.JFrame {
             d.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
             d.setCategory("Percussion");
             storage.getDrumsStock().add(d);
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("pieces count");
+        }
+        catch(FloatInputErrorException fiee) {
+            fiee.floatErr("price");
         }
     }
     

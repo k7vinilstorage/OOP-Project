@@ -59,7 +59,6 @@ public class FormEditEmployee extends javax.swing.JFrame {
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleTf.setText("EDIT EMPLOYEE");
 
-        nameTf.setText("Insert new Name");
         nameTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTfActionPerformed(evt);
@@ -70,7 +69,6 @@ public class FormEditEmployee extends javax.swing.JFrame {
 
         newCpfLb.setText("CPF:");
 
-        newCpfTf.setText("Insert new CPF");
         newCpfTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newCpfTfActionPerformed(evt);
@@ -78,8 +76,6 @@ public class FormEditEmployee extends javax.swing.JFrame {
         });
 
         phoneLb.setText("Phone:");
-
-        phoneTf.setText("Insert new Phone");
 
         closeBt.setText("Close");
 
@@ -95,7 +91,6 @@ public class FormEditEmployee extends javax.swing.JFrame {
 
         registeredCpfLb.setText("CPF:");
 
-        registeredCpfTf.setText("Insert CPF");
         registeredCpfTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registeredCpfTfActionPerformed(evt);
@@ -105,7 +100,6 @@ public class FormEditEmployee extends javax.swing.JFrame {
         newLb.setFont(new java.awt.Font("Fira Sans", 0, 15)); // NOI18N
         newLb.setText("New Information (Leave blank for no changes):");
 
-        roleTf.setText("Insert new Role");
         roleTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 roleTfActionPerformed(evt);
@@ -203,20 +197,24 @@ public class FormEditEmployee extends javax.swing.JFrame {
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
         editEmployee();
+    }//GEN-LAST:event_saveBtActionPerformed
+
+    private void cleanTf() {
         nameTf.setText("");
         registeredCpfTf.setText("");
         phoneTf.setText("");
         newCpfTf.setText("");
         roleTf.setText("");
-    }//GEN-LAST:event_saveBtActionPerformed
-
-
+    }
+    
     private void editEmployee() {
         try{
             int id = GetArrayId.createGetArrayId().getEmployeeId(registeredCpfTf.getText());
             storage.getEmployees().get(id).setName(nameTf.getText());
             storage.getEmployees().get(id).setCpf(newCpfTf.getText());
             storage.getEmployees().get(id).setPhone(phoneTf.getText());
+            
+            cleanTf();
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

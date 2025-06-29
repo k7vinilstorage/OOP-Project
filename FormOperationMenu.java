@@ -299,9 +299,11 @@ public class FormOperationMenu extends javax.swing.JFrame {
                         "\nDate: " + storage.getAcquisitions().get(id).getDate();
                 Dialogs.createDialogs().infoDialog(info, "Acquisition Search Results");
             }
+            
+            operationTf.setText("");
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("id");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

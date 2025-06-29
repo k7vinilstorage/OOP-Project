@@ -192,11 +192,6 @@ public class FormEditSale extends javax.swing.JFrame {
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
         editSale();
-        idTf.setText("");
-        modelTf.setText("");
-        employeeCpfTf.setText("");
-        custumerCpfTf.setText("");
-        productAmountTf.setText("");
     }//GEN-LAST:event_saveBtActionPerformed
 
     private void modelTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelTfActionPerformed
@@ -211,6 +206,14 @@ public class FormEditSale extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_productAmountTfActionPerformed
 
+    private void cleanTf() {
+        idTf.setText("");
+        modelTf.setText("");
+        employeeCpfTf.setText("");
+        custumerCpfTf.setText("");
+        productAmountTf.setText("");
+    }
+    
     private void editSale() {
         int id = 0;
         
@@ -251,9 +254,11 @@ public class FormEditSale extends javax.swing.JFrame {
 
             s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
             s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("id, product amount");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();

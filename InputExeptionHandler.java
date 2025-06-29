@@ -20,31 +20,29 @@ public class InputExeptionHandler {
         return i;
     }
     
-    public int InputInt(String input) throws InputErrorException{
+    public int InputInt(String input) throws IntInputErrorException{
 
-        int iRet = -1;
+        int iRet = 0;
 
         try {
             iRet = Integer.parseInt(input);
+            return iRet;
         } 
         catch (NumberFormatException nfe) {
-            throw new InputErrorException();
+            throw new IntInputErrorException();
         }
-
-        return iRet;
     }
     
-    public float InputFloat(String input) throws InputErrorException{
+    public float InputFloat(String input) throws FloatInputErrorException{
 
-        float fRet = -1;
+        float fRet = 0;
 
         try {
             fRet = Float.parseFloat(input);
+            return fRet;
         } 
         catch (NumberFormatException nfe) {
-            throw new InputErrorException();
+            throw new FloatInputErrorException();
         }
-
-        return fRet;
     }
 }

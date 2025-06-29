@@ -193,12 +193,6 @@ public class FormAddPiano extends javax.swing.JFrame {
 
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
         registerPiano();
-        modelTf.setText("");
-        brandTf.setText("");
-        bodyTf.setText("");
-        typeTf.setText("");
-        keyTf.setText("");
-        priceTf.setText("");
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void priceTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTfActionPerformed
@@ -217,6 +211,15 @@ public class FormAddPiano extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bodyTfActionPerformed
 
+    private void cleanTf() {
+        modelTf.setText("");
+        brandTf.setText("");
+        bodyTf.setText("");
+        typeTf.setText("");
+        keyTf.setText("");
+        priceTf.setText("");
+    }
+    
     private void registerPiano() {
         Piano p = new Piano();
         try {
@@ -228,9 +231,14 @@ public class FormAddPiano extends javax.swing.JFrame {
             p.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));    
             p.setCategory("Keys");
             storage.getPianoStock().add(p);
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("key count");
+        }
+        catch(FloatInputErrorException fiee) {
+            fiee.floatErr("price");
         }
     }
     

@@ -121,9 +121,11 @@ public class FormDelOperation extends javax.swing.JFrame {
                 id = GetArrayId.createGetArrayId().getAcquisitionId(InputExeptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
                 storage.getAcquisitions().remove(id);
             }
+            
+            opTf.setText("");
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("id");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
@@ -133,7 +135,6 @@ public class FormDelOperation extends javax.swing.JFrame {
     
     private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
         removeOperation();
-        opTf.setText("");
     }//GEN-LAST:event_removeBtActionPerformed
 
     private void opTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opTfActionPerformed

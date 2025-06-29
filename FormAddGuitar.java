@@ -191,12 +191,6 @@ public class FormAddGuitar extends javax.swing.JFrame {
 
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
         registerGuitar();
-        modelTf.setText("");
-        brandTf.setText("");
-        shapeTf.setText("");
-        typeTf.setText("");
-        StringTf.setText("");
-        priceTf.setText("");
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void priceTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTfActionPerformed
@@ -215,6 +209,15 @@ public class FormAddGuitar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_shapeTfActionPerformed
 
+    private void cleanTf() {
+        modelTf.setText("");
+        brandTf.setText("");
+        shapeTf.setText("");
+        typeTf.setText("");
+        StringTf.setText("");
+        priceTf.setText("");
+    }
+    
     private void registerGuitar() {
         Guitar g = new Guitar();
         try {
@@ -226,9 +229,14 @@ public class FormAddGuitar extends javax.swing.JFrame {
             g.setPrice(InputExeptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
             g.setCategory("String");
             storage.getGuitarStock().add(g);
+            
+            cleanTf();
         }
-        catch(InputErrorException iee) {
-            iee.intErr();
+        catch(IntInputErrorException iee) {
+            iee.intErr("string count");
+        }
+        catch(FloatInputErrorException fiee) {
+            fiee.floatErr("price");
         }
         
     }

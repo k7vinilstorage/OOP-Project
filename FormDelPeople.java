@@ -52,8 +52,6 @@ public class FormDelPeople extends javax.swing.JFrame {
 
         cpfLb.setText("CPF:");
 
-        cpfTf.setText("Insert CPF");
-
         closeBt.setText("Close");
 
         removeBt.setText("Remove");
@@ -117,6 +115,8 @@ public class FormDelPeople extends javax.swing.JFrame {
                 id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
                 storage.getEmployees().remove(id);
             }
+            
+            cpfTf.setText("");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
@@ -125,7 +125,6 @@ public class FormDelPeople extends javax.swing.JFrame {
     
     private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
         removePeople();
-        cpfTf.setText("");
     }//GEN-LAST:event_removeBtActionPerformed
 
     /**

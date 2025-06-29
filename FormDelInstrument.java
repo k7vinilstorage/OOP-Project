@@ -123,6 +123,8 @@ public class FormDelInstrument extends javax.swing.JFrame {
                     storage.getDrumsStock().remove(id);
                     break;
             } 
+            
+            modelTf.setText("");
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
@@ -131,7 +133,6 @@ public class FormDelInstrument extends javax.swing.JFrame {
     
     private void removeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtActionPerformed
         removeInstrument();
-        modelTf.setText("");
     }//GEN-LAST:event_removeBtActionPerformed
 
     /**
