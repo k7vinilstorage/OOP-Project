@@ -150,6 +150,7 @@ public class FormAddEmployee extends javax.swing.JFrame {
         e.setCpf(cpfTf.getText());
         e.setPhone(phoneTf.getText());
         e.setRole(roleTf.getText());
+        e.setHireDate(GetDate.createGetDate().getDate());
         storage.getEmployees().add(e);
     }
     

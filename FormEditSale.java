@@ -251,7 +251,7 @@ public class FormEditSale extends javax.swing.JFrame {
 
             s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
 
-            s.setDate("fix");
+            s.setDate(GetDate.createGetDate().getDate());
 
             s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
             s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 

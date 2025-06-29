@@ -247,7 +247,7 @@ public class FormEditAcquisition extends javax.swing.JFrame {
 
             a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount());
 
-            a.setDate("fix");
+            a.setDate(GetDate.createGetDate().getDate());
 
             a.getProduct().setAvailability(a.getProduct().getAvailability() - a.getProductAmount());    
             

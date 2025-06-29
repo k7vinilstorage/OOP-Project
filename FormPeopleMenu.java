@@ -297,7 +297,8 @@ public class FormPeopleMenu extends javax.swing.JFrame {
                 String info = "Name: " + storage.getEmployees().get(id).getName() +
                             "\nCPF: " + storage.getEmployees().get(id).getCpf() + 
                             "\nPhone: " + storage.getEmployees().get(id).getPhone() +
-                            "\nRole: " + storage.getEmployees().get(id).getRole();
+                            "\nRole: " + storage.getEmployees().get(id).getRole() +
+                            "\nHire Date: " + storage.getEmployees().get(id).getHireDate();
                 Dialogs.createDialogs().infoDialog(info, "Employee search results");
             }
             else {
@@ -305,7 +306,8 @@ public class FormPeopleMenu extends javax.swing.JFrame {
                 String info = "Name: " + storage.getCustomers().get(id).getName() +
                             "\nCPF: " + storage.getCustomers().get(id).getCpf() + 
                             "\nPhone: " + storage.getCustomers().get(id).getPhone() +
-                            "\nPurchase Count: " + storage.getCustomers().get(id).getPurchaseCount();
+                            "\nPurchase Count: " + storage.getCustomers().get(id).getPurchaseCount() +
+                            "\nLast Purchase Date: " + storage.getCustomers().get(id).getlastPurchaseDate();
                 Dialogs.createDialogs().infoDialog(info, "Custumer search results");
             }
             cpfTf.setText("");
