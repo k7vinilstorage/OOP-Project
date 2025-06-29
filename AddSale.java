@@ -7,7 +7,7 @@
  *
  * @author joao
  */
-public class AddGuitar extends javax.swing.JFrame {
+public class AddSale extends javax.swing.JFrame {
 
     /**
      * Creates new form AddCustumer
@@ -15,15 +15,15 @@ public class AddGuitar extends javax.swing.JFrame {
     
     private Storage storage = Storage.createStorage();
     
-    private static AddGuitar a;
+    private static AddSale a;
     
-    private AddGuitar() {
+    private AddSale() {
         initComponents();
     }
     
-    public static AddGuitar createAddGuitar() {
+    public static AddSale createAddSale() {
         if(a == null) {
-            a = new AddGuitar();
+            a = new AddSale();
         }
         return a;
     }
@@ -39,37 +39,30 @@ public class AddGuitar extends javax.swing.JFrame {
 
         titleTf = new javax.swing.JLabel();
         modelLb = new javax.swing.JLabel();
-        brandLb = new javax.swing.JLabel();
-        shapeLb = new javax.swing.JLabel();
-        typeLb = new javax.swing.JLabel();
-        StringLb = new javax.swing.JLabel();
-        priceLb = new javax.swing.JLabel();
+        employeeCpfLb = new javax.swing.JLabel();
+        custumerCpfLb = new javax.swing.JLabel();
+        prodAmountLb = new javax.swing.JLabel();
         modelTf = new javax.swing.JTextField();
-        brandTf = new javax.swing.JTextField();
-        shapeTf = new javax.swing.JTextField();
-        typeTf = new javax.swing.JTextField();
-        StringTf = new javax.swing.JTextField();
-        priceTf = new javax.swing.JTextField();
+        employeeCpfTf = new javax.swing.JTextField();
+        custumerCpfTf = new javax.swing.JTextField();
+        productAmountTf = new javax.swing.JTextField();
         closeBt = new javax.swing.JButton();
         registerBt = new javax.swing.JButton();
+        instrumentCb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTf.setText("REGISTER GUITAR");
+        titleTf.setText("REGISTER SALE");
 
-        modelLb.setText("Model:");
+        modelLb.setText("Instrument Model:");
 
-        brandLb.setText("Brand:");
+        employeeCpfLb.setText("Employee CPF:");
 
-        shapeLb.setText("Shape:");
+        custumerCpfLb.setText("Custumer CPF:");
 
-        typeLb.setText("Type:");
-
-        StringLb.setText("String count:");
-
-        priceLb.setText("Price:");
+        prodAmountLb.setText("Product Amount:");
 
         modelTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,27 +70,15 @@ public class AddGuitar extends javax.swing.JFrame {
             }
         });
 
-        shapeTf.addActionListener(new java.awt.event.ActionListener() {
+        custumerCpfTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                shapeTfActionPerformed(evt);
+                custumerCpfTfActionPerformed(evt);
             }
         });
 
-        typeTf.addActionListener(new java.awt.event.ActionListener() {
+        productAmountTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeTfActionPerformed(evt);
-            }
-        });
-
-        StringTf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StringTfActionPerformed(evt);
-            }
-        });
-
-        priceTf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                priceTfActionPerformed(evt);
+                productAmountTfActionPerformed(evt);
             }
         });
 
@@ -109,6 +90,8 @@ public class AddGuitar extends javax.swing.JFrame {
                 registerBtActionPerformed(evt);
             }
         });
+
+        instrumentCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guitar", "Piano", "Drums" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,28 +106,22 @@ public class AddGuitar extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(modelLb)
+                    .addComponent(employeeCpfLb)
+                    .addComponent(custumerCpfLb)
+                    .addComponent(prodAmountLb))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modelLb)
-                            .addComponent(brandLb)
-                            .addComponent(shapeLb))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(brandTf)
-                            .addComponent(shapeTf, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                            .addComponent(modelTf)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(StringLb)
-                            .addComponent(typeLb)
-                            .addComponent(priceLb))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(typeTf)
-                            .addComponent(priceTf)
-                            .addComponent(StringTf))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(modelTf, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(instrumentCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(employeeCpfTf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addComponent(custumerCpfTf, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(productAmountTf, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,28 +131,21 @@ public class AddGuitar extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modelLb)
-                    .addComponent(modelTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(modelTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instrumentCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(brandLb)
-                    .addComponent(brandTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(employeeCpfLb)
+                    .addComponent(employeeCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(shapeLb)
-                    .addComponent(shapeTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(custumerCpfLb)
+                    .addComponent(custumerCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeLb)
-                    .addComponent(typeTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(StringLb)
-                    .addComponent(StringTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(priceLb)
-                    .addComponent(priceTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                    .addComponent(prodAmountLb)
+                    .addComponent(productAmountTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerBt)
                     .addComponent(closeBt))
@@ -190,41 +160,61 @@ public class AddGuitar extends javax.swing.JFrame {
     }//GEN-LAST:event_modelTfActionPerformed
 
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
-        registerGuitar();
+        registerSale();
         modelTf.setText("");
-        brandTf.setText("");
-        shapeTf.setText("");
-        typeTf.setText("");
-        StringTf.setText("");
-        priceTf.setText("");
+        employeeCpfTf.setText("");
+        custumerCpfTf.setText("");
+        productAmountTf.setText("");
     }//GEN-LAST:event_registerBtActionPerformed
 
-    private void priceTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTfActionPerformed
+    private void productAmountTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productAmountTfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_priceTfActionPerformed
+    }//GEN-LAST:event_productAmountTfActionPerformed
 
-    private void StringTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StringTfActionPerformed
+    private void custumerCpfTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custumerCpfTfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_StringTfActionPerformed
+    }//GEN-LAST:event_custumerCpfTfActionPerformed
 
-    private void typeTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeTfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_typeTfActionPerformed
-
-    private void shapeTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shapeTfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_shapeTfActionPerformed
-
-    private void registerGuitar() {
-        Guitar g = new Guitar();
-        g.setModel(modelTf.getText());
-        g.setBrand(brandTf.getText());
-        g.setShape(shapeTf.getText());
-        g.setType(typeTf.getText());
-        g.setStringCount(Integer.parseInt(StringTf.getText()));
-        g.setPrice(Float.parseFloat(priceTf.getText()));
-        g.setCategory("String");
-        storage.getGuitarStock().add(g);
+    private void registerSale() {
+        Sale s = new Sale();
+        int id = 0;
+        
+        s.setProductType(instrumentCb.getSelectedItem().toString());
+        
+        switch(instrumentCb.getSelectedItem().toString()) {
+            case "Guitar":
+                id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+                s.setProduct(storage.getGuitarStock().get(id));
+                break;
+            case "Piano":
+                id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
+                s.setProduct(storage.getPianoStock().get(id));
+                break;
+            case "Drums":
+                id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
+                s.setProduct(storage.getDrumsStock().get(id));
+                break;
+        }
+        
+        id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
+        s.setInCharge(storage.getEmployees().get(id));
+        
+        id = GetArrayId.createGetArrayId().getCustumerId(custumerCpfTf.getText());
+        s.setBuyer(storage.getCustomers().get(id));
+        
+        s.setProductAmount(Integer.parseInt(productAmountTf.getText()));
+        
+        s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
+        
+        s.setDate("fix");
+        
+        storage.setSaleIds(storage.getSaleIds() + 1);
+        s.setOpId(storage.getSaleIds());
+        
+        s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
+        s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 
+        
+        storage.getSales().add(s);
     }
     
     /**
@@ -258,26 +248,23 @@ public class AddGuitar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddGuitar().setVisible(true);
+                new AddSale().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel StringLb;
-    private javax.swing.JTextField StringTf;
-    private javax.swing.JLabel brandLb;
-    private javax.swing.JTextField brandTf;
     private javax.swing.JButton closeBt;
+    private javax.swing.JLabel custumerCpfLb;
+    private javax.swing.JTextField custumerCpfTf;
+    private javax.swing.JLabel employeeCpfLb;
+    private javax.swing.JTextField employeeCpfTf;
+    private javax.swing.JComboBox<String> instrumentCb;
     private javax.swing.JLabel modelLb;
     private javax.swing.JTextField modelTf;
-    private javax.swing.JLabel priceLb;
-    private javax.swing.JTextField priceTf;
+    private javax.swing.JLabel prodAmountLb;
+    private javax.swing.JTextField productAmountTf;
     private javax.swing.JButton registerBt;
-    private javax.swing.JLabel shapeLb;
-    private javax.swing.JTextField shapeTf;
     private javax.swing.JLabel titleTf;
-    private javax.swing.JLabel typeLb;
-    private javax.swing.JTextField typeTf;
     // End of variables declaration//GEN-END:variables
 }

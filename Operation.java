@@ -4,6 +4,7 @@ public abstract class Operation {
     private int opId;
     private int productAmount;
     private Instrument product;
+    private String productType;
     private Employee inCharge;
     private String date;
     private float totalCost;
@@ -11,14 +12,16 @@ public abstract class Operation {
     public Operation() {
         opId = 0;
         productAmount = 0;
+        productType = "";
         date = "";
         totalCost = 0;
     }
 
-    public Operation(int opId, int productAmount, Instrument product, Employee inCharge, String date, float totalCost) { //Sobrecarga
+    public Operation(int opId, int productAmount, Instrument product, String productType, Employee inCharge, String date, float totalCost) { //Sobrecarga
         this.opId = opId;
         this.productAmount = productAmount;
         this.product = product;
+        this.productType = productType;
         this.inCharge = inCharge;
         this.date = date;
         this.totalCost = totalCost;
@@ -34,6 +37,10 @@ public abstract class Operation {
 
     public Instrument getProduct() {
         return product;
+    }
+    
+    public String getProductType() {
+        return productType;
     }
 
     public Employee getInCharge() {
@@ -57,6 +64,10 @@ public abstract class Operation {
 
     public void setProduct(Instrument product) {
         this.product = product;
+    }
+    
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 
     public void setInCharge(Employee inCharge) {

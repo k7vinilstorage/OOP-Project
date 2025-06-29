@@ -13,7 +13,12 @@ public class Storage {
     private ArrayList<Customer> customers;
     private ArrayList<Sale> sales;
     private ArrayList<Acquisition> acquisitions;
-
+    
+    private int saleIds;
+    private int acquisitionIds;
+    private int customerIds;
+    private int employeeIds;
+    
     private Storage() {
         guitarStock = new ArrayList<>();
         pianoStock = new ArrayList<>();
@@ -22,6 +27,11 @@ public class Storage {
         customers = new ArrayList<>();
         sales = new ArrayList<>();
         acquisitions = new ArrayList<>();
+        
+        saleIds = 0;
+        acquisitionIds = 0;
+        customerIds = 0;
+        employeeIds = 0;
     }
 
     public static Storage createStorage() {
@@ -29,6 +39,38 @@ public class Storage {
             SingleStorage = new Storage();
         }
         return SingleStorage;
+    }
+    
+    public int getSaleIds() {
+        return saleIds;
+    }
+    
+    public int getAcquisitionIds() {
+        return acquisitionIds;
+    }
+    
+    public int getCustumerIds() {
+        return customerIds;
+    }
+    
+    public int getEmployeeIds() {
+        return employeeIds;
+    }
+    
+    public void setSaleIds(int saleIds) {
+        this.saleIds = saleIds;
+    }
+    
+    public void setAcquisitionIds(int acquisitionIds) {
+        this.acquisitionIds = acquisitionIds;
+    }
+    
+    public void setCustumerIds(int custumerIds) {
+        this.customerIds = custumerIds;
+    }
+    
+    public void setEmployeeIds(int employeeIds) {
+        this.employeeIds = employeeIds;
     }
 
     public ArrayList<Guitar> getGuitarStock() {

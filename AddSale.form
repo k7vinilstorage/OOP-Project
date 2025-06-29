@@ -33,35 +33,26 @@
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="modelLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="brandLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="shapeLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="brandTf" max="32767" attributes="0"/>
-                          <Component id="shapeTf" pref="248" max="32767" attributes="0"/>
-                          <Component id="modelTf" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="modelLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="employeeCpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="custumerCpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="prodAmountLb" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="StringLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="typeLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="priceLb" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="typeTf" max="32767" attributes="0"/>
-                          <Component id="priceTf" max="32767" attributes="0"/>
-                          <Component id="StringTf" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="modelTf" min="-2" pref="248" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="instrumentCb" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="employeeCpfTf" alignment="0" pref="248" max="32767" attributes="0"/>
+                      <Component id="custumerCpfTf" alignment="0" max="32767" attributes="0"/>
+                      <Component id="productAmountTf" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,33 +65,24 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="modelLb" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="modelTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="instrumentCb" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="brandLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="brandTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="employeeCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="employeeCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="shapeLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="shapeTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="custumerCpfLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="custumerCpfTf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="typeLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="typeTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="prodAmountLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="productAmountTf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="StringLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="StringTf" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="priceLb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="priceTf" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="registerBt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="closeBt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -117,37 +99,27 @@
           <Font name="Fira Sans" size="24" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="REGISTER GUITAR"/>
+        <Property name="text" type="java.lang.String" value="REGISTER SALE"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="modelLb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Model:"/>
+        <Property name="text" type="java.lang.String" value="Instrument Model:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="brandLb">
+    <Component class="javax.swing.JLabel" name="employeeCpfLb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Brand:"/>
+        <Property name="text" type="java.lang.String" value="Employee CPF:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="shapeLb">
+    <Component class="javax.swing.JLabel" name="custumerCpfLb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Shape:"/>
+        <Property name="text" type="java.lang.String" value="Custumer CPF:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="typeLb">
+    <Component class="javax.swing.JLabel" name="prodAmountLb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Type:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="StringLb">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="String count:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="priceLb">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Price:"/>
+        <Property name="text" type="java.lang.String" value="Product Amount:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="modelTf">
@@ -155,26 +127,16 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelTfActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="brandTf">
+    <Component class="javax.swing.JTextField" name="employeeCpfTf">
     </Component>
-    <Component class="javax.swing.JTextField" name="shapeTf">
+    <Component class="javax.swing.JTextField" name="custumerCpfTf">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shapeTfActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="custumerCpfTfActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="typeTf">
+    <Component class="javax.swing.JTextField" name="productAmountTf">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeTfActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="StringTf">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StringTfActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="priceTf">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="priceTfActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="productAmountTfActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="closeBt">
@@ -189,6 +151,20 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerBtActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="instrumentCb">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Guitar"/>
+            <StringItem index="1" value="Piano"/>
+            <StringItem index="2" value="Drums"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

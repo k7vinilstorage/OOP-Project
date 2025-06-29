@@ -1,3 +1,6 @@
+
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -12,6 +15,8 @@ public class OperationMenu extends javax.swing.JFrame {
     /**
      * Creates new form OperationMenu
      */
+    
+    private Storage storage = Storage.createStorage();
     
     private static OperationMenu o;
     
@@ -40,8 +45,9 @@ public class OperationMenu extends javax.swing.JFrame {
         searchBt = new javax.swing.JButton();
         saleCb = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        operationTb = new javax.swing.JTable();
-        allOperationLb = new javax.swing.JLabel();
+        saleTb = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        AquisitionTb = new javax.swing.JTable();
         operationMb = new javax.swing.JMenuBar();
         saleMenu = new javax.swing.JMenu();
         addSale = new javax.swing.JMenuItem();
@@ -53,10 +59,15 @@ public class OperationMenu extends javax.swing.JFrame {
         editAcquisition = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         operationLb.setText("Search Operation by Id:");
-
-        operationTf.setText("Insert Operation Id");
 
         searchBt.setText("Search");
 
@@ -67,7 +78,7 @@ public class OperationMenu extends javax.swing.JFrame {
             }
         });
 
-        operationTb.setModel(new javax.swing.table.DefaultTableModel(
+        saleTb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -75,12 +86,31 @@ public class OperationMenu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Product", "Buyer CPF", "Amount"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(saleTb);
+
+        AquisitionTb.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Product", "Supplyer", "Amount"
             }
         ));
-        jScrollPane1.setViewportView(operationTb);
-
-        allOperationLb.setText("All Operations:");
+        jScrollPane2.setViewportView(AquisitionTb);
 
         saleMenu.setText("Sale");
 
@@ -119,25 +149,22 @@ public class OperationMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(allOperationLb)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(operationLb)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(operationTf)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(saleCb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchBt)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(operationTf)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(saleCb)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchBt)))
                         .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
@@ -150,11 +177,11 @@ public class OperationMenu extends javax.swing.JFrame {
                     .addComponent(operationTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBt)
                     .addComponent(saleCb))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(allOperationLb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,9 +192,68 @@ public class OperationMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_saleCbActionPerformed
 
     private void addSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSaleActionPerformed
-        // TODO add your handling code here:
+        AddSale.createAddSale().setVisible(true);
     }//GEN-LAST:event_addSaleActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        listAcquisitions();
+        listSale();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void listAcquisitions() {
+        DefaultTableModel modTable = (DefaultTableModel)AquisitionTb.getModel();
+        int linePos = 0;
+        modTable.setRowCount(linePos);
+        
+        for(Acquisition a : storage.getAcquisitions()) {
+           modTable.insertRow(linePos, new Object[]{a.getOpId(), (a.getProductType() + " (" + a.getProduct().getModel() + ")"), a.getSupplyerName(), a.getProductAmount()});
+           linePos++;
+        }
+    }
+    
+    private void listSale() {
+        DefaultTableModel modTable = (DefaultTableModel)saleTb.getModel();
+        int linePos = 0;
+        modTable.setRowCount(linePos);
+        
+        for(Sale s : storage.getSales()) {
+           modTable.insertRow(linePos, new Object[]{s.getOpId(), (s.getProductType() + " (" + s.getProduct().getModel() + ")"), s.getBuyer().getCpf(), s.getProductAmount()});
+           linePos++;
+        }
+    }
+    
+    private void searchOpByCpf() {
+        int id = 0;
+        
+        if(saleCb.isSelected()) {
+            id = GetArrayId.createGetArrayId().getSaleId(Integer.parseInt(operationTf.getText()));
+            String info = "ID: " + storage.getSales().get(id).getOpId() +
+                    "Buyer: " + storage.getSales().get(id).getBuyer().getName() +
+                    "Buyer CPF: " + storage.getSales().get(id).getBuyer().getCpf() + 
+                    "Employee: " + storage.getSales().get(id).getInCharge().getName() +
+                    "Employee: " + storage.getSales().get(id).getInCharge().getCpf() + 
+                    "Product Model: " + storage.getSales().get(id).getProduct().getModel() +
+                    "Product Type: " + storage.getSales().get(id).getProductType() +
+                    "Amount: " + storage.getSales().get(id).getProductAmount() + 
+                    "Total Cost: " + storage.getSales().get(id).getTotalCost() +
+                    "Date: " + storage.getSales().get(id).getDate();
+            Dialogs.createDialogs().infoDialog(info, "Sale Search Results");
+        }
+        else {
+            id = GetArrayId.createGetArrayId().getAcquisitionId(Integer.parseInt(operationTf.getText()));
+            String info = "ID: " + storage.getAcquisitions().get(id).getOpId() +
+                    "Supplyer: " + storage.getAcquisitions().get(id).getSupplyerName() +
+                    "Employee: " + storage.getAcquisitions().get(id).getInCharge().getName() +
+                    "Employee: " + storage.getAcquisitions().get(id).getInCharge().getCpf() + 
+                    "Product Model: " + storage.getAcquisitions().get(id).getProduct().getModel() +
+                    "Product Type: " + storage.getAcquisitions().get(id).getProductType() +
+                    "Amount: " + storage.getAcquisitions().get(id).getProductAmount() + 
+                    "Total Cost: " + storage.getAcquisitions().get(id).getTotalCost() +
+                    "Date: " + storage.getAcquisitions().get(id).getDate();
+            Dialogs.createDialogs().infoDialog(info, "Acquisition Search Results");
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -204,21 +290,22 @@ public class OperationMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable AquisitionTb;
     private javax.swing.JMenu acquisitionMenu;
     private javax.swing.JMenuItem addAcquisition;
     private javax.swing.JMenuItem addSale;
-    private javax.swing.JLabel allOperationLb;
     private javax.swing.JMenuItem delAcquisition;
     private javax.swing.JMenuItem delSale;
     private javax.swing.JMenuItem editAcquisition;
     private javax.swing.JMenuItem editSale;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel operationLb;
     private javax.swing.JMenuBar operationMb;
-    private javax.swing.JTable operationTb;
     private javax.swing.JTextField operationTf;
     private javax.swing.JCheckBox saleCb;
     private javax.swing.JMenu saleMenu;
+    private javax.swing.JTable saleTb;
     private javax.swing.JButton searchBt;
     // End of variables declaration//GEN-END:variables
 }
