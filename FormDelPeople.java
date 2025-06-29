@@ -45,6 +45,7 @@ public class FormDelPeople extends javax.swing.JFrame {
         peopleCb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Remove People");
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -61,7 +62,7 @@ public class FormDelPeople extends javax.swing.JFrame {
             }
         });
 
-        peopleCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Custumer", "Employee" }));
+        peopleCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Employee" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,7 +109,7 @@ public class FormDelPeople extends javax.swing.JFrame {
         
         try{
             if(peopleCb.getSelectedItem().toString().equals("Custumer")) {
-                id = GetArrayId.createGetArrayId().getCustumerId(cpfTf.getText());
+                id = GetArrayId.createGetArrayId().getCustomerId(cpfTf.getText());
                 storage.getCustomers().remove(id);
             }
             else {

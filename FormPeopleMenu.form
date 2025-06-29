@@ -4,25 +4,25 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="peopleMb">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="custumerMenu">
+        <Menu class="javax.swing.JMenu" name="customerMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Custumer"/>
+            <Property name="text" type="java.lang.String" value="Customer"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="addCustumer">
+            <MenuItem class="javax.swing.JMenuItem" name="addCustomer">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Add Custumer..."/>
+                <Property name="text" type="java.lang.String" value="Add Customer..."/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addCustumerActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addCustomerActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="editCustumer">
+            <MenuItem class="javax.swing.JMenuItem" name="editCustomer">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit Custumer..."/>
+                <Property name="text" type="java.lang.String" value="Edit Customer..."/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editCustumerActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editCustomerActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -55,6 +55,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="People Menu"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="peopleMb"/>
@@ -80,29 +81,32 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="peopleLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cpfTf" alignment="0" min="-2" pref="274" max="-2" attributes="0"/>
-                          <Component id="cpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="employeeCB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="searchBt" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="employeesLb" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="customersLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cpfTf" alignment="0" min="-2" pref="274" max="-2" attributes="0"/>
+                              <Component id="cpfLb" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="refreshBt" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="employeeCB" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Component id="searchBt" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="refreshBt" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,14 +123,16 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="peopleLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="customersLb" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="refreshBt" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="200" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <Component id="employeesLb" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="200" max="-2" attributes="0"/>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -143,7 +149,7 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="0">
-                <Column editable="false" title="Custumer" type="java.lang.Object"/>
+                <Column editable="false" title="Customer Name" type="java.lang.Object"/>
                 <Column editable="false" title="CPF" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -181,9 +187,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpfTfActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="peopleLb">
+    <Component class="javax.swing.JLabel" name="customersLb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="All Registered People:"/>
+        <Property name="text" type="java.lang.String" value="Customers:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="cpfLb">
@@ -207,7 +213,7 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="0">
-                <Column editable="false" title="Employee" type="java.lang.Object"/>
+                <Column editable="false" title="Employee Name" type="java.lang.Object"/>
                 <Column editable="false" title="CPF" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -239,6 +245,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshBtActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="employeesLb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Employees:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

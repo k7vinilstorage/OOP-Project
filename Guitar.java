@@ -26,12 +26,12 @@ public class Guitar extends Instrument {
         this.shape = shape;
     }
 
-    public void setStringCount(int stringCount){
+    public void setStringCount(int stringCount) throws StringCountException{
         if(stringCount > 5 && stringCount < 19) {
             this.stringCount = stringCount;
         }
         else {
-
+            throw new StringCountException();
         }
     }
 }

@@ -10,7 +10,7 @@
 public class FormEditSale extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormEditCustumer
+     * Creates new form FormEditCustomer
      */
     
     private BDStorage storage = BDStorage.createStorage();
@@ -44,7 +44,7 @@ public class FormEditSale extends javax.swing.JFrame {
         idTf = new javax.swing.JTextField();
         newLb = new javax.swing.JLabel();
         employeeCpfLb = new javax.swing.JLabel();
-        custumerCpfLb = new javax.swing.JLabel();
+        customerCpfLb = new javax.swing.JLabel();
         prodAmountLb = new javax.swing.JLabel();
         modelTf = new javax.swing.JTextField();
         employeeCpfTf = new javax.swing.JTextField();
@@ -54,6 +54,7 @@ public class FormEditSale extends javax.swing.JFrame {
         instrumentCb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Sale");
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -81,7 +82,7 @@ public class FormEditSale extends javax.swing.JFrame {
 
         employeeCpfLb.setText("Employee CPF:");
 
-        custumerCpfLb.setText("Custumer CPF:");
+        customerCpfLb.setText("Customer CPF:");
 
         prodAmountLb.setText("Product Amount:");
 
@@ -133,7 +134,7 @@ public class FormEditSale extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(modelLb)
                                             .addComponent(employeeCpfLb)
-                                            .addComponent(custumerCpfLb)
+                                            .addComponent(customerCpfLb)
                                             .addComponent(prodAmountLb))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +171,7 @@ public class FormEditSale extends javax.swing.JFrame {
                     .addComponent(employeeCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(custumerCpfLb)
+                    .addComponent(customerCpfLb)
                     .addComponent(custumerCpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -244,7 +245,7 @@ public class FormEditSale extends javax.swing.JFrame {
             id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
             s.setInCharge(storage.getEmployees().get(id));
 
-            id = GetArrayId.createGetArrayId().getCustumerId(custumerCpfTf.getText());
+            id = GetArrayId.createGetArrayId().getCustomerId(custumerCpfTf.getText());
             s.setBuyer(storage.getCustomers().get(id));
             
 
@@ -282,14 +283,16 @@ public class FormEditSale extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormEditCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEditCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -303,7 +306,7 @@ public class FormEditSale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeBt;
-    private javax.swing.JLabel custumerCpfLb;
+    private javax.swing.JLabel customerCpfLb;
     private javax.swing.JTextField custumerCpfTf;
     private javax.swing.JLabel employeeCpfLb;
     private javax.swing.JTextField employeeCpfTf;

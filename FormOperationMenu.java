@@ -49,6 +49,8 @@ public class FormOperationMenu extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         AquisitionTb = new javax.swing.JTable();
         removeOpBt = new javax.swing.JButton();
+        acqLb = new javax.swing.JLabel();
+        saleLb = new javax.swing.JLabel();
         operationMb = new javax.swing.JMenuBar();
         saleMenu = new javax.swing.JMenu();
         addSale = new javax.swing.JMenuItem();
@@ -58,6 +60,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
         editAcquisition = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Operation Menu");
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -123,9 +126,13 @@ public class FormOperationMenu extends javax.swing.JFrame {
             }
         });
 
+        acqLb.setText("Acquisitions:");
+
+        saleLb.setText("Sales");
+
         saleMenu.setText("Sale");
 
-        addSale.setText("Add Sale");
+        addSale.setText("Add Sale...");
         addSale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSaleActionPerformed(evt);
@@ -133,7 +140,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
         });
         saleMenu.add(addSale);
 
-        editSale.setText("Edit Sale");
+        editSale.setText("Edit Sale...");
         editSale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editSaleActionPerformed(evt);
@@ -145,7 +152,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
 
         acquisitionMenu.setText("Acquisition");
 
-        addAcquisition.setText("Add Acquisition");
+        addAcquisition.setText("Add Acquisition...");
         addAcquisition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addAcquisitionActionPerformed(evt);
@@ -153,7 +160,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
         });
         acquisitionMenu.add(addAcquisition);
 
-        editAcquisition.setText("Edit Acquisition");
+        editAcquisition.setText("Edit Acquisition...");
         editAcquisition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editAcquisitionActionPerformed(evt);
@@ -173,23 +180,27 @@ public class FormOperationMenu extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(operationLb)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(saleLb)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(removeOpBt)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(operationTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(saleCb)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(searchBt)))))
-                        .addGap(25, 25, 25))))
+                                .addComponent(operationTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(saleCb)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchBt))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(removeOpBt)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(acqLb)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(operationLb)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,11 +212,15 @@ public class FormOperationMenu extends javax.swing.JFrame {
                     .addComponent(operationTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBt)
                     .addComponent(saleCb))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(removeOpBt)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(removeOpBt, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(acqLb, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(saleLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -348,6 +363,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AquisitionTb;
+    private javax.swing.JLabel acqLb;
     private javax.swing.JMenu acquisitionMenu;
     private javax.swing.JMenuItem addAcquisition;
     private javax.swing.JMenuItem addSale;
@@ -360,6 +376,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
     private javax.swing.JTextField operationTf;
     private javax.swing.JButton removeOpBt;
     private javax.swing.JCheckBox saleCb;
+    private javax.swing.JLabel saleLb;
     private javax.swing.JMenu saleMenu;
     private javax.swing.JTable saleTb;
     private javax.swing.JButton searchBt;

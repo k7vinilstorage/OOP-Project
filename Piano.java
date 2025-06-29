@@ -26,12 +26,12 @@ public class Piano extends Instrument{
         this.bodyType = bodyType;
     }
 
-    public void setKeyCount(int keyCount){
+    public void setKeyCount(int keyCount) throws KeyCountException{
         if(keyCount > 48 && keyCount < 109) {
             this.keyCount = keyCount;
         }
         else {
-            
+            throw new KeyCountException();
         }
-    }  
+    } 
 }

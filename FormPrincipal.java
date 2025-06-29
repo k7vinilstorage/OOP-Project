@@ -30,8 +30,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         operationBt = new javax.swing.JButton();
         intrumentsBt = new javax.swing.JButton();
         peopleBt = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        opMenu = new javax.swing.JMenu();
+        opMenuIt = new javax.swing.JMenuItem();
+        intrumentsMenuIt = new javax.swing.JMenuItem();
+        PeopleMenuIt = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Management System");
 
         mainLabel1.setFont(new java.awt.Font("Fira Sans", 1, 24)); // NOI18N
         mainLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -60,6 +66,36 @@ public class FormPrincipal extends javax.swing.JFrame {
                 peopleBtActionPerformed(evt);
             }
         });
+
+        opMenu.setText("Options");
+
+        opMenuIt.setText("Operation...");
+        opMenuIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opMenuItActionPerformed(evt);
+            }
+        });
+        opMenu.add(opMenuIt);
+
+        intrumentsMenuIt.setText("Instruments...");
+        intrumentsMenuIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                intrumentsMenuItActionPerformed(evt);
+            }
+        });
+        opMenu.add(intrumentsMenuIt);
+
+        PeopleMenuIt.setText("People...");
+        PeopleMenuIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PeopleMenuItActionPerformed(evt);
+            }
+        });
+        opMenu.add(PeopleMenuIt);
+
+        jMenuBar1.add(opMenu);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +132,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(intrumentsBt)
                 .addGap(18, 18, 18)
                 .addComponent(peopleBt)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,6 +149,18 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void intrumentsBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intrumentsBtActionPerformed
         FormInstrumentMenu.createInstrumentMenu().setVisible(true);
     }//GEN-LAST:event_intrumentsBtActionPerformed
+
+    private void opMenuItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opMenuItActionPerformed
+        FormOperationMenu.createOperationMenu().setVisible(true);
+    }//GEN-LAST:event_opMenuItActionPerformed
+
+    private void intrumentsMenuItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intrumentsMenuItActionPerformed
+        FormInstrumentMenu.createInstrumentMenu().setVisible(true);
+    }//GEN-LAST:event_intrumentsMenuItActionPerformed
+
+    private void PeopleMenuItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PeopleMenuItActionPerformed
+        FormPeopleMenu.createPeopleMenu().setVisible(true);
+    }//GEN-LAST:event_PeopleMenuItActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,9 +199,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem PeopleMenuIt;
     private javax.swing.JButton intrumentsBt;
+    private javax.swing.JMenuItem intrumentsMenuIt;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel mainLabel1;
     private javax.swing.JLabel mainLabel2;
+    private javax.swing.JMenu opMenu;
+    private javax.swing.JMenuItem opMenuIt;
     private javax.swing.JButton operationBt;
     private javax.swing.JButton peopleBt;
     // End of variables declaration//GEN-END:variables

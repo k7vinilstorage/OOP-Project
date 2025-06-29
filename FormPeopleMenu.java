@@ -44,21 +44,23 @@ public class FormPeopleMenu extends javax.swing.JFrame {
         custumerTb = new javax.swing.JTable();
         searchBt = new javax.swing.JButton();
         cpfTf = new javax.swing.JTextField();
-        peopleLb = new javax.swing.JLabel();
+        customersLb = new javax.swing.JLabel();
         cpfLb = new javax.swing.JLabel();
         employeeCB = new javax.swing.JCheckBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         employeeTb = new javax.swing.JTable();
         refreshBt = new javax.swing.JButton();
+        employeesLb = new javax.swing.JLabel();
         peopleMb = new javax.swing.JMenuBar();
-        custumerMenu = new javax.swing.JMenu();
-        addCustumer = new javax.swing.JMenuItem();
-        editCustumer = new javax.swing.JMenuItem();
+        customerMenu = new javax.swing.JMenu();
+        addCustomer = new javax.swing.JMenuItem();
+        editCustomer = new javax.swing.JMenuItem();
         employeeMenu = new javax.swing.JMenu();
         addEmployee = new javax.swing.JMenuItem();
         editEmployee = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("People Menu");
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
@@ -77,7 +79,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Custumer", "CPF"
+                "Customer Name", "CPF"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -103,7 +105,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
             }
         });
 
-        peopleLb.setText("All Registered People:");
+        customersLb.setText("Customers:");
 
         cpfLb.setText("Search People by CPF:");
 
@@ -114,7 +116,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Employee", "CPF"
+                "Employee Name", "CPF"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -134,25 +136,27 @@ public class FormPeopleMenu extends javax.swing.JFrame {
             }
         });
 
-        custumerMenu.setText("Custumer");
+        employeesLb.setText("Employees:");
 
-        addCustumer.setText("Add Custumer...");
-        addCustumer.addActionListener(new java.awt.event.ActionListener() {
+        customerMenu.setText("Customer");
+
+        addCustomer.setText("Add Customer...");
+        addCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCustumerActionPerformed(evt);
+                addCustomerActionPerformed(evt);
             }
         });
-        custumerMenu.add(addCustumer);
+        customerMenu.add(addCustomer);
 
-        editCustumer.setText("Edit Custumer...");
-        editCustumer.addActionListener(new java.awt.event.ActionListener() {
+        editCustomer.setText("Edit Customer...");
+        editCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editCustumerActionPerformed(evt);
+                editCustomerActionPerformed(evt);
             }
         });
-        custumerMenu.add(editCustumer);
+        customerMenu.add(editCustomer);
 
-        peopleMb.add(custumerMenu);
+        peopleMb.add(customerMenu);
 
         employeeMenu.setText("Employee");
 
@@ -182,21 +186,23 @@ public class FormPeopleMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2)
-                    .addComponent(peopleLb)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpfLb))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(employeeCB)
-                                .addGap(15, 15, 15)
-                                .addComponent(searchBt))
-                            .addComponent(refreshBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(employeesLb)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane2)
+                        .addComponent(customersLb)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cpfTf, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cpfLb))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(employeeCB)
+                                    .addGap(15, 15, 15)
+                                    .addComponent(searchBt))
+                                .addComponent(refreshBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -211,13 +217,15 @@ public class FormPeopleMenu extends javax.swing.JFrame {
                     .addComponent(employeeCB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(peopleLb)
+                    .addComponent(customersLb)
                     .addComponent(refreshBt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(employeesLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -231,13 +239,13 @@ public class FormPeopleMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cpfTfActionPerformed
 
-    private void addCustumerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustumerActionPerformed
-        FormAddCustumer.createAddCustumer().setVisible(true);
-    }//GEN-LAST:event_addCustumerActionPerformed
+    private void addCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerActionPerformed
+        FormAddCustomer.createAddCustumer().setVisible(true);
+    }//GEN-LAST:event_addCustomerActionPerformed
 
-    private void editCustumerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCustumerActionPerformed
-        FormEditCustumer.createEditCustumer().setVisible(true);
-    }//GEN-LAST:event_editCustumerActionPerformed
+    private void editCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCustomerActionPerformed
+        FormEditCustomer.createEditCustumer().setVisible(true);
+    }//GEN-LAST:event_editCustomerActionPerformed
 
     private void addEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeActionPerformed
         FormAddEmployee.createAddEmployee().setVisible(true);
@@ -293,7 +301,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
                 Dialogs.createDialogs().infoDialog(info, "Employee search results");
             }
             else {
-                int id = GetArrayId.createGetArrayId().getCustumerId(cpfTf.getText());
+                int id = GetArrayId.createGetArrayId().getCustomerId(cpfTf.getText());
                 String info = "Name: " + storage.getCustomers().get(id).getName() +
                             "\nCPF: " + storage.getCustomers().get(id).getCpf() + 
                             "\nPhone: " + storage.getCustomers().get(id).getPhone() +
@@ -344,20 +352,21 @@ public class FormPeopleMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem addCustumer;
+    private javax.swing.JMenuItem addCustomer;
     private javax.swing.JMenuItem addEmployee;
     private javax.swing.JLabel cpfLb;
     private javax.swing.JTextField cpfTf;
-    private javax.swing.JMenu custumerMenu;
+    private javax.swing.JMenu customerMenu;
+    private javax.swing.JLabel customersLb;
     private javax.swing.JTable custumerTb;
-    private javax.swing.JMenuItem editCustumer;
+    private javax.swing.JMenuItem editCustomer;
     private javax.swing.JMenuItem editEmployee;
     private javax.swing.JCheckBox employeeCB;
     private javax.swing.JMenu employeeMenu;
     private javax.swing.JTable employeeTb;
+    private javax.swing.JLabel employeesLb;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel peopleLb;
     private javax.swing.JMenuBar peopleMb;
     private javax.swing.JButton refreshBt;
     private javax.swing.JButton searchBt;

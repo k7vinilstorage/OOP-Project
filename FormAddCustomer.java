@@ -7,23 +7,23 @@
  *
  * @author joao
  */
-public class FormAddCustumer extends javax.swing.JFrame {
+public class FormAddCustomer extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormAddCustumer
+     * Creates new form FormAddCustomer
      */
     
     private BDStorage storage = BDStorage.createStorage();
     
-    private static FormAddCustumer a;
+    private static FormAddCustomer a;
     
-    private FormAddCustumer() {
+    private FormAddCustomer() {
         initComponents();
     }
     
-    public static FormAddCustumer createAddCustumer() {
+    public static FormAddCustomer createAddCustumer() {
         if(a == null) {
-            a = new FormAddCustumer();
+            a = new FormAddCustomer();
         }
         return a;
     }
@@ -48,6 +48,7 @@ public class FormAddCustumer extends javax.swing.JFrame {
         closeBt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Register Customer");
 
         nameLb.setText("Name:");
 
@@ -63,7 +64,7 @@ public class FormAddCustumer extends javax.swing.JFrame {
 
         titleTf.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         titleTf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleTf.setText("REGISTER CUSTUMER");
+        titleTf.setText("REGISTER CUSTOMER");
 
         registerBt.setText("Register");
         registerBt.addActionListener(new java.awt.event.ActionListener() {
@@ -161,14 +162,18 @@ public class FormAddCustumer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormAddCustumer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormAddCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -177,7 +182,7 @@ public class FormAddCustumer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormAddCustumer().setVisible(true);
+                new FormAddCustomer().setVisible(true);
             }
         });
     }

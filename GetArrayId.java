@@ -17,16 +17,14 @@ public class GetArrayId {
         return garid;
     }
 
-    public int getCustumerId(String cpf) throws ItemNotFoundExeption{
+    public int getCustomerId(String cpf) throws ItemNotFoundExeption{
         int custumerSize = storage.getCustomers().size();
         for(int i = 0; i < custumerSize; i++) {
             if(storage.getCustomers().get(i).getCpf().equals(cpf)) { //Reflexividade
                 return i;
             }
         }  
-        ItemNotFoundExeption infe = new ItemNotFoundExeption();
-        infe.setItem("Custumer");
-        throw infe;
+        throw new ItemNotFoundExeption("Customer");
     }
 
     public int getEmployeeId(String cpf) throws ItemNotFoundExeption{
@@ -36,9 +34,7 @@ public class GetArrayId {
                 return i;
             }
         }
-        ItemNotFoundExeption infe = new ItemNotFoundExeption();
-        infe.setItem("Employee");
-        throw infe;
+        throw new ItemNotFoundExeption("Employee");
     }
 
     public int getGuitarId(String model) throws ItemNotFoundExeption{
@@ -48,9 +44,7 @@ public class GetArrayId {
                 return i;
             }
         }
-        ItemNotFoundExeption infe = new ItemNotFoundExeption();
-        infe.setItem("Guitar");
-        throw infe;
+        throw new ItemNotFoundExeption("Guitar");
     }
 
     public int getPianoId(String model) throws ItemNotFoundExeption{
@@ -60,9 +54,7 @@ public class GetArrayId {
                 return i;
             }
         }
-        ItemNotFoundExeption infe = new ItemNotFoundExeption();
-        infe.setItem("Piano");
-        throw infe;
+        throw new ItemNotFoundExeption("Piano");
     }
 
     public int getDrumsId(String model) throws ItemNotFoundExeption{
@@ -72,9 +64,7 @@ public class GetArrayId {
                 return i;
             }
         }
-        ItemNotFoundExeption infe = new ItemNotFoundExeption();
-        infe.setItem("Drums");
-        throw infe;
+        throw new ItemNotFoundExeption("Drums");
     }
 
     public int getAcquisitionId(int OpId) throws ItemNotFoundExeption{
@@ -84,9 +74,7 @@ public class GetArrayId {
                 return i;
             }
         }
-        ItemNotFoundExeption infe = new ItemNotFoundExeption();
-        infe.setItem("Acquisition");
-        throw infe;
+        throw new ItemNotFoundExeption("Acquisition");
     }
 
     public int getSaleId(int OpId) throws ItemNotFoundExeption{
@@ -96,8 +84,6 @@ public class GetArrayId {
                 return i;
             }
         }
-        ItemNotFoundExeption infe = new ItemNotFoundExeption();
-        infe.setItem("Sale");
-        throw infe;
+        throw new ItemNotFoundExeption("Sale");
     } 
 }
