@@ -256,28 +256,28 @@ public class OperationMenu extends javax.swing.JFrame {
         if(saleCb.isSelected()) {
             id = GetArrayId.createGetArrayId().getSaleId(Integer.parseInt(operationTf.getText()));
             String info = "ID: " + storage.getSales().get(id).getOpId() +
-                    "Buyer: " + storage.getSales().get(id).getBuyer().getName() +
-                    "Buyer CPF: " + storage.getSales().get(id).getBuyer().getCpf() + 
-                    "Employee: " + storage.getSales().get(id).getInCharge().getName() +
-                    "Employee: " + storage.getSales().get(id).getInCharge().getCpf() + 
-                    "Product Model: " + storage.getSales().get(id).getProduct().getModel() +
-                    "Product Type: " + storage.getSales().get(id).getProductType() +
-                    "Amount: " + storage.getSales().get(id).getProductAmount() + 
-                    "Total Cost: " + storage.getSales().get(id).getTotalCost() +
-                    "Date: " + storage.getSales().get(id).getDate();
+                    "\nBuyer: " + storage.getSales().get(id).getBuyer().getName() +
+                    "\nBuyer CPF: " + storage.getSales().get(id).getBuyer().getCpf() + 
+                    "\nEmployee: " + storage.getSales().get(id).getInCharge().getName() +
+                    "\nEmployee: " + storage.getSales().get(id).getInCharge().getCpf() + 
+                    "\nProduct Model: " + storage.getSales().get(id).getProduct().getModel() +
+                    "\nProduct Type: " + storage.getSales().get(id).getProductType() +
+                    "\nAmount: " + storage.getSales().get(id).getProductAmount() + 
+                    "\nTotal Cost: " + storage.getSales().get(id).getTotalCost() +
+                    "\nDate: " + storage.getSales().get(id).getDate();
             Dialogs.createDialogs().infoDialog(info, "Sale Search Results");
         }
         else {
             id = GetArrayId.createGetArrayId().getAcquisitionId(Integer.parseInt(operationTf.getText()));
             String info = "ID: " + storage.getAcquisitions().get(id).getOpId() +
-                    "Supplyer: " + storage.getAcquisitions().get(id).getSupplyerName() +
-                    "Employee: " + storage.getAcquisitions().get(id).getInCharge().getName() +
-                    "Employee: " + storage.getAcquisitions().get(id).getInCharge().getCpf() + 
-                    "Product Model: " + storage.getAcquisitions().get(id).getProduct().getModel() +
-                    "Product Type: " + storage.getAcquisitions().get(id).getProductType() +
-                    "Amount: " + storage.getAcquisitions().get(id).getProductAmount() + 
-                    "Total Cost: " + storage.getAcquisitions().get(id).getTotalCost() +
-                    "Date: " + storage.getAcquisitions().get(id).getDate();
+                    "\nSupplyer: " + storage.getAcquisitions().get(id).getSupplyerName() +
+                    "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getName() +
+                    "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getCpf() + 
+                    "\nProduct Model: " + storage.getAcquisitions().get(id).getProduct().getModel() +
+                    "\nProduct Type: " + storage.getAcquisitions().get(id).getProductType() +
+                    "\nAmount: " + storage.getAcquisitions().get(id).getProductAmount() + 
+                    "\nTotal Cost: " + storage.getAcquisitions().get(id).getTotalCost() +
+                    "\nDate: " + storage.getAcquisitions().get(id).getDate();
             Dialogs.createDialogs().infoDialog(info, "Acquisition Search Results");
         }
     }
