@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormDelPeople extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,16 @@ public class FormDelPeople extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+    
     private static FormDelPeople d;
     
     private FormDelPeople() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormDelPeople createDelPeople() {
         if(d == null) {
             d = new FormDelPeople();
@@ -117,12 +113,12 @@ public class FormDelPeople extends javax.swing.JFrame {
         
         try{
             if(peopleCb.getSelectedItem().toString().equals("Custumer")) {
-                id = GetArrayId.createGetArrayId().getCustomerId(cpfTf.getText());
-                storage.getCustomers().remove(id);
+                id = garrid.getCustomerId(cpfTf.getText());
+                storage.getCustomers().remove(id); //Reflexividade
             }
             else {
-                id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
-                storage.getEmployees().remove(id);
+                id = garrid.getEmployeeId(cpfTf.getText());
+                storage.getEmployees().remove(id); //Reflexividade
             }
             
             cpfTf.setText("");

@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormEditSale extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,18 @@ public class FormEditSale extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+    
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormEditSale e;
     
     private FormEditSale() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormEditSale createEditSale() {
         if(e == null) {
             e = new FormEditSale();
@@ -231,42 +229,42 @@ public class FormEditSale extends javax.swing.JFrame {
         int id = 0;
         
         try {
-            id = GetArrayId.createGetArrayId().getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(idTf.getText())); 
+            id = garrid.getSaleId(ieh.InputInt(idTf.getText())); 
         
-            Sale s = storage.getSales().get(id);
+            Sale s = storage.getSales().get(id); //Reflexividade
         
-            s.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+            s.setProductAmount(ieh.InputInt(productAmountTf.getText())); 
             
             s.setProductType(instrumentCb.getSelectedItem().toString());
 
             switch(instrumentCb.getSelectedItem().toString()) {
                 case "Guitar":
-                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                    s.setProduct(storage.getGuitarStock().get(id));
+                    id = garrid.getGuitarId(modelTf.getText());
+                    s.setProduct(storage.getGuitarStock().get(id));//Reflexividade
                     break;
                 case "Piano":
-                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                    s.setProduct(storage.getPianoStock().get(id));
+                    id = garrid.getPianoId(modelTf.getText());
+                    s.setProduct(storage.getPianoStock().get(id)); //Reflexividade
                     break;
                 case "Drums":
-                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                    s.setProduct(storage.getDrumsStock().get(id));
+                    id = garrid.getDrumsId(modelTf.getText());
+                    s.setProduct(storage.getDrumsStock().get(id)); //Reflexividade
                     break;
             }
 
-            id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
-            s.setInCharge(storage.getEmployees().get(id));
+            id = garrid.getEmployeeId(employeeCpfTf.getText());
+            s.setInCharge(storage.getEmployees().get(id)); //Reflexividade
 
-            id = GetArrayId.createGetArrayId().getCustomerId(custumerCpfTf.getText());
-            s.setBuyer(storage.getCustomers().get(id));
+            id = garrid.getCustomerId(custumerCpfTf.getText());
+            s.setBuyer(storage.getCustomers().get(id)); //Reflexividade
             
 
-            s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
+            s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount()); //Reflexividade
 
             s.setDate(GetDate.createGetDate().getDate());
 
-            s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
-            s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 
+            s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1); //Reflexividade
+            s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); //Reflexividade
             
             cleanTf();
         }

@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormEditCustomer extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,16 @@ public class FormEditCustomer extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormEditCustomer e;
     
     private FormEditCustomer() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormEditCustomer createEditCustumer() {
         if(e == null) {
             e = new FormEditCustomer();
@@ -202,9 +198,9 @@ public class FormEditCustomer extends javax.swing.JFrame {
     private void editCustumer() {
         try{
             int id = GetArrayId.createGetArrayId().getCustomerId(registeredCpfTf.getText());
-            storage.getCustomers().get(id).setName(nameTf.getText());
-            storage.getCustomers().get(id).setCpf(newCpfTf.getText());
-            storage.getCustomers().get(id).setPhone(phoneTf.getText());
+            storage.getCustomers().get(id).setName(nameTf.getText()); //Reflexividade
+            storage.getCustomers().get(id).setCpf(newCpfTf.getText()); //Reflexividade
+            storage.getCustomers().get(id).setPhone(phoneTf.getText()); //Reflexividade
             
             cleanTf();
         }

@@ -10,6 +10,8 @@ public class GetArrayId implements GetArrayIdInterface{
         storage = BDStorage.createStorage();
     }
 
+    //MÉTODO SINGLETON
+    
     public static GetArrayId createGetArrayId() {
         if(garid == null) {
             garid = new GetArrayId();
@@ -18,8 +20,8 @@ public class GetArrayId implements GetArrayIdInterface{
     }
 
     @Override
-    public int getCustomerId(String cpf) throws ItemNotFoundExeption{
-        int custumerSize = storage.getCustomers().size();
+    public int getCustomerId(String cpf) throws ItemNotFoundExeption{ //Sobrescrita
+        int custumerSize = storage.getCustomers().size(); //Reflexividade
         for(int i = 0; i < custumerSize; i++) {
             if(storage.getCustomers().get(i).getCpf().equals(cpf)) { //Reflexividade
                 return i;
@@ -29,8 +31,8 @@ public class GetArrayId implements GetArrayIdInterface{
     }
 
     @Override
-    public int getEmployeeId(String cpf) throws ItemNotFoundExeption{
-        int employeeSize = storage.getEmployees().size();
+    public int getEmployeeId(String cpf) throws ItemNotFoundExeption{ //Sobrescrita
+        int employeeSize = storage.getEmployees().size(); //Reflexividade
         for(int i = 0; i < employeeSize; i++) {
             if(storage.getEmployees().get(i).getCpf().equals(cpf)) { //Reflexividade
                 return i;
@@ -40,8 +42,8 @@ public class GetArrayId implements GetArrayIdInterface{
     }
 
     @Override
-    public int getGuitarId(String model) throws ItemNotFoundExeption{
-        int guitarSize = storage.getGuitarStock().size();
+    public int getGuitarId(String model) throws ItemNotFoundExeption{ //Sobrescrita
+        int guitarSize = storage.getGuitarStock().size(); //Reflexividade
         for(int i = 0; i < guitarSize; i++) {
             if(storage.getGuitarStock().get(i).getModel().equals(model)) { //Reflexividade
                 return i;
@@ -51,8 +53,8 @@ public class GetArrayId implements GetArrayIdInterface{
     }
 
     @Override
-    public int getPianoId(String model) throws ItemNotFoundExeption{
-        int pianoSize = storage.getPianoStock().size();
+    public int getPianoId(String model) throws ItemNotFoundExeption{ //Sobrescrita
+        int pianoSize = storage.getPianoStock().size(); //Reflexividade
         for(int i = 0; i < pianoSize; i++) {
             if(storage.getPianoStock().get(i).getModel().equals(model)) { //Reflexividade
                 return i;
@@ -62,8 +64,8 @@ public class GetArrayId implements GetArrayIdInterface{
     }
 
     @Override
-    public int getDrumsId(String model) throws ItemNotFoundExeption{
-        int drumsSize = storage.getDrumsStock().size();
+    public int getDrumsId(String model) throws ItemNotFoundExeption{ //Sobrescrita
+        int drumsSize = storage.getDrumsStock().size(); //Reflexividade
         for(int i = 0; i < drumsSize; i++) {
             if(storage.getDrumsStock().get(i).getModel().equals(model)) { //Reflexividade
                 return i;
@@ -73,8 +75,8 @@ public class GetArrayId implements GetArrayIdInterface{
     }
 
     @Override
-    public int getAcquisitionId(int OpId) throws ItemNotFoundExeption{
-        int acqSize = storage.getAcquisitions().size();
+    public int getAcquisitionId(int OpId) throws ItemNotFoundExeption{ //Sobrescrita
+        int acqSize = storage.getAcquisitions().size(); //Reflexividade
         for(int i = 0; i <  acqSize; i++) {
             if(storage.getAcquisitions().get(i).getOpId() == OpId) { //Reflexividade
                 return i;
@@ -84,8 +86,8 @@ public class GetArrayId implements GetArrayIdInterface{
     }
 
     @Override
-    public int getSaleId(int OpId) throws ItemNotFoundExeption{
-        int saleSize = storage.getSales().size();
+    public int getSaleId(int OpId) throws ItemNotFoundExeption{ //Sobrescrita
+        int saleSize = storage.getSales().size(); //Reflexividade
         for(int i = 0; i <  saleSize; i++) {
             if(storage.getSales().get(i).getOpId() == OpId) { //Reflexividade
                 return i;

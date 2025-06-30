@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//João Alberto Benaci Torezan
 
-/**
- *
- * @author joao
- */
 public class InputExceptionHandler implements InputExceptionHandlerInterface{
     
     private static InputExceptionHandler i;
     
     private InputExceptionHandler() {}
+    
+    //MÉTODO SINGLETON
     
     public static InputExceptionHandler createInputExeptionHandler() {
         if(i == null) {
@@ -21,7 +16,7 @@ public class InputExceptionHandler implements InputExceptionHandlerInterface{
     }
     
     @Override
-    public int InputInt(String input) throws IntInputErrorException{
+    public int InputInt(String input) throws IntInputErrorException{ //Sobrescrita
 
         int iRet = 0;
 
@@ -35,7 +30,7 @@ public class InputExceptionHandler implements InputExceptionHandlerInterface{
     }
     
     @Override
-    public float InputFloat(String input) throws FloatInputErrorException{
+    public float InputFloat(String input) throws FloatInputErrorException{ //Sobrescrita
 
         float fRet = 0;
 

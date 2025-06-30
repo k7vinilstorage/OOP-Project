@@ -1,18 +1,12 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class Dialogs {
     
     private static Dialogs dialogs;
+    
+    //MÉTODO SINGLETON
     
     public static Dialogs createDialogs() {
         if(dialogs == null) {

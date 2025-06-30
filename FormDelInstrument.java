@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormDelInstrument extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,16 @@ public class FormDelInstrument extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+    
     private static FormDelInstrument d;
     
     private FormDelInstrument() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormDelInstrument createDelInstrument() {
         if(d == null) {
             d = new FormDelInstrument();
@@ -120,16 +116,16 @@ public class FormDelInstrument extends javax.swing.JFrame {
             switch (instrumentCb.getSelectedItem().toString()) {
 
                 case "Guitar":
-                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                    storage.getGuitarStock().remove(id);
+                    id = garrid.getGuitarId(modelTf.getText());
+                    storage.getGuitarStock().remove(id); //Reflexividade
                     break;
                 case "Piano":
-                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                    storage.getPianoStock().remove(id);
+                    id = garrid.getPianoId(modelTf.getText());
+                    storage.getPianoStock().remove(id); //Reflexividade
                     break;
                 case "Drums":
-                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                    storage.getDrumsStock().remove(id);
+                    id = garrid.getDrumsId(modelTf.getText());
+                    storage.getDrumsStock().remove(id); //Reflexividade
                     break;
             } 
             

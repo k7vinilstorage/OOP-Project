@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public interface GetArrayIdInterface {
     public int getCustomerId(String cpf) throws ItemNotFoundExeption;
     public int getEmployeeId(String cpf) throws ItemNotFoundExeption;

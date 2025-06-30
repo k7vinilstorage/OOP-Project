@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormAddEmployee extends javax.swing.JFrame {
 
     /**
@@ -23,6 +15,8 @@ public class FormAddEmployee extends javax.swing.JFrame {
     private FormAddEmployee() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormAddEmployee createAddEmployee() {
         if(a == null) {
@@ -159,7 +153,7 @@ public class FormAddEmployee extends javax.swing.JFrame {
         e.setPhone(phoneTf.getText());
         e.setRole(roleTf.getText());
         e.setHireDate(GetDate.createGetDate().getDate());
-        storage.getEmployees().add(e);
+        storage.getEmployees().add(e); //Reflexividade
     }
     
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed

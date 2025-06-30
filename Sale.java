@@ -3,7 +3,9 @@
 public class Sale extends Operation{
    private Customer buyer;
 
-    public Sale() {}
+    public Sale() {
+        buyer = new Customer();
+    }
 
     public Sale(Customer buyer) { //Sobrecarga
         this.buyer = buyer;

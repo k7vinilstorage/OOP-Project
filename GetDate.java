@@ -1,3 +1,4 @@
+//João Alberto Benaci Torezan
 
 import java.time.LocalDate;
 
@@ -6,6 +7,8 @@ public class GetDate {
     private static GetDate gd;
     
     private GetDate() {}
+    
+    //MÉTODO SINGLETON
     
     public static GetDate createGetDate() {
         if(gd == null) {

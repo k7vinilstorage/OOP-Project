@@ -1,3 +1,4 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
@@ -10,11 +11,15 @@ public class FormAddSale extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+    
     private static FormAddSale a;
     
     private FormAddSale() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormAddSale createAddSale() {
         if(a == null) {
@@ -193,40 +198,40 @@ public class FormAddSale extends javax.swing.JFrame {
 
             switch(instrumentCb.getSelectedItem().toString()) {
                 case "Guitar":
-                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                    s.setProduct(storage.getGuitarStock().get(id));
+                    id = garrid.getGuitarId(modelTf.getText());
+                    s.setProduct(storage.getGuitarStock().get(id));//Reflexividade 
                     break;
                 case "Piano":
-                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                    s.setProduct(storage.getPianoStock().get(id));
+                    id = garrid.getPianoId(modelTf.getText());
+                    s.setProduct(storage.getPianoStock().get(id));//Reflexividade
                     break;
                 case "Drums":
-                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                    s.setProduct(storage.getDrumsStock().get(id));
+                    id = garrid.getDrumsId(modelTf.getText());
+                    s.setProduct(storage.getDrumsStock().get(id)); //Reflexividade
                     break;
             }
 
-            id = GetArrayId.createGetArrayId().getEmployeeId(employeeCpfTf.getText());
-            s.setInCharge(storage.getEmployees().get(id));
+            id = garrid.getEmployeeId(employeeCpfTf.getText());
+            s.setInCharge(storage.getEmployees().get(id)); //Reflexividade
 
-            id = GetArrayId.createGetArrayId().getCustomerId(custumerCpfTf.getText());
-            s.setBuyer(storage.getCustomers().get(id));
+            id = garrid.getCustomerId(custumerCpfTf.getText());
+            s.setBuyer(storage.getCustomers().get(id)); //Reflexividade
             
             s.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
             
-            s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount());
+            s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount()); //Reflexividade
             
-            s.setDate(GetDate.createGetDate().getDate());
+            s.setDate(GetDate.createGetDate().getDate()); //Reflexividade
 
             storage.setSaleIds(storage.getSaleIds() + 1);
             s.setOpId(storage.getSaleIds());
 
-            s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1);
-            s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); 
+            s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1); //Reflexividade
+            s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); //Reflexividade
             
-            s.getBuyer().setlastPurchaseDate(GetDate.createGetDate().getDate());
+            s.getBuyer().setlastPurchaseDate(GetDate.createGetDate().getDate()); //Reflexividade
 
-            storage.getSales().add(s);
+            storage.getSales().add(s); //Reflexividade
             
             cleanTf();
         }

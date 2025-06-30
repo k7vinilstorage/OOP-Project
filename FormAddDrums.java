@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormAddDrums extends javax.swing.JFrame {
 
     /**
@@ -18,11 +10,15 @@ public class FormAddDrums extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormAddDrums a;
     
     private FormAddDrums() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormAddDrums createAddDrums() {
         if(a == null) {
@@ -238,10 +234,10 @@ public class FormAddDrums extends javax.swing.JFrame {
             d.setBrand(brandTf.getText());
             d.setShellMaterial(shellTf.getText());
             d.setType(typeTf.getText());
-            d.setPiecesCount(InputExceptionHandler.createInputExeptionHandler().InputInt(piecesTf.getText()));
-            d.setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            d.setPiecesCount(ieh.InputInt(piecesTf.getText()));
+            d.setPrice(ieh.InputFloat(priceTf.getText()));
             d.setCategory("Percussion");
-            storage.getDrumsStock().add(d);
+            storage.getDrumsStock().add(d); //Reflexividade
             
             cleanTf();
         }

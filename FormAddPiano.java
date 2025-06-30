@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormAddPiano extends javax.swing.JFrame {
 
     /**
@@ -18,11 +10,15 @@ public class FormAddPiano extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormAddPiano a;
     
     private FormAddPiano() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormAddPiano createAddPiano() {
         if(a == null) {
@@ -240,10 +236,10 @@ public class FormAddPiano extends javax.swing.JFrame {
             p.setBrand(brandTf.getText());
             p.setBodyType(bodyTf.getText());
             p.setType(typeTf.getText());
-            p.setKeyCount(InputExceptionHandler.createInputExeptionHandler().InputInt(keyTf.getText()));
-            p.setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));    
+            p.setKeyCount(ieh.InputInt(keyTf.getText()));
+            p.setPrice(ieh.InputFloat(priceTf.getText()));    
             p.setCategory("Keys");
-            storage.getPianoStock().add(p);
+            storage.getPianoStock().add(p); //Reflexividade
             
             cleanTf();
         }

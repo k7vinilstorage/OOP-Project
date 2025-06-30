@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormAddGuitar extends javax.swing.JFrame {
 
     /**
@@ -18,11 +10,15 @@ public class FormAddGuitar extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormAddGuitar a;
     
     private FormAddGuitar() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormAddGuitar createAddGuitar() {
         if(a == null) {
@@ -238,10 +234,10 @@ public class FormAddGuitar extends javax.swing.JFrame {
             g.setBrand(brandTf.getText());
             g.setShape(shapeTf.getText());
             g.setType(typeTf.getText());
-            g.setStringCount(InputExceptionHandler.createInputExeptionHandler().InputInt(StringTf.getText()));
-            g.setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
+            g.setStringCount(ieh.InputInt(StringTf.getText()));
+            g.setPrice(ieh.InputFloat(priceTf.getText()));
             g.setCategory("String");
-            storage.getGuitarStock().add(g);
+            storage.getGuitarStock().add(g); //Reflexividade
             
             cleanTf();
         }

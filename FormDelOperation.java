@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormDelOperation extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,18 @@ public class FormDelOperation extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+    
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormDelOperation d;
     
     private FormDelOperation() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormDelOperation createDelOperation() {
         if(d == null) {
             d = new FormDelOperation();
@@ -123,12 +121,12 @@ public class FormDelOperation extends javax.swing.JFrame {
         
         try{
             if(opCb.getSelectedItem().toString().equals("Sale")) {
-                id = GetArrayId.createGetArrayId().getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
-                storage.getSales().remove(id);
+                id = garrid.getSaleId(ieh.InputInt(opTf.getText()));
+                storage.getSales().remove(id); //Reflexividade
             }
             else {
-                id = GetArrayId.createGetArrayId().getAcquisitionId(InputExceptionHandler.createInputExeptionHandler().InputInt(opTf.getText()));
-                storage.getAcquisitions().remove(id);
+                id = garrid.getAcquisitionId(ieh.InputInt(opTf.getText()));
+                storage.getAcquisitions().remove(id); //Reflexividade
             }
             
             opTf.setText("");

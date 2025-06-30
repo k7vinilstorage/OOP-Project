@@ -1,16 +1,8 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormPeopleMenu extends javax.swing.JFrame {
     
     /**
@@ -19,12 +11,18 @@ public class FormPeopleMenu extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+
+    private Dialogs dia = Dialogs.createDialogs();
+    
     private static FormPeopleMenu p;
     
     private FormPeopleMenu() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormPeopleMenu createPeopleMenu() {
         if(p == null) {
             p = new FormPeopleMenu();
@@ -290,7 +288,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
         int linePos = 0;
         modTable.setRowCount(linePos);
         
-        for(Customer c : storage.getCustomers()) {
+        for(Customer c : storage.getCustomers()) { //Reflexividade
            modTable.insertRow(linePos, new Object[]{c.getName(), c.getCpf()});
            linePos++;
         }
@@ -301,7 +299,7 @@ public class FormPeopleMenu extends javax.swing.JFrame {
         int linePos = 0;
         modTable.setRowCount(linePos);
         
-        for(Employee e : storage.getEmployees()) {
+        for(Employee e : storage.getEmployees()) { //Reflexividade
            modTable.insertRow(linePos, new Object[]{e.getName(), e.getCpf()});
            linePos++;
         }
@@ -310,22 +308,28 @@ public class FormPeopleMenu extends javax.swing.JFrame {
     private void searchPeoplebyCpf() {
         try{
             if(employeeCB.isSelected()) {
-                int id = GetArrayId.createGetArrayId().getEmployeeId(cpfTf.getText());
-                String info = "Name: " + storage.getEmployees().get(id).getName() +
-                            "\nCPF: " + storage.getEmployees().get(id).getCpf() + 
-                            "\nPhone: " + storage.getEmployees().get(id).getPhone() +
-                            "\nRole: " + storage.getEmployees().get(id).getRole() +
-                            "\nHire Date: " + storage.getEmployees().get(id).getHireDate();
-                Dialogs.createDialogs().infoDialog(info, "Employee search results");
+                int id = garrid.getEmployeeId(cpfTf.getText());
+                
+                Employee e = storage.getEmployees().get(id); //Reflexividade
+                
+                String info = "Name: " + e.getName() +
+                            "\nCPF: " + e.getCpf() + 
+                            "\nPhone: " + e.getPhone() +
+                            "\nRole: " + e.getRole() +
+                            "\nHire Date: " + e.getHireDate();
+                dia.infoDialog(info, "Employee search results");
             }
             else {
-                int id = GetArrayId.createGetArrayId().getCustomerId(cpfTf.getText());
-                String info = "Name: " + storage.getCustomers().get(id).getName() +
-                            "\nCPF: " + storage.getCustomers().get(id).getCpf() + 
-                            "\nPhone: " + storage.getCustomers().get(id).getPhone() +
-                            "\nPurchase Count: " + storage.getCustomers().get(id).getPurchaseCount() +
-                            "\nLast Purchase Date: " + storage.getCustomers().get(id).getlastPurchaseDate();
-                Dialogs.createDialogs().infoDialog(info, "Custumer search results");
+                int id = garrid.getCustomerId(cpfTf.getText());
+
+                Customer c = storage.getCustomers().get(id); //Reflexividade
+
+                String info = "Name: " + c.getName() +
+                            "\nCPF: " + c.getCpf() + 
+                            "\nPhone: " + c.getPhone() +
+                            "\nPurchase Count: " + c.getPurchaseCount() +
+                            "\nLast Purchase Date: " + c.getlastPurchaseDate();
+                dia.infoDialog(info, "Custumer search results");
             }
             cpfTf.setText("");
         }

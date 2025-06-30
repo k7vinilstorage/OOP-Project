@@ -36,6 +36,8 @@ public class BDStorage {
         employeeIds = 0;
     }
 
+    //MÉTODO SINGLETON
+    
     public static BDStorage createStorage() {
         if(SingleStorage == null) {
             SingleStorage = new BDStorage();

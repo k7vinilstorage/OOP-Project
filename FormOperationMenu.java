@@ -1,16 +1,8 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormOperationMenu extends javax.swing.JFrame {
 
     /**
@@ -19,11 +11,17 @@ public class FormOperationMenu extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+
+    private Dialogs dia = Dialogs.createDialogs();
+    
     private static FormOperationMenu o;
     
     public FormOperationMenu() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormOperationMenu createOperationMenu() {
         if(o == null) {
@@ -284,7 +282,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
         int linePos = 0;
         modTable.setRowCount(linePos);
         
-        for(Acquisition a : storage.getAcquisitions()) {
+        for(Acquisition a : storage.getAcquisitions()) { //Reflexividade
            modTable.insertRow(linePos, new Object[]{a.getOpId(), (a.getProductType() + " (" + a.getProduct().getModel() + ")"), a.getSupplyerName(), a.getProductAmount()});
            linePos++;
         }
@@ -295,7 +293,7 @@ public class FormOperationMenu extends javax.swing.JFrame {
         int linePos = 0;
         modTable.setRowCount(linePos);
         
-        for(Sale s : storage.getSales()) {
+        for(Sale s : storage.getSales()) { //Reflexividade
            modTable.insertRow(linePos, new Object[]{s.getOpId(), (s.getProductType() + " (" + s.getProduct().getModel() + ")"), s.getBuyer().getCpf(), s.getProductAmount()});
            linePos++;
         }
@@ -306,31 +304,37 @@ public class FormOperationMenu extends javax.swing.JFrame {
         
         try{
             if(saleCb.isSelected()) {
-                id = GetArrayId.createGetArrayId().getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
-                String info = "ID: " + storage.getSales().get(id).getOpId() +
-                        "\nBuyer: " + storage.getSales().get(id).getBuyer().getName() +
-                        "\nBuyer CPF: " + storage.getSales().get(id).getBuyer().getCpf() + 
-                        "\nEmployee: " + storage.getSales().get(id).getInCharge().getName() +
-                        "\nEmployee: " + storage.getSales().get(id).getInCharge().getCpf() + 
-                        "\nProduct Model: " + storage.getSales().get(id).getProduct().getModel() +
-                        "\nProduct Type: " + storage.getSales().get(id).getProductType() +
-                        "\nAmount: " + storage.getSales().get(id).getProductAmount() + 
-                        "\nTotal Cost: " + storage.getSales().get(id).getTotalCost() +
-                        "\nDate: " + storage.getSales().get(id).getDate();
-                Dialogs.createDialogs().infoDialog(info, "Sale Search Results");
+                id = garrid.getSaleId(InputExceptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
+                
+                Sale s = storage.getSales().get(id); //Reflexividade
+                
+                String info = "ID: " + s.getOpId() +
+                        "\nBuyer: " + s.getBuyer().getName() +
+                        "\nBuyer CPF: " + s.getBuyer().getCpf() + 
+                        "\nEmployee: " + s.getInCharge().getName() +
+                        "\nEmployee: " + s.getInCharge().getCpf() + 
+                        "\nProduct Model: " + s.getProduct().getModel() +
+                        "\nProduct Type: " + s.getProductType() +
+                        "\nAmount: " + s.getProductAmount() + 
+                        "\nTotal Cost: " + s.getTotalCost() +
+                        "\nDate: " + s.getDate();
+                dia.infoDialog(info, "Sale Search Results");
             }
             else {
                 id = GetArrayId.createGetArrayId().getAcquisitionId(InputExceptionHandler.createInputExeptionHandler().InputInt(operationTf.getText()));
-                String info = "ID: " + storage.getAcquisitions().get(id).getOpId() +
-                        "\nSupplyer: " + storage.getAcquisitions().get(id).getSupplyerName() +
-                        "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getName() +
-                        "\nEmployee: " + storage.getAcquisitions().get(id).getInCharge().getCpf() + 
-                        "\nProduct Model: " + storage.getAcquisitions().get(id).getProduct().getModel() +
-                        "\nProduct Type: " + storage.getAcquisitions().get(id).getProductType() +
-                        "\nAmount: " + storage.getAcquisitions().get(id).getProductAmount() + 
-                        "\nTotal Cost: " + storage.getAcquisitions().get(id).getTotalCost() +
-                        "\nDate: " + storage.getAcquisitions().get(id).getDate();
-                Dialogs.createDialogs().infoDialog(info, "Acquisition Search Results");
+
+                Acquisition a = storage.getAcquisitions().get(id); //Reflexividade
+
+                String info = "ID: " + a.getOpId() +
+                        "\nSupplyer: " + a.getSupplyerName() +
+                        "\nEmployee: " + a.getInCharge().getName() +
+                        "\nEmployee: " + a.getInCharge().getCpf() + 
+                        "\nProduct Model: " + a.getProduct().getModel() +
+                        "\nProduct Type: " + a.getProductType() +
+                        "\nAmount: " + a.getProductAmount() + 
+                        "\nTotal Cost: " + a.getTotalCost() +
+                        "\nDate: " + a.getDate();
+                dia.infoDialog(info, "Acquisition Search Results");
             }
             
             operationTf.setText("");

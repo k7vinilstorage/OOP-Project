@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormEditEmployee extends javax.swing.JFrame {
 
     /**
@@ -24,6 +16,8 @@ public class FormEditEmployee extends javax.swing.JFrame {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormEditEmployee createEditEmployee() {
         if(e == null) {
             e = new FormEditEmployee();
@@ -223,9 +217,9 @@ public class FormEditEmployee extends javax.swing.JFrame {
     private void editEmployee() {
         try{
             int id = GetArrayId.createGetArrayId().getEmployeeId(registeredCpfTf.getText());
-            storage.getEmployees().get(id).setName(nameTf.getText());
-            storage.getEmployees().get(id).setCpf(newCpfTf.getText());
-            storage.getEmployees().get(id).setPhone(phoneTf.getText());
+            storage.getEmployees().get(id).setName(nameTf.getText()); //Reflexividade
+            storage.getEmployees().get(id).setCpf(newCpfTf.getText()); //Reflexividade
+            storage.getEmployees().get(id).setPhone(phoneTf.getText()); //Reflexividade
             
             cleanTf();
         }

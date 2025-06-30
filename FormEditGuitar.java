@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormEditGuitar extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,16 @@ public class FormEditGuitar extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormEditGuitar e;
     
     private FormEditGuitar() {
         initComponents();
     }
-
+    
+    //MÉTODO SINGLETON
+    
     public static FormEditGuitar createEditGuitar() {
         if(e == null) {
             e = new FormEditGuitar();
@@ -239,12 +235,12 @@ public class FormEditGuitar extends javax.swing.JFrame {
     private void editGuitar() {
         try { 
             int id = GetArrayId.createGetArrayId().getGuitarId(registeredModelTf.getText());
-            storage.getGuitarStock().get(id).setStringCount(InputExceptionHandler.createInputExeptionHandler().InputInt(stringTf.getText()));
-            storage.getGuitarStock().get(id).setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
-            storage.getGuitarStock().get(id).setModel(NewModelTf.getText());
-            storage.getGuitarStock().get(id).setBrand(brandTf.getText());
-            storage.getGuitarStock().get(id).setShape(shapeTf.getText());
-            storage.getGuitarStock().get(id).setType(typeTf.getText());
+            storage.getGuitarStock().get(id).setStringCount(ieh.InputInt(stringTf.getText())); //Reflexividade
+            storage.getGuitarStock().get(id).setPrice(ieh.InputFloat(priceTf.getText())); //Reflexividade
+            storage.getGuitarStock().get(id).setModel(NewModelTf.getText()); //Reflexividade
+            storage.getGuitarStock().get(id).setBrand(brandTf.getText()); //Reflexividade
+            storage.getGuitarStock().get(id).setShape(shapeTf.getText()); //Reflexividade
+            storage.getGuitarStock().get(id).setType(typeTf.getText()); //Reflexividade
             
             cleanTf();
         }

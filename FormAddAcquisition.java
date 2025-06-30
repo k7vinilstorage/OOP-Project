@@ -1,3 +1,4 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
@@ -9,11 +10,15 @@ public class FormAddAcquisition extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+    
     private static FormAddAcquisition a;
     
     private FormAddAcquisition() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormAddAcquisition createAddAcquisition() {
         if(a == null) {
@@ -160,7 +165,7 @@ public class FormAddAcquisition extends javax.swing.JFrame {
     }//GEN-LAST:event_modelTfActionPerformed
 
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
-        registerSale();
+        registerAcquisition();
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void productAmountTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productAmountTfActionPerformed
@@ -182,7 +187,7 @@ public class FormAddAcquisition extends javax.swing.JFrame {
         productAmountTf.setText("");
     }
     
-    private void registerSale() {
+    private void registerAcquisition() {
         Acquisition a = new Acquisition();
         int id = 0;
         
@@ -191,33 +196,33 @@ public class FormAddAcquisition extends javax.swing.JFrame {
 
             switch(instrumentCb.getSelectedItem().toString()) {
                 case "Guitar":
-                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
-                    a.setProduct(storage.getGuitarStock().get(id));
+                    id = garrid.getGuitarId(modelTf.getText());
+                    a.setProduct(storage.getGuitarStock().get(id)); //Reflexividade
                     break;
                 case "Piano":
-                    id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
-                    a.setProduct(storage.getPianoStock().get(id));
+                    id = garrid.getPianoId(modelTf.getText());
+                    a.setProduct(storage.getPianoStock().get(id)); //Reflexividade
                     break;
                 case "Drums":
-                    id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
-                    a.setProduct(storage.getDrumsStock().get(id));
+                    id = garrid.getDrumsId(modelTf.getText());
+                    a.setProduct(storage.getDrumsStock().get(id)); //Reflexividade
                     break;
             }
 
-            id = GetArrayId.createGetArrayId().getEmployeeId(supplyerTf.getText());
-            a.setInCharge(storage.getEmployees().get(id));
+            id = garrid.getEmployeeId(supplyerTf.getText());
+            a.setInCharge(storage.getEmployees().get(id)); //Reflexividade
             a.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
             
-            a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount());
+            a.setTotalCost(a.getProduct().getPrice() * a.getProductAmount()); //Reflexividade
             
-            a.setDate(GetDate.createGetDate().getDate());
+            a.setDate(GetDate.createGetDate().getDate()); //Reflexividade
 
             storage.setAcquisitionIds(storage.getAcquisitionIds() + 1);
             a.setOpId(storage.getAcquisitionIds());
 
-            a.getProduct().setAvailability(a.getProduct().getAvailability() + a.getProductAmount()); 
+            a.getProduct().setAvailability(a.getProduct().getAvailability() + a.getProductAmount());  //Reflexividade
 
-            storage.getAcquisitions().add(a);
+            storage.getAcquisitions().add(a); //Reflexividade
             
             cleanTf();
         }

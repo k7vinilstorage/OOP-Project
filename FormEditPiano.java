@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormEditPiano extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,16 @@ public class FormEditPiano extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormEditPiano e;
     
     private FormEditPiano() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormEditPiano createEditPiano() {
         if(e == null) {
             e = new FormEditPiano();
@@ -239,12 +235,12 @@ public class FormEditPiano extends javax.swing.JFrame {
     private void editPiano() {
         try {
             int id = GetArrayId.createGetArrayId().getPianoId(registeredModelTf.getText());
-            storage.getPianoStock().get(id).setKeyCount(InputExceptionHandler.createInputExeptionHandler().InputInt(keyTf.getText()));
-            storage.getPianoStock().get(id).setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
-            storage.getPianoStock().get(id).setModel(NewModelTf.getText());
-            storage.getPianoStock().get(id).setBrand(brandTf.getText());
-            storage.getPianoStock().get(id).setBodyType(bodyTf.getText());
-            storage.getPianoStock().get(id).setType(typeTf.getText());
+            storage.getPianoStock().get(id).setKeyCount(ieh.InputInt(keyTf.getText())); //Reflexividade
+            storage.getPianoStock().get(id).setPrice(ieh.InputFloat(priceTf.getText())); //Reflexividade
+            storage.getPianoStock().get(id).setModel(NewModelTf.getText()); //Reflexividade
+            storage.getPianoStock().get(id).setBrand(brandTf.getText()); //Reflexividade
+            storage.getPianoStock().get(id).setBodyType(bodyTf.getText()); //Reflexividade
+            storage.getPianoStock().get(id).setType(typeTf.getText()); //Reflexividade
             
             cleanTf();
         }

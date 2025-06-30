@@ -1,16 +1,8 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormInstrumentMenu extends javax.swing.JFrame {
 
     /**
@@ -19,11 +11,15 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private GetArrayId garrid = GetArrayId.createGetArrayId();
+    
     private static FormInstrumentMenu i;
     
     private FormInstrumentMenu() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormInstrumentMenu createInstrumentMenu() {
         if(i == null) {
@@ -362,7 +358,7 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
         int linePos = 0;
         modTable.setRowCount(linePos);
         
-        for(Guitar g : storage.getGuitarStock()) {
+        for(Guitar g : storage.getGuitarStock()) { //Reflexividade
            modTable.insertRow(linePos, new Object[]{g.getModel(), g.getShape(), g.getBrand()});
            linePos++;
         }
@@ -373,7 +369,7 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
         int linePos = 0;
         modTable.setRowCount(linePos);
         
-        for(Piano p : storage.getPianoStock()) {
+        for(Piano p : storage.getPianoStock()) { //Reflexividade
            modTable.insertRow(linePos, new Object[]{p.getModel(), p.getBodyType(), p.getBrand()});
            linePos++;
         }
@@ -384,7 +380,7 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
         int linePos = 0;
         modTable.setRowCount(linePos);
         
-        for(Drums d : storage.getDrumsStock()) {
+        for(Drums d : storage.getDrumsStock()) { //Reflexividade
            modTable.insertRow(linePos, new Object[]{d.getModel(), d.getShellMaterial(), d.getBrand()});
            linePos++;
         }
@@ -397,40 +393,46 @@ public class FormInstrumentMenu extends javax.swing.JFrame {
         try {
             switch(instrumentCb.getSelectedItem().toString()) {
                 case "Guitar":
-                    id = GetArrayId.createGetArrayId().getGuitarId(modelTf.getText());
+                    id = garrid.getGuitarId(modelTf.getText());
+                    
+                    Guitar g = storage.getGuitarStock().get(id); //Reflexividade
 
-                    info = "Model: " + storage.getGuitarStock().get(id).getModel() +
-                            "\nBrand: " + storage.getGuitarStock().get(id).getBrand() +
-                            "\nShape: " + storage.getGuitarStock().get(id).getShape() + 
-                            "\nType: " + storage.getGuitarStock().get(id).getType() + 
-                            "\nCategory: " + storage.getGuitarStock().get(id).getCategory() +
-                            "\nString Count: " + storage.getGuitarStock().get(id).getStringCount() + 
-                            "\nAvailability: " + storage.getGuitarStock().get(id).getAvailability() +
-                            "\nPrice: " + storage.getGuitarStock().get(id).getPrice();
+                    info = "Model: " + g.getModel() + 
+                            "\nBrand: " + g.getBrand() +
+                            "\nShape: " + g.getShape() + 
+                            "\nType: " + g.getType() + 
+                            "\nCategory: " + g.getCategory() +
+                            "\nString Count: " + g.getStringCount() + 
+                            "\nAvailability: " + g.getAvailability() +
+                            "\nPrice: " + g.getPrice();
                     break;
                 case "Piano":
                     id = GetArrayId.createGetArrayId().getPianoId(modelTf.getText());
 
-                    info = "Model: " + storage.getPianoStock().get(id).getModel() +
-                            "\nBrand: " + storage.getPianoStock().get(id).getBrand() +
-                            "\nBody Type: " + storage.getPianoStock().get(id).getBodyType()+ 
-                            "\nType: " + storage.getPianoStock().get(id).getType() + 
-                            "\nCategory: " + storage.getPianoStock().get(id).getCategory() +
-                            "\nKey Count: " + storage.getPianoStock().get(id).getKeyCount()+ 
-                            "\nAvailability: " + storage.getPianoStock().get(id).getAvailability() +
-                            "\nPrice: " + storage.getPianoStock().get(id).getPrice();
+                    Piano p = storage.getPianoStock().get(id); //Reflexividade 
+
+                    info = "Model: " + p.getModel() +
+                            "\nBrand: " + p.getBrand() +
+                            "\nBody Type: " + p.getBodyType()+ 
+                            "\nType: " + p.getType() + 
+                            "\nCategory: " + p.getCategory() +
+                            "\nKey Count: " + p.getKeyCount()+ 
+                            "\nAvailability: " + p.getAvailability() +
+                            "\nPrice: " + p.getPrice();
                     break;
                 case "Drums":
                     id = GetArrayId.createGetArrayId().getDrumsId(modelTf.getText());
 
-                    info = "Model: " + storage.getDrumsStock().get(id).getModel() +
-                            "\nBrand: " + storage.getDrumsStock().get(id).getBrand() +
-                            "\nShell Material: " + storage.getDrumsStock().get(id).getShellMaterial()+ 
-                            "\nType: " + storage.getDrumsStock().get(id).getType() + 
-                            "\nCategory: " + storage.getDrumsStock().get(id).getCategory() +
-                            "\nPieces Count: " + storage.getDrumsStock().get(id).getPiecesCount() + 
-                            "\nAvailability: " + storage.getDrumsStock().get(id).getAvailability() +
-                            "\nPrice: " + storage.getDrumsStock().get(id).getPrice();
+                    Drums d = storage.getDrumsStock().get(id); //Reflexividade
+
+                    info = "Model: " + d.getModel() +
+                            "\nBrand: " + d.getBrand() +
+                            "\nShell Material: " + d.getShellMaterial()+ 
+                            "\nType: " + d.getType() + 
+                            "\nCategory: " + d.getCategory() +
+                            "\nPieces Count: " + d.getPiecesCount() + 
+                            "\nAvailability: " + d.getAvailability() +
+                            "\nPrice: " + d.getPrice();
                     break;
             }
 

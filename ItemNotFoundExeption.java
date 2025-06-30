@@ -1,3 +1,5 @@
+//João Alberto Benaci Torezan
+
 public class ItemNotFoundExeption extends Exception{
     
     private Dialogs dialogs = Dialogs.createDialogs();
@@ -8,7 +10,7 @@ public class ItemNotFoundExeption extends Exception{
         item = "";
     }
     
-    public ItemNotFoundExeption(String item) {
+    public ItemNotFoundExeption(String item) { //Sobrecarga
         this.item = item;
     }
     

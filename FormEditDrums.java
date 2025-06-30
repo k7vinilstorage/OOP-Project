@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormEditDrums extends javax.swing.JFrame {
 
     /**
@@ -18,12 +10,16 @@ public class FormEditDrums extends javax.swing.JFrame {
     
     private BDStorage storage = BDStorage.createStorage();
     
+    private InputExceptionHandler ieh = InputExceptionHandler.createInputExeptionHandler();
+    
     private static FormEditDrums e;
     
     private FormEditDrums() {
         initComponents();
     }
 
+    //MÉTODO SINGLETON
+    
     public static FormEditDrums createEditDrums() {
         if(e == null) {
             e = new FormEditDrums();
@@ -239,12 +235,12 @@ public class FormEditDrums extends javax.swing.JFrame {
     private void editDrums() {
         try {   
             int id = GetArrayId.createGetArrayId().getDrumsId(registeredModelTf.getText());
-            storage.getDrumsStock().get(id).setPiecesCount(InputExceptionHandler.createInputExeptionHandler().InputInt(piecesTf.getText()));
-            storage.getDrumsStock().get(id).setPrice(InputExceptionHandler.createInputExeptionHandler().InputFloat(priceTf.getText()));
-            storage.getDrumsStock().get(id).setModel(NewModelTf.getText());
-            storage.getDrumsStock().get(id).setBrand(brandTf.getText());
-            storage.getDrumsStock().get(id).setShellMaterial(shellTf.getText());
-            storage.getDrumsStock().get(id).setType(typeTf.getText());
+            storage.getDrumsStock().get(id).setPiecesCount(ieh.InputInt(piecesTf.getText())); //Reflexividade
+            storage.getDrumsStock().get(id).setPrice(ieh.InputFloat(priceTf.getText())); //Reflexividade
+            storage.getDrumsStock().get(id).setModel(NewModelTf.getText()); //Reflexividade
+            storage.getDrumsStock().get(id).setBrand(brandTf.getText()); //Reflexividade
+            storage.getDrumsStock().get(id).setShellMaterial(shellTf.getText()); //Reflexividade
+            storage.getDrumsStock().get(id).setType(typeTf.getText()); //Reflexividade
             
             cleanTf();
         }

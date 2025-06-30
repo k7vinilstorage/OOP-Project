@@ -1,15 +1,7 @@
+//João Alberto Benaci Torezan
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joao
- */
 public class FormAddCustomer extends javax.swing.JFrame {
 
     /**
@@ -23,6 +15,8 @@ public class FormAddCustomer extends javax.swing.JFrame {
     private FormAddCustomer() {
         initComponents();
     }
+    
+    //MÉTODO SINGLETON
     
     public static FormAddCustomer createAddCustumer() {
         if(a == null) {
@@ -154,7 +148,7 @@ public class FormAddCustomer extends javax.swing.JFrame {
         c.setName(nameTf.getText());
         c.setCpf(cpfTf.getText());
         c.setPhone(phoneTf.getText());
-        storage.getCustomers().add(c);
+        storage.getCustomers().add(c); //Reflexividade
     }
     
     public void exit(){
