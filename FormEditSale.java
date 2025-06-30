@@ -198,7 +198,12 @@ public class FormEditSale extends javax.swing.JFrame {
     }//GEN-LAST:event_idTfActionPerformed
 
     private void saveBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtActionPerformed
-        editSale();
+        try{
+            editSale();
+        }
+        catch(StockInsufficientException ose) {
+            ose.StockInsufficientErr();
+        } 
     }//GEN-LAST:event_saveBtActionPerformed
 
     private void modelTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelTfActionPerformed
@@ -225,14 +230,18 @@ public class FormEditSale extends javax.swing.JFrame {
         productAmountTf.setText("");
     }
     
-    private void editSale() {
+    private void editSale() throws StockInsufficientException{
         int id = 0;
+        
+        int prevProductAm = 0;
         
         try {
             id = garrid.getSaleId(ieh.InputInt(idTf.getText())); 
         
-            Sale s = storage.getSales().get(id); //Reflexividade
-        
+            Sale s = storage.getSales().get(id); //Reflexividade 
+            
+            prevProductAm = s.getProduct().getAvailability() + s.getProductAmount(); //Reflexividade
+            
             s.setProductAmount(ieh.InputInt(productAmountTf.getText())); 
             
             s.setProductType(instrumentCb.getSelectedItem().toString());
@@ -251,6 +260,10 @@ public class FormEditSale extends javax.swing.JFrame {
                     s.setProduct(storage.getDrumsStock().get(id)); //Reflexividade
                     break;
             }
+            
+            if(s.getProduct().getAvailability() < s.getProductAmount()) {
+                throw new StockInsufficientException("Instrument");
+            }
 
             id = garrid.getEmployeeId(employeeCpfTf.getText());
             s.setInCharge(storage.getEmployees().get(id)); //Reflexividade
@@ -263,8 +276,8 @@ public class FormEditSale extends javax.swing.JFrame {
 
             s.setDate(GetDate.createGetDate().getDate());
 
-            s.getBuyer().setPurchaseCount(s.getBuyer().getPurchaseCount() + 1); //Reflexividade
-            s.getProduct().setAvailability(s.getProduct().getAvailability() - s.getProductAmount()); //Reflexividade
+            
+            s.getProduct().setAvailability(prevProductAm - s.getProductAmount()); //Reflexividade
             
             cleanTf();
         }
@@ -273,6 +286,9 @@ public class FormEditSale extends javax.swing.JFrame {
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
+        }
+        catch(NegativeNumberException nne) {
+            nne.negativeNumErr();
         }
     }
     

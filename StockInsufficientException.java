@@ -1,7 +1,18 @@
 //João Alberto Benaci Torezan
 
-public class StringCountException extends Exception{
-    public void stringCountErr() {
-        Dialogs.createDialogs().errorDialog("String count must be within 6 - 18", "String count error");
+public class StockInsufficientException extends Exception{
+    
+    String info;
+    
+    public StockInsufficientException() {
+        info = "";
+    }
+    
+    public StockInsufficientException(String info) {
+        this.info = info;
+    }
+    
+    public void StockInsufficientErr() {
+        Dialogs.createDialogs().errorDialog(info + " stock insufficient", "Stock insufficient");
     }
 }

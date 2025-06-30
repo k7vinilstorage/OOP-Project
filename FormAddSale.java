@@ -166,7 +166,12 @@ public class FormAddSale extends javax.swing.JFrame {
     }//GEN-LAST:event_modelTfActionPerformed
 
     private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
-        registerSale();
+        try{
+            registerSale();
+        }
+        catch(StockInsufficientException ose) {
+            ose.StockInsufficientErr();
+        }
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void productAmountTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productAmountTfActionPerformed
@@ -188,13 +193,14 @@ public class FormAddSale extends javax.swing.JFrame {
         productAmountTf.setText("");
     }
     
-    private void registerSale() {
+    private void registerSale() throws StockInsufficientException{
         Sale s = new Sale();
         int id = 0;
         
-        
         try {
             s.setProductType(instrumentCb.getSelectedItem().toString());
+            
+            
 
             switch(instrumentCb.getSelectedItem().toString()) {
                 case "Guitar":
@@ -210,6 +216,12 @@ public class FormAddSale extends javax.swing.JFrame {
                     s.setProduct(storage.getDrumsStock().get(id)); //Reflexividade
                     break;
             }
+            
+            s.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
+             
+            if(s.getProduct().getAvailability() < s.getProductAmount()) {
+                throw new StockInsufficientException("Instrument");
+            }
 
             id = garrid.getEmployeeId(employeeCpfTf.getText());
             s.setInCharge(storage.getEmployees().get(id)); //Reflexividade
@@ -217,7 +229,6 @@ public class FormAddSale extends javax.swing.JFrame {
             id = garrid.getCustomerId(custumerCpfTf.getText());
             s.setBuyer(storage.getCustomers().get(id)); //Reflexividade
             
-            s.setProductAmount(InputExceptionHandler.createInputExeptionHandler().InputInt(productAmountTf.getText()));
             
             s.setTotalCost(s.getProduct().getPrice() * s.getProductAmount()); //Reflexividade
             
@@ -240,6 +251,9 @@ public class FormAddSale extends javax.swing.JFrame {
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
+        }
+        catch(NegativeNumberException nne) {
+            nne.negativeNumErr();
         }
         
     }

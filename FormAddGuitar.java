@@ -250,6 +250,9 @@ public class FormAddGuitar extends javax.swing.JFrame {
         catch(StringCountException sce) {
             sce.stringCountErr();
         }
+        catch(NegativeNumberException nee) {
+            nee.negativeNumErr();
+        }
         
     }
     

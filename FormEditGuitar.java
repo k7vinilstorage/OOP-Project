@@ -256,6 +256,9 @@ public class FormEditGuitar extends javax.swing.JFrame {
         catch(StringCountException sce) {
             sce.stringCountErr();
         }
+        catch(NegativeNumberException nee) {
+            nee.negativeNumErr();
+        }
     }
     
     public void exit(){

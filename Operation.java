@@ -58,8 +58,13 @@ public abstract class Operation {
         this.opId = opId;
     }
     
-    public void setProductAmount(int productAmount) {
-        this.productAmount = productAmount;
+    public void setProductAmount(int productAmount) throws NegativeNumberException{
+        if(productAmount > 0) {
+            this.productAmount = productAmount;
+        }
+        else {
+            throw new NegativeNumberException("Product amount");
+        }
     }
 
     public void setProduct(Instrument product) {

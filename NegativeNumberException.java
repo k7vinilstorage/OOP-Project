@@ -1,7 +1,18 @@
 //João Alberto Benaci Torezan
 
-public class StringCountException extends Exception{
-    public void stringCountErr() {
-        Dialogs.createDialogs().errorDialog("String count must be within 6 - 18", "String count error");
+public class NegativeNumberException extends Exception{
+    
+    String info;
+    
+    public NegativeNumberException() {
+        info = "";
+    }
+    
+    public NegativeNumberException(String info) {
+        this.info = info;
+    }
+    
+    public void negativeNumErr() {
+        Dialogs.createDialogs().errorDialog(info + " must be a positive Number", "Negative Number Error");
     }
 }

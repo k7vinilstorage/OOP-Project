@@ -232,6 +232,9 @@ public class FormAddAcquisition extends javax.swing.JFrame {
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
         } 
+        catch(NegativeNumberException nne) {
+            nne.negativeNumErr();
+        }
     }
     
     public void exit(){

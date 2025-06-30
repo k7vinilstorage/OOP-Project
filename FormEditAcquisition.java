@@ -228,10 +228,14 @@ public class FormEditAcquisition extends javax.swing.JFrame {
     private void editAcquisition() {
         int id = 0;
         
+        int prevProductAm = 0;
+        
         try {   
             id = garrid.getSaleId(ieh.InputInt(idTf.getText()));
             
             Acquisition a = storage.getAcquisitions().get(id); //Reflexividade
+            
+            prevProductAm = a.getProduct().getAvailability() - a.getProductAmount();
             
             a.setProductAmount(ieh.InputInt(productAmountTf.getText()));
 
@@ -259,7 +263,7 @@ public class FormEditAcquisition extends javax.swing.JFrame {
 
             a.setDate(GetDate.createGetDate().getDate()); 
 
-            a.getProduct().setAvailability(a.getProduct().getAvailability() - a.getProductAmount()); //Reflexividade   
+            a.getProduct().setAvailability(prevProductAm + a.getProductAmount()); //Reflexividade   
             
             storage.getAcquisitions().set(id, a); //Reflexividade
             
@@ -270,6 +274,9 @@ public class FormEditAcquisition extends javax.swing.JFrame {
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
+        }
+        catch(NegativeNumberException nne) {
+            nne.negativeNumErr();
         }
     }
     

@@ -71,7 +71,12 @@ public abstract class Instrument {
         this.availability = availability;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setPrice(float price) throws NegativeNumberException{
+        if(price > 0) {
+            this.price = price;
+        }
+        else {
+            throw new NegativeNumberException("Price");
+        }
     }
 }

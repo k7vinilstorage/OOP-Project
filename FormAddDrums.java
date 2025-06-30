@@ -250,6 +250,9 @@ public class FormAddDrums extends javax.swing.JFrame {
         catch(ShellMaterialException sme) {
             sme.shellMaterialErr();
         }
+        catch(NegativeNumberException nee) {
+            nee.negativeNumErr();
+        }
     }
     
     public void exit(){

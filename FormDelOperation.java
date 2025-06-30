@@ -122,10 +122,14 @@ public class FormDelOperation extends javax.swing.JFrame {
         try{
             if(opCb.getSelectedItem().toString().equals("Sale")) {
                 id = garrid.getSaleId(ieh.InputInt(opTf.getText()));
+                Instrument i = storage.getSales().get(id).getProduct(); //Reflexividade
+                i.setAvailability(i.getAvailability() + storage.getSales().get(id).getProductAmount()); 
                 storage.getSales().remove(id); //Reflexividade
             }
             else {
                 id = garrid.getAcquisitionId(ieh.InputInt(opTf.getText()));
+                Instrument i = storage.getAcquisitions().get(id).getProduct(); //Reflexividade
+                i.setAvailability(i.getAvailability() + storage.getAcquisitions().get(id).getProductAmount()); 
                 storage.getAcquisitions().remove(id); //Reflexividade
             }
             

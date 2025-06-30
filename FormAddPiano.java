@@ -252,6 +252,9 @@ public class FormAddPiano extends javax.swing.JFrame {
         catch(KeyCountException kce) {
             kce.keyCountErr();
         }
+        catch(NegativeNumberException nee) {
+            nee.negativeNumErr();
+        }
     }
     
     public void exit(){
