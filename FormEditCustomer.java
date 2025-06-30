@@ -198,14 +198,17 @@ public class FormEditCustomer extends javax.swing.JFrame {
     private void editCustumer() {
         try{
             int id = GetArrayId.createGetArrayId().getCustomerId(registeredCpfTf.getText());
-            storage.getCustomers().get(id).setName(nameTf.getText()); //Reflexividade
             storage.getCustomers().get(id).setCpf(newCpfTf.getText()); //Reflexividade
+            storage.getCustomers().get(id).setName(nameTf.getText()); //Reflexividade
             storage.getCustomers().get(id).setPhone(phoneTf.getText()); //Reflexividade
             
             cleanTf();
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
+        }
+        catch(DupCpfException dce) {
+           dce.DupCpfErr();
         }
     }
     

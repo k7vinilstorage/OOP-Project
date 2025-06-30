@@ -1,45 +1,33 @@
 //João Alberto Benaci Torezan
 
-public class InputExceptionHandler implements InputExceptionHandlerInterface{
+public class CpfExceptionHandler{
     
-    private static InputExceptionHandler i;
+    private static BDStorage storage = BDStorage.createStorage();
     
-    private InputExceptionHandler() {}
+    private static CpfExceptionHandler i;
+    
+    private CpfExceptionHandler() {}
     
     //MÉTODO SINGLETON
     
-    public static InputExceptionHandler createInputExeptionHandler() {
+    public static CpfExceptionHandler createCpfExceptionHandler() {
         if(i == null) {
-            i = new InputExceptionHandler();
+            i = new CpfExceptionHandler();
         }
         return i;
     }
     
-    @Override
-    public int InputInt(String input) throws IntInputErrorException{ //Sobrescrita
-
-        int iRet = 0;
-
-        try {
-            iRet = Integer.parseInt(input);
-            return iRet;
-        } 
-        catch (NumberFormatException nfe) {
-            throw new IntInputErrorException();
+    public String verifyCpf(String cpf) throws DupCpfException{
+        for(Customer c : storage.getCustomers()) {
+            if(c.getCpf().equals(cpf)) {
+                throw new DupCpfException();
+            }
         }
-    }
-    
-    @Override
-    public float InputFloat(String input) throws FloatInputErrorException{ //Sobrescrita
-
-        float fRet = 0;
-
-        try {
-            fRet = Float.parseFloat(input);
-            return fRet;
-        } 
-        catch (NumberFormatException nfe) {
-            throw new FloatInputErrorException();
+        for(Employee e : storage.getEmployees()) {
+            if(e.getCpf().equals(cpf)) {
+                throw new DupCpfException();
+            }
         }
+        return cpf;
     }
 }

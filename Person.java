@@ -44,8 +44,8 @@ public abstract class Person {
         this.id = id;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCpf(String cpf) throws DupCpfException{
+        this.cpf = CpfExceptionHandler.createCpfExceptionHandler().verifyCpf(cpf);
     }
 
     public void setPhone(String phone) {

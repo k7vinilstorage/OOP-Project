@@ -217,14 +217,17 @@ public class FormEditEmployee extends javax.swing.JFrame {
     private void editEmployee() {
         try{
             int id = GetArrayId.createGetArrayId().getEmployeeId(registeredCpfTf.getText());
-            storage.getEmployees().get(id).setName(nameTf.getText()); //Reflexividade
             storage.getEmployees().get(id).setCpf(newCpfTf.getText()); //Reflexividade
+            storage.getEmployees().get(id).setName(nameTf.getText()); //Reflexividade
             storage.getEmployees().get(id).setPhone(phoneTf.getText()); //Reflexividade
             
             cleanTf();
         }
         catch(ItemNotFoundExeption infe) {
             infe.itemNotFoundErr();
+        }
+        catch(DupCpfException dce) {
+           dce.DupCpfErr();
         }
     }
     

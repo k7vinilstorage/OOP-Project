@@ -147,21 +147,31 @@ public class FormAddEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_nameTfActionPerformed
 
     private void registerEmployee() {
-        Employee e = new Employee();
-        e.setName(nameTf.getText());
-        e.setCpf(cpfTf.getText());
-        e.setPhone(phoneTf.getText());
-        e.setRole(roleTf.getText());
-        e.setHireDate(GetDate.createGetDate().getDate());
-        storage.getEmployees().add(e); //Reflexividade
+        try {
+            Employee e = new Employee();
+            e.setCpf(cpfTf.getText());
+            e.setName(nameTf.getText());
+            e.setPhone(phoneTf.getText());
+            e.setRole(roleTf.getText());
+            e.setHireDate(GetDate.createGetDate().getDate());
+            storage.getEmployees().add(e); //Reflexividade
+            
+            cleanTf();
+        }
+        catch(DupCpfException dce) {
+           dce.DupCpfErr();
+        }
     }
     
-    private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
-        registerEmployee();
+    private void cleanTf() {
         nameTf.setText("");
         cpfTf.setText("");
         phoneTf.setText("");
         roleTf.setText("");
+    }
+    
+    private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
+        registerEmployee();
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed

@@ -132,11 +132,14 @@ public class FormAddCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTfActionPerformed
 
-    private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
-        registerCustumer();
+    private void CleanTf() {
         nameTf.setText("");
         cpfTf.setText("");
         phoneTf.setText("");
+    }
+    
+    private void registerBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtActionPerformed
+        registerCustumer();
     }//GEN-LAST:event_registerBtActionPerformed
 
     private void closeBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtActionPerformed
@@ -144,11 +147,18 @@ public class FormAddCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_closeBtActionPerformed
 
     private void registerCustumer() {
-        Customer c = new Customer();
-        c.setName(nameTf.getText());
-        c.setCpf(cpfTf.getText());
-        c.setPhone(phoneTf.getText());
-        storage.getCustomers().add(c); //Reflexividade
+        try {
+            Customer c = new Customer();
+            c.setCpf(cpfTf.getText());
+            c.setName(nameTf.getText());
+            c.setPhone(phoneTf.getText());
+            storage.getCustomers().add(c); //Reflexividade
+            
+            CleanTf();
+        }
+        catch(DupCpfException dce) {
+           dce.DupCpfErr();
+        }
     }
     
     public void exit(){
