@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class BDStorage {
 
-    private GetArrayId garrid = GetArrayId.createGetArrayId();
-    
     private static BDStorage SingleStorage;
 
     private ArrayList<Guitar> guitarStock;
