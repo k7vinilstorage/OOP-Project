@@ -101,7 +101,7 @@ public class FormEditCustomer extends javax.swing.JFrame {
         });
 
         newLb.setFont(new java.awt.Font("Fira Sans", 0, 15)); // NOI18N
-        newLb.setText("New Information (Leave blank for no changes):");
+        newLb.setText("New Information:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

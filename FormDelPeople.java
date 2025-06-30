@@ -112,7 +112,7 @@ public class FormDelPeople extends javax.swing.JFrame {
         int id = 0;
         
         try{
-            if(peopleCb.getSelectedItem().toString().equals("Custumer")) {
+            if(peopleCb.getSelectedItem().toString().equals("Customer")) {
                 id = garrid.getCustomerId(cpfTf.getText());
                 storage.getCustomers().remove(id); //Reflexividade
             }
